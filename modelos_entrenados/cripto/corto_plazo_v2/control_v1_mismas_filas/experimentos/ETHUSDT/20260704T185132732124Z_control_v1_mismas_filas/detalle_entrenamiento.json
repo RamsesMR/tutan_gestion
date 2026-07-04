@@ -1,0 +1,36 @@
+{
+    "fecha_utc": "2026-07-04T18:51:32.732124+00:00",
+    "simbolo": "ETHUSDT",
+    "etiqueta": "control_v1_mismas_filas",
+    "epocas": 3,
+    "tamano_lote": 100000,
+    "variables": 36,
+    "mismas_filas_v2a": true,
+    "conteos_entrenamiento": {
+        "SUBE": 624973,
+        "NEUTRAL": 878423,
+        "BAJA": 584011
+    },
+    "pesos_clases": {
+        "BAJA": 1.191419910469723,
+        "NEUTRAL": 0.7921039559908305,
+        "SUBE": 1.1133318292683578
+    },
+    "metricas_modelo": {
+        "modelo": "SGDClassifier control V1 mismas filas",
+        "muestras": 525360,
+        "accuracy": 0.43354081011116186,
+        "balanced_accuracy": 0.39982499881381206,
+        "f1_macro": 0.361880135229804
+    },
+    "metricas_referencia": {
+        "modelo": "DummyClassifier (most_frequent)",
+        "muestras": 525360,
+        "accuracy": 0.3917123496269225,
+        "balanced_accuracy": 0.3333333333333333,
+        "f1_macro": 0.1876404750507192
+    },
+    "division_prueba_utilizada": false,
+    "notas": "",
+    "ruta_experimento": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v2\\control_v1_mismas_filas\\experimentos\\ETHUSDT\\20260704T185132732124Z_control_v1_mismas_filas"
+}

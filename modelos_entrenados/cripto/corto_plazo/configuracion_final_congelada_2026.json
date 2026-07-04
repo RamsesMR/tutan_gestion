@@ -1,0 +1,156 @@
+{
+    "fecha_utc": "2026-07-04T17:22:28+00:00",
+    "estado": "configuracion_congelada_antes_prueba",
+    "horizonte": "4h",
+    "division_prueba_utilizada": false,
+    "simbolos": [
+        {
+            "simbolo": "BTCUSDT",
+            "modelo": {
+                "archivo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo\\modelo_base_BTCUSDT_4h.joblib",
+                "sha256": "3e7393dce7426583f2f8226d5d254da6cdf1e147d05b9ab232b5214a413a1ed1",
+                "clase": "SGDClassifier",
+                "variables": 36,
+                "columnas_modelo": [
+                    "rango_relativo",
+                    "cuerpo_relativo",
+                    "mecha_superior_relativa",
+                    "mecha_inferior_relativa",
+                    "proporcion_compradora_base",
+                    "proporcion_compradora_cotizacion",
+                    "rendimiento_1m",
+                    "rendimiento_5m",
+                    "volatilidad_5m",
+                    "desviacion_media_cierre_5m",
+                    "volumen_relativo_5m",
+                    "operaciones_relativas_5m",
+                    "rendimiento_15m",
+                    "volatilidad_15m",
+                    "desviacion_media_cierre_15m",
+                    "volumen_relativo_15m",
+                    "operaciones_relativas_15m",
+                    "rendimiento_30m",
+                    "volatilidad_30m",
+                    "desviacion_media_cierre_30m",
+                    "volumen_relativo_30m",
+                    "operaciones_relativas_30m",
+                    "rendimiento_60m",
+                    "volatilidad_60m",
+                    "desviacion_media_cierre_60m",
+                    "volumen_relativo_60m",
+                    "operaciones_relativas_60m",
+                    "rendimiento_240m",
+                    "volatilidad_240m",
+                    "desviacion_media_cierre_240m",
+                    "volumen_relativo_240m",
+                    "operaciones_relativas_240m",
+                    "minuto_dia_seno",
+                    "minuto_dia_coseno",
+                    "dia_semana_seno",
+                    "dia_semana_coseno"
+                ],
+                "clases": [
+                    "BAJA",
+                    "NEUTRAL",
+                    "SUBE"
+                ],
+                "umbral_clase": 0.005
+            },
+            "ajuste_decision": {
+                "archivo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo\\ajuste_decision_BTCUSDT_4h.json",
+                "sha256": "83241c44e1bc46115bdeafb55d3c212cc95f1d8c693ba57c74d5d8f323262bc2",
+                "multiplicadores": {
+                    "BAJA": 1.4,
+                    "NEUTRAL": 1.0,
+                    "SUBE": 1.3
+                },
+                "perdida_maxima_accuracy_permitida": 0.03
+            },
+            "validaciones_previas": {
+                "ajuste": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo\\ajuste_decision_BTCUSDT_4h.json",
+                "validacion_mensual": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo\\resumen_validacion_mensual_BTCUSDT_4h.md",
+                "walk_forward": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo\\resumen_walk_forward_BTCUSDT_4h.md"
+            },
+            "periodo_prueba_reservado": {
+                "desde": "2026-01-01T00:00:00+00:00",
+                "hasta_exclusivo": "2026-06-01T00:00:00+00:00",
+                "filas_utilizables": 217200,
+                "archivo_declarado": "C:\\xampp\\htdocs\\tutan_gestion\\datos\\cripto\\preparados\\corto_plazo\\BTCUSDT_1m_4h_2026-01-01_2026-06-01_variables.parquet"
+            }
+        },
+        {
+            "simbolo": "ETHUSDT",
+            "modelo": {
+                "archivo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo\\modelo_base_ETHUSDT_4h.joblib",
+                "sha256": "e689a3bea5ff33fbdc01f53efa2114f2a2577767d742961227cf20d63e798560",
+                "clase": "SGDClassifier",
+                "variables": 36,
+                "columnas_modelo": [
+                    "rango_relativo",
+                    "cuerpo_relativo",
+                    "mecha_superior_relativa",
+                    "mecha_inferior_relativa",
+                    "proporcion_compradora_base",
+                    "proporcion_compradora_cotizacion",
+                    "rendimiento_1m",
+                    "rendimiento_5m",
+                    "volatilidad_5m",
+                    "desviacion_media_cierre_5m",
+                    "volumen_relativo_5m",
+                    "operaciones_relativas_5m",
+                    "rendimiento_15m",
+                    "volatilidad_15m",
+                    "desviacion_media_cierre_15m",
+                    "volumen_relativo_15m",
+                    "operaciones_relativas_15m",
+                    "rendimiento_30m",
+                    "volatilidad_30m",
+                    "desviacion_media_cierre_30m",
+                    "volumen_relativo_30m",
+                    "operaciones_relativas_30m",
+                    "rendimiento_60m",
+                    "volatilidad_60m",
+                    "desviacion_media_cierre_60m",
+                    "volumen_relativo_60m",
+                    "operaciones_relativas_60m",
+                    "rendimiento_240m",
+                    "volatilidad_240m",
+                    "desviacion_media_cierre_240m",
+                    "volumen_relativo_240m",
+                    "operaciones_relativas_240m",
+                    "minuto_dia_seno",
+                    "minuto_dia_coseno",
+                    "dia_semana_seno",
+                    "dia_semana_coseno"
+                ],
+                "clases": [
+                    "BAJA",
+                    "NEUTRAL",
+                    "SUBE"
+                ],
+                "umbral_clase": 0.005
+            },
+            "ajuste_decision": {
+                "archivo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo\\ajuste_decision_ETHUSDT_4h.json",
+                "sha256": "d7af9b5543b10d6aca6e74523870f8b563ef9d5087bf8740f33a35906e1f3250",
+                "multiplicadores": {
+                    "BAJA": 1.4,
+                    "NEUTRAL": 1.0,
+                    "SUBE": 1.3
+                },
+                "perdida_maxima_accuracy_permitida": 0.05
+            },
+            "validaciones_previas": {
+                "ajuste": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo\\ajuste_decision_ETHUSDT_4h.json",
+                "validacion_mensual": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo\\resumen_validacion_mensual_ETHUSDT_4h.md",
+                "walk_forward": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo\\resumen_walk_forward_ETHUSDT_4h.md"
+            },
+            "periodo_prueba_reservado": {
+                "desde": "2026-01-01T00:00:00+00:00",
+                "hasta_exclusivo": "2026-06-01T00:00:00+00:00",
+                "filas_utilizables": 217200,
+                "archivo_declarado": "C:\\xampp\\htdocs\\tutan_gestion\\datos\\cripto\\preparados\\corto_plazo\\ETHUSDT_1m_4h_2026-01-01_2026-06-01_variables.parquet"
+            }
+        }
+    ]
+}

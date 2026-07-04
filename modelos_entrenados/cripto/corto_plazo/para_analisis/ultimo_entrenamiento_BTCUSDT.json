@@ -1,0 +1,196 @@
+{
+    "registro": {
+        "id_entrenamiento": "20260704T162425Z_BTCUSDT_sgd_base_v2",
+        "fecha_utc": "2026-07-04T16:24:25+00:00",
+        "simbolo": "BTCUSDT",
+        "etiqueta": "sgd_base_v2",
+        "modelo": "SGDClassifier",
+        "horizonte": "4h",
+        "umbral_clase": 0.005,
+        "umbral_porcentaje": 0.5,
+        "variables": 36,
+        "epocas": 3,
+        "tamano_lote": 100000,
+        "muestras_entrenamiento": 2099167,
+        "entrenamiento_baja": 508979,
+        "entrenamiento_neutral": 1053523,
+        "entrenamiento_sube": 536665,
+        "peso_baja": 1.3747567843336037,
+        "peso_neutral": 0.6641737611170647,
+        "peso_sube": 1.3038344839580247,
+        "muestras_validacion": 525600,
+        "accuracy": 0.5863375190258752,
+        "balanced_accuracy": 0.3907125741740779,
+        "f1_macro": 0.3684783910250813,
+        "dummy_accuracy": 0.5864440639269406,
+        "dummy_balanced_accuracy": 0.3333333333333333,
+        "dummy_f1_macro": 0.2464396433347125,
+        "mejora_accuracy": -0.00010654490106543069,
+        "mejora_balanced_accuracy": 0.05737924084074458,
+        "mejora_f1_macro": 0.12203874769036879,
+        "precision_baja": 0.2982216142270862,
+        "recall_baja": 0.05415631568889738,
+        "f1_baja": 0.09166626235181861,
+        "support_baja": 104660,
+        "precision_neutral": 0.6341085447978031,
+        "recall_neutral": 0.9027203270232128,
+        "f1_neutral": 0.7449400299850075,
+        "support_neutral": 308235,
+        "precision_sube": 0.3578899231438729,
+        "recall_sube": 0.21526107981012377,
+        "f1_sube": 0.2688288807384179,
+        "support_sube": 112705,
+        "cm_baja_baja": 5668,
+        "cm_baja_neutral": 77829,
+        "cm_baja_sube": 21163,
+        "cm_neutral_baja": 7620,
+        "cm_neutral_neutral": 278250,
+        "cm_neutral_sube": 22365,
+        "cm_sube_baja": 5718,
+        "cm_sube_neutral": 82726,
+        "cm_sube_sube": 24261,
+        "notas": "Segundo entrenamiento del modelo base",
+        "huella_resultados": "15980e5abb6e2c5407d76bed3074fb5db1deee3b38f7c891696239bdaba43578"
+    },
+    "columnas_modelo": [
+        "rango_relativo",
+        "cuerpo_relativo",
+        "mecha_superior_relativa",
+        "mecha_inferior_relativa",
+        "proporcion_compradora_base",
+        "proporcion_compradora_cotizacion",
+        "rendimiento_1m",
+        "rendimiento_5m",
+        "volatilidad_5m",
+        "desviacion_media_cierre_5m",
+        "volumen_relativo_5m",
+        "operaciones_relativas_5m",
+        "rendimiento_15m",
+        "volatilidad_15m",
+        "desviacion_media_cierre_15m",
+        "volumen_relativo_15m",
+        "operaciones_relativas_15m",
+        "rendimiento_30m",
+        "volatilidad_30m",
+        "desviacion_media_cierre_30m",
+        "volumen_relativo_30m",
+        "operaciones_relativas_30m",
+        "rendimiento_60m",
+        "volatilidad_60m",
+        "desviacion_media_cierre_60m",
+        "volumen_relativo_60m",
+        "operaciones_relativas_60m",
+        "rendimiento_240m",
+        "volatilidad_240m",
+        "desviacion_media_cierre_240m",
+        "volumen_relativo_240m",
+        "operaciones_relativas_240m",
+        "minuto_dia_seno",
+        "minuto_dia_coseno",
+        "dia_semana_seno",
+        "dia_semana_coseno"
+    ],
+    "clases": [
+        "BAJA",
+        "NEUTRAL",
+        "SUBE"
+    ],
+    "conteos_entrenamiento": {
+        "BAJA": 508979,
+        "NEUTRAL": 1053523,
+        "SUBE": 536665
+    },
+    "pesos_clases": {
+        "BAJA": 1.3747567843336037,
+        "NEUTRAL": 0.6641737611170647,
+        "SUBE": 1.3038344839580247
+    },
+    "metricas_modelo": {
+        "modelo": "SGDClassifier",
+        "muestras": 525600,
+        "accuracy": 0.5863375190258752,
+        "balanced_accuracy": 0.3907125741740779,
+        "f1_macro": 0.3684783910250813
+    },
+    "metricas_dummy": {
+        "modelo": "DummyClassifier (most_frequent)",
+        "muestras": 525600,
+        "accuracy": 0.5864440639269406,
+        "balanced_accuracy": 0.3333333333333333,
+        "f1_macro": 0.2464396433347125
+    },
+    "informe_clasificacion": {
+        "BAJA": {
+            "precision": 0.2982216142270862,
+            "recall": 0.05415631568889738,
+            "f1-score": 0.09166626235181861,
+            "support": 104660.0
+        },
+        "NEUTRAL": {
+            "precision": 0.6341085447978031,
+            "recall": 0.9027203270232128,
+            "f1-score": 0.7449400299850075,
+            "support": 308235.0
+        },
+        "SUBE": {
+            "precision": 0.3578899231438729,
+            "recall": 0.21526107981012377,
+            "f1-score": 0.2688288807384179,
+            "support": 112705.0
+        },
+        "accuracy": 0.5863375190258752,
+        "macro avg": {
+            "precision": 0.43007336072292074,
+            "recall": 0.39071257417407795,
+            "f1-score": 0.36847839102508134,
+            "support": 525600.0
+        },
+        "weighted avg": {
+            "precision": 0.5079952534982647,
+            "recall": 0.5863375190258752,
+            "f1-score": 0.5127639653040211,
+            "support": 525600.0
+        }
+    },
+    "matriz_confusion": {
+        "predicha_BAJA": {
+            "real_BAJA": 5668,
+            "real_NEUTRAL": 7620,
+            "real_SUBE": 5718
+        },
+        "predicha_NEUTRAL": {
+            "real_BAJA": 77829,
+            "real_NEUTRAL": 278250,
+            "real_SUBE": 82726
+        },
+        "predicha_SUBE": {
+            "real_BAJA": 21163,
+            "real_NEUTRAL": 22365,
+            "real_SUBE": 24261
+        }
+    },
+    "matriz_confusion_dummy": {
+        "predicha_BAJA": {
+            "real_BAJA": 0,
+            "real_NEUTRAL": 0,
+            "real_SUBE": 0
+        },
+        "predicha_NEUTRAL": {
+            "real_BAJA": 104660,
+            "real_NEUTRAL": 308235,
+            "real_SUBE": 112705
+        },
+        "predicha_SUBE": {
+            "real_BAJA": 0,
+            "real_NEUTRAL": 0,
+            "real_SUBE": 0
+        }
+    },
+    "archivos_origen": [
+        "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo\\metricas_base_BTCUSDT_4h.csv",
+        "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo\\informe_clasificacion_base_BTCUSDT_4h.json",
+        "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo\\matriz_confusion_base_BTCUSDT_4h.csv",
+        "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo\\matriz_confusion_referencia_BTCUSDT_4h.csv",
+        "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo\\modelo_base_BTCUSDT_4h.joblib"
+    ]
+}

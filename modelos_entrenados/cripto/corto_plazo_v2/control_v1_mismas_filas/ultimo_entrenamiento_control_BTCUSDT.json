@@ -1,0 +1,36 @@
+{
+    "fecha_utc": "2026-07-04T18:49:52.318712+00:00",
+    "simbolo": "BTCUSDT",
+    "etiqueta": "control_v1_mismas_filas",
+    "epocas": 3,
+    "tamano_lote": 100000,
+    "variables": 36,
+    "mismas_filas_v2a": true,
+    "conteos_entrenamiento": {
+        "SUBE": 532282,
+        "NEUTRAL": 1049367,
+        "BAJA": 505758
+    },
+    "pesos_clases": {
+        "BAJA": 1.3757613984026615,
+        "NEUTRAL": 0.6630686245454005,
+        "SUBE": 1.3072062052320637
+    },
+    "metricas_modelo": {
+        "modelo": "SGDClassifier control V1 mismas filas",
+        "muestras": 525360,
+        "accuracy": 0.5857469164001827,
+        "balanced_accuracy": 0.3926868688433783,
+        "f1_macro": 0.36678640513615685
+    },
+    "metricas_referencia": {
+        "modelo": "DummyClassifier (most_frequent)",
+        "muestras": 525360,
+        "accuracy": 0.5862589462463834,
+        "balanced_accuracy": 0.3333333333333333,
+        "f1_macro": 0.24639060250688882
+    },
+    "division_prueba_utilizada": false,
+    "notas": "",
+    "ruta_experimento": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v2\\control_v1_mismas_filas\\experimentos\\BTCUSDT\\20260704T184952318712Z_control_v1_mismas_filas"
+}

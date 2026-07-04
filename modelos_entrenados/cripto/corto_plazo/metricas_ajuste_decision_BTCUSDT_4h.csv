@@ -1,0 +1,3 @@
+﻿tipo,multiplicador_baja,multiplicador_neutral,multiplicador_sube,accuracy,balanced_accuracy,f1_macro,predicciones_baja,predicciones_neutral,predicciones_sube,porcentaje_predicho_baja,porcentaje_predicho_neutral,porcentaje_predicho_sube
+decision_original,1.0,1.0,1.0,0.5863375190258752,0.39071257417407795,0.36847839102508134,19006.0,438805.0,67789.0,3.616057838660578,83.48649162861491,12.897450532724505
+decision_ajustada,1.4,1.0,1.3,0.5586624809741249,0.4106685595484921,0.4103568172698538,75171.0,370828.0,79601.0,14.301940639269406,70.55327245053272,15.144786910197869
