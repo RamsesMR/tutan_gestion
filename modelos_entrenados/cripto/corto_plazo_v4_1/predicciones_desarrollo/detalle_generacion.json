@@ -1,0 +1,11 @@
+{
+    "fecha_utc": "2026-07-04T22:20:47.438692+00:00",
+    "version": "v4_1_laboratorio_ejecucion",
+    "simbolo": "BTCUSDT",
+    "variante_sube": "v4_63_sin_pesos",
+    "variante_baja": "v4_63_moderado",
+    "epocas": 3,
+    "tamano_lote": 100000,
+    "uso_2025": false,
+    "uso_2026": false
+}

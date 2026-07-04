@@ -1,0 +1,20 @@
+{
+    "horizonte": 720,
+    "umbral_rearme": 0.4,
+    "enfriamiento": 60,
+    "distancia_minima": 0.01,
+    "diferencia_minima": null,
+    "exige_pendiente_positiva_5m": false,
+    "metricas": {
+        "operaciones_2023": 60,
+        "operaciones_2024": 104,
+        "precision_2023": 0.4833333333333333,
+        "precision_2024": 0.4903846153846153,
+        "retorno_neto_medio_2023": 0.0050065271705394,
+        "retorno_neto_medio_2024": 0.0057596641535795,
+        "factor_beneficio_2023": 1.9468658973325197,
+        "factor_beneficio_2024": 1.976538745596284,
+        "drawdown_2023": -0.0730464796420433,
+        "drawdown_2024": -0.138258082699585
+    }
+}
