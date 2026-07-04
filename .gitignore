@@ -1,2 +1,27 @@
+# Entorno virtual
+.venv/
+venv/
+
+# Variables privadas
 .env
-/venv
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Editor
+.vscode/
+
+# Datos generados
+datos/**/*.csv
+datos/**/*.json
+datos/**/*.parquet
+
+# Modelos entrenados
+modelos_entrenados/**/*.pkl
+modelos_entrenados/**/*.joblib
+modelos_entrenados/**/*.keras
+modelos_entrenados/**/*.h5
+
+# Registros
+registros/*.log
