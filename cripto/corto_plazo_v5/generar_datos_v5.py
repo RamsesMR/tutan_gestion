@@ -578,6 +578,10 @@ def _agregar_variables_tecnicas_segmento(
 ) -> pd.DataFrame:
     """Calcula variables causales usando solo presente y pasado."""
 
+    datos = datos.reset_index(
+        drop=True
+    ).copy()
+
     cierre = datos[
         "cierre"
     ].to_numpy(
@@ -1043,6 +1047,10 @@ def _agregar_objetivo_barreras_segmento(
 ) -> pd.DataFrame:
     """Etiqueta qué barrera se toca primero. En empate intravela gana el stop."""
 
+    datos = datos.reset_index(
+        drop=True
+    ).copy()
+
     cierre = datos[
         "cierre"
     ].to_numpy(
@@ -1480,6 +1488,27 @@ def procesar_periodo(
     salida = salida.dropna(
         subset=columnas_validacion
     )
+
+    proporcion_conservada = (
+        len(
+            salida
+        )
+        / len(
+            actual
+        )
+        if len(
+            actual
+        ) > 0
+        else 0.0
+    )
+
+    if proporcion_conservada < 0.80:
+        raise RuntimeError(
+            "La generación descartó demasiadas filas: "
+            f"{len(salida):,} de {len(actual):,} "
+            f"({proporcion_conservada:.2%}). "
+            "Revisa índices, huecos temporales y variables con NaN."
+        )
 
     RUTA_DATOS_V5.mkdir(
         parents=True,

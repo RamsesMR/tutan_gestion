@@ -1,0 +1,36 @@
+{
+    "fecha_utc": "2026-07-04T22:48:13.830544+00:00",
+    "periodo_entrenamiento": {
+        "desde": "2021-01-01",
+        "hasta": "2026-01-01"
+    },
+    "periodo_prueba_final": {
+        "desde": "2026-01-01",
+        "hasta": "2026-06-01"
+    },
+    "estrategia_congelada": {
+        "umbral_sube": 0.44,
+        "modo_entrada": "cruce",
+        "usa_veto_baja": false,
+        "tipo_salida": "fija",
+        "nombre_salida": "fija_480m",
+        "horizonte_salida": 480,
+        "coste": 0.001
+    },
+    "variante_sube": "v4_63_sin_pesos",
+    "epocas": 3,
+    "tamano_lote": 100000,
+    "filas_evaluadas": 217200,
+    "metricas_2026": {
+        "operaciones": 43,
+        "precision_clasificacion": 0.4418604651162791,
+        "porcentaje_acierto_clasificacion": 44.18604651162791,
+        "porcentaje_operaciones_positivas": 51.162790697674424,
+        "retorno_bruto_medio": 0.0030124927434865938,
+        "retorno_neto_medio": 0.002012492743486593,
+        "retorno_neto_mediano": 0.00170610774938973,
+        "factor_beneficio": 1.3449760185257282,
+        "maximo_drawdown": -0.09264659188986846
+    },
+    "prueba_final_intacta": true
+}

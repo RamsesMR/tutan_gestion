@@ -1,0 +1,33 @@
+{
+    "fecha_utc": "2026-07-04T21:39:06.086241+00:00",
+    "identificador": "20260704T213421Z_3083f830",
+    "version_modelo": "v5_oportunidades_financieras",
+    "simbolo": "BTCUSDT",
+    "objetivo": "largo_tp070_sl035_240m",
+    "variante": "histgb_moderado",
+    "tipo_modelo": "histgb",
+    "pliegue": "validacion_2024",
+    "variables": 101,
+    "epocas": 3,
+    "pesos": {
+        "0": 0.8500339931522937,
+        "1": 1.416356619147509
+    },
+    "detalle_muestra": {
+        "filas_originales": 1548636,
+        "filas_muestra": 600000
+    },
+    "metricas_probabilidad": {
+        "muestras": 526800,
+        "positivos": 144006,
+        "prevalencia": 0.2733599088838269,
+        "pr_auc": 0.322641199183896,
+        "pr_auc_lift": 1.1802798753529464,
+        "roc_auc": 0.5825864010376339,
+        "brier": 0.2040140820880848,
+        "log_loss": 0.5946326036141769
+    },
+    "ruta_umbrales": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v5\\desarrollo\\BTCUSDT\\largo_tp070_sl035_240m\\histgb_moderado\\validacion_2024\\20260704T213421Z_3083f830\\metricas_umbrales.csv",
+    "uso_2025": false,
+    "uso_2026": false
+}
