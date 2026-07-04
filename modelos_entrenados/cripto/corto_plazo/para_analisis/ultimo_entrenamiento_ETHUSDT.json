@@ -1,0 +1,196 @@
+{
+    "registro": {
+        "id_entrenamiento": "20260704T162443Z_ETHUSDT_sgd_base_v1",
+        "fecha_utc": "2026-07-04T16:24:43+00:00",
+        "simbolo": "ETHUSDT",
+        "etiqueta": "sgd_base_v1",
+        "modelo": "SGDClassifier",
+        "horizonte": "4h",
+        "umbral_clase": 0.005,
+        "umbral_porcentaje": 0.5,
+        "variables": 36,
+        "epocas": 3,
+        "tamano_lote": 100000,
+        "muestras_entrenamiento": 2099167,
+        "entrenamiento_baja": 587760,
+        "entrenamiento_neutral": 881868,
+        "entrenamiento_sube": 629539,
+        "peso_baja": 1.19048988249172,
+        "peso_neutral": 0.793454727162493,
+        "peso_sube": 1.1114836941529171,
+        "muestras_validacion": 525600,
+        "accuracy": 0.4347964231354642,
+        "balanced_accuracy": 0.4012804154863945,
+        "f1_macro": 0.3592437657098159,
+        "dummy_accuracy": 0.3919767884322679,
+        "dummy_balanced_accuracy": 0.3333333333333333,
+        "dummy_f1_macro": 0.1877314773683532,
+        "mejora_accuracy": 0.042819634703196274,
+        "mejora_balanced_accuracy": 0.06794708215306117,
+        "mejora_f1_macro": 0.17151228834146273,
+        "precision_baja": 0.3629918832836741,
+        "recall_baja": 0.06875056757002193,
+        "f1_baja": 0.1156054863250893,
+        "support_baja": 154166,
+        "precision_neutral": 0.4632712789300534,
+        "recall_neutral": 0.7429704450473976,
+        "f1_neutral": 0.5706930235332717,
+        "support_neutral": 206023,
+        "precision_sube": 0.3907477468793677,
+        "recall_sube": 0.39212023384176387,
+        "f1_sube": 0.3914327872710869,
+        "support_sube": 165411,
+        "cm_baja_baja": 10599,
+        "cm_baja_neutral": 87477,
+        "cm_baja_sube": 56090,
+        "cm_neutral_baja": 7913,
+        "cm_neutral_neutral": 153069,
+        "cm_neutral_sube": 45041,
+        "cm_sube_baja": 10687,
+        "cm_sube_neutral": 89863,
+        "cm_sube_sube": 64861,
+        "notas": "Primer entrenamiento base registrado de ETHUSDT",
+        "huella_resultados": "49a67ae1eb47563d764097594478e511fcc9ab48008462a131976b9253f85dbf"
+    },
+    "columnas_modelo": [
+        "rango_relativo",
+        "cuerpo_relativo",
+        "mecha_superior_relativa",
+        "mecha_inferior_relativa",
+        "proporcion_compradora_base",
+        "proporcion_compradora_cotizacion",
+        "rendimiento_1m",
+        "rendimiento_5m",
+        "volatilidad_5m",
+        "desviacion_media_cierre_5m",
+        "volumen_relativo_5m",
+        "operaciones_relativas_5m",
+        "rendimiento_15m",
+        "volatilidad_15m",
+        "desviacion_media_cierre_15m",
+        "volumen_relativo_15m",
+        "operaciones_relativas_15m",
+        "rendimiento_30m",
+        "volatilidad_30m",
+        "desviacion_media_cierre_30m",
+        "volumen_relativo_30m",
+        "operaciones_relativas_30m",
+        "rendimiento_60m",
+        "volatilidad_60m",
+        "desviacion_media_cierre_60m",
+        "volumen_relativo_60m",
+        "operaciones_relativas_60m",
+        "rendimiento_240m",
+        "volatilidad_240m",
+        "desviacion_media_cierre_240m",
+        "volumen_relativo_240m",
+        "operaciones_relativas_240m",
+        "minuto_dia_seno",
+        "minuto_dia_coseno",
+        "dia_semana_seno",
+        "dia_semana_coseno"
+    ],
+    "clases": [
+        "BAJA",
+        "NEUTRAL",
+        "SUBE"
+    ],
+    "conteos_entrenamiento": {
+        "BAJA": 587760,
+        "NEUTRAL": 881868,
+        "SUBE": 629539
+    },
+    "pesos_clases": {
+        "BAJA": 1.19048988249172,
+        "NEUTRAL": 0.793454727162493,
+        "SUBE": 1.1114836941529171
+    },
+    "metricas_modelo": {
+        "modelo": "SGDClassifier",
+        "muestras": 525600,
+        "accuracy": 0.4347964231354642,
+        "balanced_accuracy": 0.4012804154863945,
+        "f1_macro": 0.3592437657098159
+    },
+    "metricas_dummy": {
+        "modelo": "DummyClassifier (most_frequent)",
+        "muestras": 525600,
+        "accuracy": 0.3919767884322679,
+        "balanced_accuracy": 0.3333333333333333,
+        "f1_macro": 0.1877314773683532
+    },
+    "informe_clasificacion": {
+        "BAJA": {
+            "precision": 0.3629918832836741,
+            "recall": 0.06875056757002193,
+            "f1-score": 0.1156054863250893,
+            "support": 154166.0
+        },
+        "NEUTRAL": {
+            "precision": 0.4632712789300534,
+            "recall": 0.7429704450473976,
+            "f1-score": 0.5706930235332717,
+            "support": 206023.0
+        },
+        "SUBE": {
+            "precision": 0.3907477468793677,
+            "recall": 0.39212023384176387,
+            "f1-score": 0.3914327872710869,
+            "support": 165411.0
+        },
+        "accuracy": 0.43479642313546424,
+        "macro avg": {
+            "precision": 0.40567030303103174,
+            "recall": 0.4012804154863945,
+            "f1-score": 0.3592437657098159,
+            "support": 525600.0
+        },
+        "weighted avg": {
+            "precision": 0.41103409614988656,
+            "recall": 0.43479642313546424,
+            "f1-score": 0.38079454521972356,
+            "support": 525600.0
+        }
+    },
+    "matriz_confusion": {
+        "predicha_BAJA": {
+            "real_BAJA": 10599,
+            "real_NEUTRAL": 7913,
+            "real_SUBE": 10687
+        },
+        "predicha_NEUTRAL": {
+            "real_BAJA": 87477,
+            "real_NEUTRAL": 153069,
+            "real_SUBE": 89863
+        },
+        "predicha_SUBE": {
+            "real_BAJA": 56090,
+            "real_NEUTRAL": 45041,
+            "real_SUBE": 64861
+        }
+    },
+    "matriz_confusion_dummy": {
+        "predicha_BAJA": {
+            "real_BAJA": 0,
+            "real_NEUTRAL": 0,
+            "real_SUBE": 0
+        },
+        "predicha_NEUTRAL": {
+            "real_BAJA": 154166,
+            "real_NEUTRAL": 206023,
+            "real_SUBE": 165411
+        },
+        "predicha_SUBE": {
+            "real_BAJA": 0,
+            "real_NEUTRAL": 0,
+            "real_SUBE": 0
+        }
+    },
+    "archivos_origen": [
+        "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo\\metricas_base_ETHUSDT_4h.csv",
+        "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo\\informe_clasificacion_base_ETHUSDT_4h.json",
+        "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo\\matriz_confusion_base_ETHUSDT_4h.csv",
+        "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo\\matriz_confusion_referencia_ETHUSDT_4h.csv",
+        "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo\\modelo_base_ETHUSDT_4h.joblib"
+    ]
+}

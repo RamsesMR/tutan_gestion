@@ -1,0 +1,286 @@
+TUTAN_GESTION - COMANDOS DEL PROYECTO
+=====================================
+
+Ejecutar los comandos desde la raíz del proyecto:
+
+C:\xampp\htdocs\tutan_gestion
+
+
+============================================================
+1. ENTORNO VIRTUAL Y DEPENDENCIAS
+============================================================
+
+# Activar el entorno virtual
+.\venv\Scripts\Activate.ps1
+
+# Instalar dependencias iniciales
+python -m pip install pandas numpy requests SQLAlchemy "psycopg[binary]" python-dotenv
+
+# Instalar soporte para archivos Parquet
+python -m pip install pyarrow
+
+# Actualizar requirements.txt
+python -m pip freeze > requirements.txt
+
+# Comprobar que .env está ignorado por Git
+git check-ignore -v .env
+
+
+============================================================
+2. POSTGRESQL Y DATOS INICIALES
+============================================================
+
+# Probar la conexión con PostgreSQL
+python compartido/base_datos/conexion.py
+
+# Crear las tablas
+python -m compartido.base_datos.crear_tablas
+
+# Cargar Binance, BTC, ETH, USDT y los mercados iniciales
+python -m compartido.base_datos.datos_iniciales
+
+
+============================================================
+3. PRUEBAS BÁSICAS DE RECOLECCIÓN
+============================================================
+
+# Descargar un mes histórico
+python -m cripto.recoleccion.recolector_historico --simbolo BTCUSDT --intervalo 1m --anio 2026 --mes 5
+
+# Importar un mes en PostgreSQL
+python -m cripto.recoleccion.guardar_datos --simbolo BTCUSDT --intervalo 1m --anio 2026 --mes 5
+
+# Validar un mes importado
+python -m cripto.recoleccion.validar_datos --simbolo BTCUSDT --intervalo 1m --anio 2026 --mes 5
+
+# Procesar un mes completo
+python -m cripto.recoleccion.procesar_historico --simbolo BTCUSDT --intervalo 1m --anio 2026 --mes 5
+
+# Procesar un rango de meses
+python -m cripto.recoleccion.procesar_rango_historico --simbolo BTCUSDT --intervalo 1m --desde 2026-04 --hasta 2026-05
+
+# Ejecutar el plan histórico inicial
+python -m cripto.recoleccion.procesar_plan_historico
+
+
+============================================================
+4. HISTÓRICO DIARIO
+============================================================
+
+# BTCUSDT diario: enero de 2018 a diciembre de 2024
+python -m cripto.recoleccion.procesar_rango_historico --simbolo BTCUSDT --intervalo 1d --desde 2018-01 --hasta 2024-12
+
+# ETHUSDT diario: enero de 2018 a diciembre de 2024
+python -m cripto.recoleccion.procesar_rango_historico --simbolo ETHUSDT --intervalo 1d --desde 2018-01 --hasta 2024-12
+
+
+============================================================
+5. HISTÓRICO HORARIO
+============================================================
+
+# BTCUSDT horario inicial
+python -m cripto.recoleccion.procesar_rango_historico --simbolo BTCUSDT --intervalo 1h --desde 2018-01 --hasta 2025-12
+
+# Comprobar la vela faltante de enero de 2018 en la API de Binance
+python -c "import requests; respuesta=requests.get('https://api.binance.com/api/v3/klines', params={'symbol':'BTCUSDT','interval':'1h','startTime':1515038400000,'endTime':1515041999999,'limit':1}, timeout=30); print(respuesta.status_code); print(respuesta.json())"
+
+# Validar enero de 2018
+python -m cripto.recoleccion.validar_datos --simbolo BTCUSDT --intervalo 1h --anio 2018 --mes 1
+
+# Continuar BTCUSDT desde febrero de 2018
+python -m cripto.recoleccion.procesar_rango_historico --simbolo BTCUSDT --intervalo 1h --desde 2018-02 --hasta 2025-12
+
+# Comprobar la vela defectuosa de diciembre de 2020
+python -c "import requests; respuesta=requests.get('https://api.binance.com/api/v3/klines', params={'symbol':'BTCUSDT','interval':'1h','startTime':1608559200000,'endTime':1608562799999,'limit':1}, timeout=30); print(respuesta.status_code); print(respuesta.json())"
+
+# Procesar únicamente diciembre de 2020
+python -m cripto.recoleccion.procesar_historico --simbolo BTCUSDT --intervalo 1h --anio 2020 --mes 12
+
+# Continuar BTCUSDT desde enero de 2021
+python -m cripto.recoleccion.procesar_rango_historico --simbolo BTCUSDT --intervalo 1h --desde 2021-01 --hasta 2025-12
+
+# ETHUSDT horario completo
+python -m cripto.recoleccion.procesar_rango_historico --simbolo ETHUSDT --intervalo 1h --desde 2018-01 --hasta 2025-12
+
+
+============================================================
+6. HISTÓRICO DE UN MINUTO
+============================================================
+
+# BTCUSDT: enero de 2021 a marzo de 2026
+python -m cripto.recoleccion.procesar_rango_historico --simbolo BTCUSDT --intervalo 1m --desde 2021-01 --hasta 2026-03
+
+# ETHUSDT: enero de 2021 a marzo de 2026
+python -m cripto.recoleccion.procesar_rango_historico --simbolo ETHUSDT --intervalo 1m --desde 2021-01 --hasta 2026-03
+
+
+============================================================
+7. CONSULTAS DE COMPROBACIÓN EN POSTGRESQL
+============================================================
+
+IMPORTANTE:
+Los siguientes bloques son SQL. Se ejecutan en PostgreSQL, no en PowerShell.
+
+# Comprobar cobertura horaria
+
+SELECT
+    mercados.simbolo_proveedor AS mercado,
+    COUNT(*) AS total_velas,
+    COUNT(DISTINCT velas.fecha_apertura) AS fechas_distintas,
+    MIN(velas.fecha_apertura) AS primera_vela,
+    MAX(velas.fecha_apertura) AS ultima_vela
+FROM velas
+INNER JOIN mercados
+    ON mercados.id = velas.mercado_id
+WHERE velas.intervalo = '1h'
+GROUP BY mercados.simbolo_proveedor
+ORDER BY mercados.simbolo_proveedor;
+
+# Comprobar cobertura histórica completa
+
+SELECT
+    mercados.simbolo_proveedor AS mercado,
+    velas.intervalo,
+    COUNT(*) AS total_velas,
+    COUNT(DISTINCT velas.fecha_apertura) AS fechas_distintas,
+    MIN(velas.fecha_apertura) AS primera_vela,
+    MAX(velas.fecha_apertura) AS ultima_vela
+FROM velas
+INNER JOIN mercados
+    ON mercados.id = velas.mercado_id
+GROUP BY
+    mercados.simbolo_proveedor,
+    velas.intervalo
+ORDER BY
+    mercados.simbolo_proveedor,
+    velas.intervalo;
+
+
+============================================================
+8. CONFIGURACIÓN DEL MODELO DE CORTO PLAZO
+============================================================
+
+# Comprobar la configuración
+python -c "from cripto.corto_plazo.configuracion import SIMBOLOS, INTERVALO, HORIZONTE_MINUTOS, NOMBRE_HORIZONTE; print(SIMBOLOS, INTERVALO, HORIZONTE_MINUTOS, NOMBRE_HORIZONTE)"
+
+
+============================================================
+9. PRUEBA MENSUAL DE BTCUSDT
+============================================================
+
+# Preparar enero de 2026
+python -m cripto.corto_plazo.preparar_datos --simbolo BTCUSDT --desde 2026-01-01 --hasta 2026-02-01
+
+# Verificar el conjunto preparado
+python -c "import numpy as np; import pandas as pd; ruta=r'datos/cripto/preparados/corto_plazo/BTCUSDT_1m_4h_2026-01-01_2026-02-01.parquet'; datos=pd.read_parquet(ruta); print('Filas y columnas:', datos.shape); print('Nulos:', int(datos.isna().sum().sum())); print('Fechas duplicadas:', int(datos['fecha_apertura'].duplicated().sum())); print('Horizonte exacto de 4h:', bool(((datos['fecha_objetivo']-datos['fecha_apertura']) == pd.Timedelta(hours=4)).all())); calculado=datos['precio_cierre_futuro']/datos['precio_cierre']-1; print('Objetivo correctamente calculado:', bool(np.allclose(calculado, datos['rendimiento_objetivo'], rtol=1e-10, atol=1e-12)))"
+
+# Crear variables
+python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/BTCUSDT_1m_4h_2026-01-01_2026-02-01.parquet
+
+# Validar el archivo final de variables
+python -c "import numpy as np; import pandas as pd; ruta=r'datos/cripto/preparados/corto_plazo/BTCUSDT_1m_4h_2026-01-01_2026-02-01_variables.parquet'; datos=pd.read_parquet(ruta); numericas=datos.select_dtypes(include='number'); print('Filas y columnas:', datos.shape); print('Primera fecha:', datos['fecha_apertura'].min()); print('Última fecha:', datos['fecha_apertura'].max()); print('Nulos:', int(datos.isna().sum().sum())); print('Fechas duplicadas:', int(datos['fecha_apertura'].duplicated().sum())); print('Valores infinitos:', int((~np.isfinite(numericas.to_numpy(dtype='float64'))).sum())); print('Horizonte exacto de 4h:', bool(((datos['fecha_objetivo']-datos['fecha_apertura']) == pd.Timedelta(hours=4)).all())); print('Columnas totales:', len(datos.columns))"
+
+
+============================================================
+10. BTCUSDT - BLOQUES DEL MODELO DE CORTO PLAZO
+============================================================
+
+# BTCUSDT 2025
+python -m cripto.corto_plazo.preparar_datos --simbolo BTCUSDT --desde 2025-01-01 --hasta 2026-01-01
+python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/BTCUSDT_1m_4h_2025-01-01_2026-01-01.parquet
+
+# BTCUSDT 2024
+python -m cripto.corto_plazo.preparar_datos --simbolo BTCUSDT --desde 2024-01-01 --hasta 2025-01-01
+python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/BTCUSDT_1m_4h_2024-01-01_2025-01-01.parquet
+
+# BTCUSDT 2023
+python -m cripto.corto_plazo.preparar_datos --simbolo BTCUSDT --desde 2023-01-01 --hasta 2024-01-01
+python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/BTCUSDT_1m_4h_2023-01-01_2024-01-01.parquet
+
+# BTCUSDT 2022
+python -m cripto.corto_plazo.preparar_datos --simbolo BTCUSDT --desde 2022-01-01 --hasta 2023-01-01
+python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/BTCUSDT_1m_4h_2022-01-01_2023-01-01.parquet
+
+# BTCUSDT 2021
+python -m cripto.corto_plazo.preparar_datos --simbolo BTCUSDT --desde 2021-01-01 --hasta 2022-01-01
+python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/BTCUSDT_1m_4h_2021-01-01_2022-01-01.parquet
+
+# BTCUSDT enero-mayo de 2026
+python -m cripto.corto_plazo.preparar_datos --simbolo BTCUSDT --desde 2026-01-01 --hasta 2026-06-01
+python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/BTCUSDT_1m_4h_2026-01-01_2026-06-01.parquet
+
+
+============================================================
+11. ETHUSDT - BLOQUES DEL MODELO DE CORTO PLAZO
+============================================================
+
+# ETHUSDT 2025
+python -m cripto.corto_plazo.preparar_datos --simbolo ETHUSDT --desde 2025-01-01 --hasta 2026-01-01
+python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/ETHUSDT_1m_4h_2025-01-01_2026-01-01.parquet
+
+# ETHUSDT 2024
+python -m cripto.corto_plazo.preparar_datos --simbolo ETHUSDT --desde 2024-01-01 --hasta 2025-01-01
+python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/ETHUSDT_1m_4h_2024-01-01_2025-01-01.parquet
+
+# ETHUSDT 2023
+python -m cripto.corto_plazo.preparar_datos --simbolo ETHUSDT --desde 2023-01-01 --hasta 2024-01-01
+python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/ETHUSDT_1m_4h_2023-01-01_2024-01-01.parquet
+
+# ETHUSDT 2022
+python -m cripto.corto_plazo.preparar_datos --simbolo ETHUSDT --desde 2022-01-01 --hasta 2023-01-01
+python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/ETHUSDT_1m_4h_2022-01-01_2023-01-01.parquet
+
+# ETHUSDT 2021
+python -m cripto.corto_plazo.preparar_datos --simbolo ETHUSDT --desde 2021-01-01 --hasta 2022-01-01
+python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/ETHUSDT_1m_4h_2021-01-01_2022-01-01.parquet
+
+# ETHUSDT enero-mayo de 2026
+python -m cripto.corto_plazo.preparar_datos --simbolo ETHUSDT --desde 2026-01-01 --hasta 2026-06-01
+python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/ETHUSDT_1m_4h_2026-01-01_2026-06-01.parquet
+
+
+============================================================
+12. EJECUTAR EL SCRIPT DE ETHUSDT PENDIENTE
+============================================================
+
+# Ejecutar normalmente
+.\procesar_eth_pendiente.ps1
+
+# Ejecutarlo si PowerShell bloquea los scripts
+powershell -ExecutionPolicy Bypass -File .\procesar_eth_pendiente.ps1
+
+
+============================================================
+14. VALIDACIÓN GLOBAL DE LOS CONJUNTOS DE CORTO PLAZO
+============================================================
+
+python -m cripto.corto_plazo.validar_conjuntos
+
+
+============================================================
+15. ANÁLISIS DEL OBJETIVO DE CORTO PLAZO
+============================================================
+
+python -m cripto.corto_plazo.analizar_objetivo
+
+============================================================
+16. ANÁLISIS DE CLASES Y MOVIMIENTOS EXTREMOS
+============================================================
+
+python -m cripto.corto_plazo.analizar_clases
+
+============================================================
+17. PREPARAR DIVISIONES TEMPORALES PARA EL MODELO
+============================================================
+
+============================================================
+19. AJUSTAR LA REGLA DE DECISIÓN DE LOS MODELOS BASE
+============================================================
+
+# Ajustar BTCUSDT usando validación de 2025
+python -m cripto.corto_plazo.ajustar_decision --simbolo BTCUSDT
+
+# Ajustar ETHUSDT usando validación de 2025
+python -m cripto.corto_plazo.ajustar_decision --simbolo ETHUSDT
+
+python -m cripto.corto_plazo.preparar_divisiones
