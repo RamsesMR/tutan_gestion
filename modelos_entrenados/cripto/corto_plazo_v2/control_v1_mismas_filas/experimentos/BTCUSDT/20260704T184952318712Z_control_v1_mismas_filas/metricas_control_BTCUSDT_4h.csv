@@ -1,0 +1,3 @@
+﻿modelo,muestras,accuracy,balanced_accuracy,f1_macro
+SGDClassifier control V1 mismas filas,525360,0.5857469164001827,0.3926868688433783,0.36678640513615685
+DummyClassifier (most_frequent),525360,0.5862589462463834,0.3333333333333333,0.24639060250688882

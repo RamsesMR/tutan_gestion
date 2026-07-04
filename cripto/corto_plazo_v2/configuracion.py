@@ -4,24 +4,26 @@ from pathlib import Path
 
 
 # ============================================================
-# IDENTIDAD DE LA VERSIÓN
+# IDENTIDAD DEL MODELO
 # ============================================================
 
-VERSION_MODELO = "v2a_cruce_btc_eth"
+VERSION_MODELO = "v2a_variables_cruzadas"
 
 SIMBOLOS = (
     "BTCUSDT",
     "ETHUSDT",
 )
 
-OTRO_SIMBOLO = {
-    "BTCUSDT": "ETHUSDT",
-    "ETHUSDT": "BTCUSDT",
-}
+CLASES = (
+    "BAJA",
+    "NEUTRAL",
+    "SUBE",
+)
 
 INTERVALO = "1m"
 HORIZONTE_MINUTOS = 240
 NOMBRE_HORIZONTE = "4h"
+UMBRAL_CLASE = 0.005
 
 
 # ============================================================
@@ -31,8 +33,7 @@ NOMBRE_HORIZONTE = "4h"
 # Raíz del proyecto: tutan_gestion/
 RUTA_PROYECTO = Path(__file__).resolve().parents[2]
 
-# Entrada: datos definitivos de la V1.
-# Esta carpeta no se modifica.
+# Datos definitivos de la V1. Solo se leen.
 RUTA_DATOS_V1 = (
     RUTA_PROYECTO
     / "datos"
@@ -41,7 +42,7 @@ RUTA_DATOS_V1 = (
     / "corto_plazo"
 )
 
-# Salida independiente para la V2A.
+# Datos independientes de la V2A.
 RUTA_DATOS_V2 = (
     RUTA_PROYECTO
     / "datos"
@@ -50,6 +51,7 @@ RUTA_DATOS_V2 = (
     / "corto_plazo_v2"
 )
 
+# Modelos y resultados independientes de la V2A.
 RUTA_MODELOS_V2 = (
     RUTA_PROYECTO
     / "modelos_entrenados"
@@ -62,20 +64,53 @@ RUTA_RESUMEN_GENERACION = (
     / "resumen_generacion_variables_cruzadas.csv"
 )
 
+RUTA_MANIFIESTO_V2 = (
+    RUTA_DATOS_V2
+    / "manifiesto_divisiones_4h.csv"
+)
+
+RUTA_RESUMEN_DIVISIONES_V2 = (
+    RUTA_DATOS_V2
+    / "resumen_divisiones_4h.csv"
+)
+
 
 # ============================================================
-# PERIODOS PERMITIDOS EN EL DESARROLLO DE LA V2A
+# PERIODOS DE DESARROLLO
 # ============================================================
 
-# Se generan únicamente entrenamiento 2021-2024 y validación 2025.
-# Enero-mayo de 2026 ya fue utilizado en la evaluación final de la V1
-# y no se usará para seleccionar variables de la V2.
+# La V2A se selecciona únicamente con:
+# - entrenamiento: 2021-2024
+# - validación: 2025
+#
+# Enero-mayo de 2026 ya fue observado con la V1. No se incluye
+# en el desarrollo ni en la selección de la V2A.
+DIVISIONES_DESARROLLO = {
+    "entrenamiento": {
+        "desde": "2021-01-01",
+        "hasta": "2025-01-01",
+        "periodos": (
+            ("2021-01-01", "2022-01-01"),
+            ("2022-01-01", "2023-01-01"),
+            ("2023-01-01", "2024-01-01"),
+            ("2024-01-01", "2025-01-01"),
+        ),
+    },
+    "validacion": {
+        "desde": "2025-01-01",
+        "hasta": "2026-01-01",
+        "periodos": (
+            ("2025-01-01", "2026-01-01"),
+        ),
+    },
+}
+
+
+# Lista plana conservada para que generar_variables_cruzadas.py
+# continúe funcionando sin duplicar la definición de periodos.
 PERIODOS_DESARROLLO = (
-    ("2021-01-01", "2022-01-01"),
-    ("2022-01-01", "2023-01-01"),
-    ("2023-01-01", "2024-01-01"),
-    ("2024-01-01", "2025-01-01"),
-    ("2025-01-01", "2026-01-01"),
+    *DIVISIONES_DESARROLLO["entrenamiento"]["periodos"],
+    *DIVISIONES_DESARROLLO["validacion"]["periodos"],
 )
 
 
@@ -93,7 +128,7 @@ VENTANAS_MINUTOS_V1 = (
 
 
 def construir_columnas_modelo_v1() -> list[str]:
-    """Reproduce exactamente las 36 variables del modelo V1."""
+    """Reproduce exactamente las 36 variables de la V1."""
 
     columnas = [
         "rango_relativo",
@@ -162,7 +197,6 @@ VENTANAS_ZSCORE_DIVERGENCIA = (
     1440,
 )
 
-# Historial suficiente para calcular la mayor ventana sin mezclar futuro.
 FILAS_HISTORIAL = max(
     VENTANAS_RELACION
 )
@@ -215,17 +249,27 @@ COLUMNAS_MODELO_V2A = (
     *COLUMNAS_CRUZADAS,
 )
 
+
+# ============================================================
+# VALIDACIONES DE CONFIGURACIÓN
+# ============================================================
+
 if len(COLUMNAS_MODELO_V1) != 36:
     raise RuntimeError(
-        "La configuración V2A no reproduce las 36 variables de la V1."
+        "La configuración no reproduce las 36 variables de la V1."
     )
 
 if len(COLUMNAS_CRUZADAS) != 27:
     raise RuntimeError(
-        "La configuración V2A debe contener 27 variables cruzadas."
+        "La configuración debe contener 27 variables cruzadas."
     )
 
 if len(COLUMNAS_MODELO_V2A) != 63:
     raise RuntimeError(
         "La V2A debe contener exactamente 63 variables."
+    )
+
+if set(COLUMNAS_MODELO_V1).intersection(COLUMNAS_CRUZADAS):
+    raise RuntimeError(
+        "Existen nombres repetidos entre las variables V1 y V2A."
     )

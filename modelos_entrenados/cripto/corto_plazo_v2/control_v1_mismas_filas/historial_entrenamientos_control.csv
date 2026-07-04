@@ -1,0 +1,3 @@
+﻿fecha_utc,simbolo,etiqueta,epocas,tamano_lote,variables,accuracy,balanced_accuracy,f1_macro,mismas_filas_v2a,division_prueba_utilizada,ruta_experimento,notas
+2026-07-04T18:49:52.318712+00:00,BTCUSDT,control_v1_mismas_filas,3,100000,36,0.5857469164001827,0.3926868688433783,0.36678640513615685,True,False,C:\xampp\htdocs\tutan_gestion\modelos_entrenados\cripto\corto_plazo_v2\control_v1_mismas_filas\experimentos\BTCUSDT\20260704T184952318712Z_control_v1_mismas_filas,
+2026-07-04T18:51:32.732124+00:00,ETHUSDT,control_v1_mismas_filas,3,100000,36,0.43354081011116186,0.39982499881381206,0.361880135229804,True,False,C:\xampp\htdocs\tutan_gestion\modelos_entrenados\cripto\corto_plazo_v2\control_v1_mismas_filas\experimentos\ETHUSDT\20260704T185132732124Z_control_v1_mismas_filas,

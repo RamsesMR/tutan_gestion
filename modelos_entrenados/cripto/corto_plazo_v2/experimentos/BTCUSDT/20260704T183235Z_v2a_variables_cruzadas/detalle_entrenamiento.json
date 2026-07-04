@@ -1,0 +1,40 @@
+{
+    "fecha_utc": "2026-07-04T18:32:35.829551+00:00",
+    "version_modelo": "v2a_variables_cruzadas",
+    "simbolo": "BTCUSDT",
+    "horizonte": "4h",
+    "etiqueta": "v2a_variables_cruzadas",
+    "epocas": 3,
+    "tamano_lote": 100000,
+    "variables_v1": 36,
+    "variables_cruzadas": 27,
+    "variables_totales": 63,
+    "umbral_clase": 0.005,
+    "conteos_entrenamiento": {
+        "SUBE": 532282,
+        "NEUTRAL": 1049367,
+        "BAJA": 505758
+    },
+    "pesos_clases": {
+        "BAJA": 1.3757613984026615,
+        "NEUTRAL": 0.6630686245454005,
+        "SUBE": 1.3072062052320637
+    },
+    "metricas_modelo": {
+        "modelo": "SGDClassifier V2A",
+        "muestras": 525360,
+        "accuracy": 0.5733839652809503,
+        "balanced_accuracy": 0.39650067715500703,
+        "f1_macro": 0.38464287849600537
+    },
+    "metricas_referencia": {
+        "modelo": "DummyClassifier (most_frequent)",
+        "muestras": 525360,
+        "accuracy": 0.5862589462463834,
+        "balanced_accuracy": 0.3333333333333333,
+        "f1_macro": 0.24639060250688882
+    },
+    "notas": "",
+    "division_prueba_utilizada": false,
+    "ruta_experimento": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v2\\experimentos\\BTCUSDT\\20260704T183235Z_v2a_variables_cruzadas"
+}

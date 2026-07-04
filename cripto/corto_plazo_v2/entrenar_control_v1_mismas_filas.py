@@ -26,52 +26,51 @@ from sklearn.preprocessing import StandardScaler
 
 from cripto.corto_plazo_v2.configuracion import (
     CLASES,
-    COLUMNAS_CRUZADAS,
     COLUMNAS_MODELO_V1,
-    COLUMNAS_MODELO_V2A,
     HORIZONTE_MINUTOS,
     NOMBRE_HORIZONTE,
     RUTA_MANIFIESTO_V2,
     RUTA_MODELOS_V2,
     SIMBOLOS,
     UMBRAL_CLASE,
-    VERSION_MODELO,
 )
 
 
+NOMBRE_CONTROL = "control_v1_mismas_filas"
 CLASES_NP = np.array(
     CLASES,
     dtype=object,
+)
+
+RUTA_CONTROL = (
+    RUTA_MODELOS_V2
+    / NOMBRE_CONTROL
 )
 
 
 def normalizar_etiqueta(
     etiqueta: str,
 ) -> str:
-    """Convierte una etiqueta en un nombre seguro para carpetas."""
+    """Convierte una etiqueta en un nombre seguro."""
 
-    etiqueta_limpia = re.sub(
+    resultado = re.sub(
         r"[^a-zA-Z0-9_-]+",
         "_",
         etiqueta.strip(),
-    )
+    ).strip("_")
 
-    etiqueta_limpia = etiqueta_limpia.strip(
-        "_"
-    )
-
-    if not etiqueta_limpia:
+    if not resultado:
         raise ValueError(
             "La etiqueta no contiene caracteres válidos."
         )
 
-    return etiqueta_limpia.lower()
+    return resultado.lower()
 
 
 def leer_columnas_parquet(
     ruta: Path,
 ) -> set[str]:
-    """Lee únicamente el esquema de columnas de un Parquet."""
+    """Lee únicamente el esquema del Parquet."""
 
     archivo = pq.ParquetFile(
         ruta
@@ -86,7 +85,7 @@ def leer_columnas_parquet(
 def cargar_manifiesto(
     simbolo: str,
 ) -> pd.DataFrame:
-    """Carga el manifiesto temporal propio de la V2A."""
+    """Carga el mismo manifiesto V2A usado por el modelo de 63 variables."""
 
     if not RUTA_MANIFIESTO_V2.exists():
         raise FileNotFoundError(
@@ -98,7 +97,7 @@ def cargar_manifiesto(
         RUTA_MANIFIESTO_V2
     )
 
-    columnas_requeridas = {
+    requeridas = {
         "simbolo",
         "division",
         "archivo",
@@ -108,16 +107,14 @@ def cargar_manifiesto(
         "filas_utilizables",
     }
 
-    faltantes = columnas_requeridas.difference(
+    faltantes = requeridas.difference(
         manifiesto.columns
     )
 
     if faltantes:
         raise ValueError(
             "Faltan columnas en el manifiesto V2A: "
-            + ", ".join(
-                sorted(faltantes)
-            )
+            + ", ".join(sorted(faltantes))
         )
 
     manifiesto = (
@@ -129,7 +126,7 @@ def cargar_manifiesto(
 
     if manifiesto.empty:
         raise ValueError(
-            f"No existen registros V2A para {simbolo}."
+            f"No existen registros para {simbolo}."
         )
 
     if "prueba" in set(
@@ -138,8 +135,7 @@ def cargar_manifiesto(
         .tolist()
     ):
         raise ValueError(
-            "El manifiesto V2A contiene una división de prueba. "
-            "La V2A no debe utilizar 2026 durante su desarrollo."
+            "El manifiesto V2A contiene una división de prueba."
         )
 
     return manifiesto
@@ -160,12 +156,10 @@ def obtener_registros_division(
 
     if registros.empty:
         raise ValueError(
-            f"No existen registros para la división {division}."
+            f"No existen registros para {division}."
         )
 
-    resultado: list[
-        dict[str, Any]
-    ] = []
+    resultado: list[dict[str, Any]] = []
 
     for _, fila in registros.iterrows():
         ruta = Path(
@@ -181,23 +175,21 @@ def obtener_registros_division(
             ruta
         )
 
-        columnas_requeridas = {
-            *COLUMNAS_MODELO_V2A,
+        requeridas = {
+            *COLUMNAS_MODELO_V1,
             "fecha_apertura",
             "fecha_objetivo",
             "rendimiento_objetivo",
         }
 
-        faltantes = columnas_requeridas.difference(
+        faltantes = requeridas.difference(
             columnas
         )
 
         if faltantes:
             raise ValueError(
-                f"{ruta.name}: faltan columnas requeridas: "
-                + ", ".join(
-                    sorted(faltantes)
-                )
+                f"{ruta.name}: faltan columnas: "
+                + ", ".join(sorted(faltantes))
             )
 
         resultado.append(
@@ -222,7 +214,7 @@ def obtener_registros_division(
 def clasificar_objetivo(
     rendimientos: pd.Series,
 ) -> np.ndarray:
-    """Convierte el rendimiento futuro en tres clases."""
+    """Convierte el rendimiento futuro en BAJA, NEUTRAL o SUBE."""
 
     valores = pd.to_numeric(
         rendimientos,
@@ -235,7 +227,7 @@ def clasificar_objetivo(
         valores
     ).all():
         raise ValueError(
-            "El objetivo contiene valores nulos o infinitos."
+            "El objetivo contiene nulos o infinitos."
         )
 
     return np.select(
@@ -255,10 +247,7 @@ def cargar_datos(
     registro: dict[str, Any],
 ) -> tuple[np.ndarray, np.ndarray]:
     """
-    Carga únicamente las filas utilizables de un archivo V2A.
-
-    La purga se vuelve a aplicar durante cada lectura. Así el
-    entrenamiento no depende solamente de que el manifiesto sea correcto.
+    Carga exactamente las mismas filas que la V2A, pero solo 36 variables.
     """
 
     ruta = Path(
@@ -266,7 +255,7 @@ def cargar_datos(
     )
 
     columnas = [
-        *COLUMNAS_MODELO_V2A,
+        *COLUMNAS_MODELO_V1,
         "fecha_apertura",
         "fecha_objetivo",
         "rendimiento_objetivo",
@@ -304,31 +293,28 @@ def cargar_datos(
         - datos["fecha_apertura"]
     )
 
-    horizonte_esperado = pd.Timedelta(
-        minutes=HORIZONTE_MINUTOS
-    )
-
     if horizonte.ne(
-        horizonte_esperado
+        pd.Timedelta(
+            minutes=HORIZONTE_MINUTOS
+        )
     ).any():
         raise ValueError(
-            f"{ruta.name}: contiene horizontes distintos de "
-            f"{HORIZONTE_MINUTOS} minutos."
+            f"{ruta.name}: contiene horizontes incorrectos."
         )
 
-    desde_division = pd.Timestamp(
+    desde = pd.Timestamp(
         registro["desde_division"]
     )
 
-    hasta_division = pd.Timestamp(
+    hasta = pd.Timestamp(
         registro["hasta_division"]
     )
 
     mascara = (
-        (datos["fecha_apertura"] >= desde_division)
-        & (datos["fecha_apertura"] < hasta_division)
+        (datos["fecha_apertura"] >= desde)
+        & (datos["fecha_apertura"] < hasta)
         & (datos["fecha_objetivo"] > datos["fecha_apertura"])
-        & (datos["fecha_objetivo"] < hasta_division)
+        & (datos["fecha_objetivo"] < hasta)
     )
 
     datos = (
@@ -344,13 +330,13 @@ def cargar_datos(
 
     if len(datos) != esperado:
         raise ValueError(
-            f"{ruta.name}: el manifiesto indica {esperado} filas "
-            f"utilizables, pero el entrenamiento encontró {len(datos)}."
+            f"{ruta.name}: se esperaban {esperado} filas "
+            f"y se obtuvieron {len(datos)}."
         )
 
     variables = (
         datos[
-            list(COLUMNAS_MODELO_V2A)
+            list(COLUMNAS_MODELO_V1)
         ]
         .to_numpy(
             dtype="float32"
@@ -361,7 +347,7 @@ def cargar_datos(
         variables
     ).all():
         raise ValueError(
-            f"{ruta.name}: contiene variables nulas o infinitas."
+            f"{ruta.name}: contiene variables no finitas."
         )
 
     clases = clasificar_objetivo(
@@ -378,31 +364,34 @@ def recorrer_lotes(
     total: int,
     tamano_lote: int,
 ):
-    """Genera los límites de cada lote."""
+    """Genera los límites de los lotes."""
 
     for inicio in range(
         0,
         total,
         tamano_lote,
     ):
-        final = min(
-            inicio + tamano_lote,
-            total,
+        yield (
+            inicio,
+            min(
+                inicio + tamano_lote,
+                total,
+            ),
         )
-
-        yield inicio, final
 
 
 def ajustar_escalador(
     registros: list[dict[str, Any]],
     tamano_lote: int,
 ) -> tuple[StandardScaler, Counter]:
-    """Ajusta el escalador usando únicamente entrenamiento."""
+    """Ajusta el escalador solo con entrenamiento."""
 
     escalador = StandardScaler()
     conteos: Counter = Counter()
 
-    print("\nAJUSTANDO ESCALADOR V2A")
+    print(
+        "\nAJUSTANDO ESCALADOR DEL CONTROL"
+    )
     print("=" * 70)
 
     for registro in registros:
@@ -415,7 +404,7 @@ def ajustar_escalador(
         )
 
         variables, clases = cargar_datos(
-            registro=registro
+            registro
         )
 
         conteos.update(
@@ -423,8 +412,8 @@ def ajustar_escalador(
         )
 
         for inicio, final in recorrer_lotes(
-            total=len(variables),
-            tamano_lote=tamano_lote,
+            len(variables),
+            tamano_lote,
         ):
             escalador.partial_fit(
                 variables[inicio:final]
@@ -440,17 +429,14 @@ def ajustar_escalador(
 def calcular_pesos_clases(
     conteos: Counter,
 ) -> dict[str, float]:
-    """Calcula pesos inversamente proporcionales."""
+    """Calcula los mismos pesos inversos usados por la V2A."""
 
     total = sum(
         conteos[clase]
         for clase in CLASES
     )
 
-    pesos: dict[
-        str,
-        float,
-    ] = {}
+    pesos: dict[str, float] = {}
 
     for clase in CLASES:
         cantidad = conteos[
@@ -480,7 +466,7 @@ def entrenar_modelo(
     tamano_lote: int,
     epocas: int,
 ) -> SGDClassifier:
-    """Entrena el mismo SGDClassifier de la V1 con 63 variables."""
+    """Entrena el mismo SGDClassifier con solo las 36 variables V1."""
 
     modelo = SGDClassifier(
         loss="log_loss",
@@ -494,7 +480,9 @@ def entrenar_modelo(
 
     primera_actualizacion = True
 
-    print("\nENTRENAMIENTO DEL MODELO BASE V2A")
+    print(
+        "\nENTRENAMIENTO DEL CONTROL V1 CON FILAS V2A"
+    )
     print("=" * 70)
 
     for epoca in range(
@@ -517,7 +505,7 @@ def entrenar_modelo(
             )
 
             variables, clases = cargar_datos(
-                registro=registro
+                registro
             )
 
             generador = np.random.default_rng(
@@ -531,8 +519,8 @@ def entrenar_modelo(
             )
 
             for inicio, final in recorrer_lotes(
-                total=len(indices),
-                tamano_lote=tamano_lote,
+                len(indices),
+                tamano_lote,
             ):
                 indices_lote = indices[
                     inicio:final
@@ -577,15 +565,10 @@ def predecir_division(
     escalador: StandardScaler,
     tamano_lote: int,
 ) -> tuple[np.ndarray, np.ndarray]:
-    """Predice una división sin cargar todos sus años simultáneamente."""
+    """Predice validación con las mismas filas de la V2A."""
 
-    reales: list[
-        np.ndarray
-    ] = []
-
-    predicciones: list[
-        np.ndarray
-    ] = []
+    reales: list[np.ndarray] = []
+    predicciones: list[np.ndarray] = []
 
     for registro in registros:
         ruta = Path(
@@ -597,12 +580,12 @@ def predecir_division(
         )
 
         variables, clases = cargar_datos(
-            registro=registro
+            registro
         )
 
         for inicio, final in recorrer_lotes(
-            total=len(variables),
-            tamano_lote=tamano_lote,
+            len(variables),
+            tamano_lote,
         ):
             variables_lote = escalador.transform(
                 variables[
@@ -610,7 +593,7 @@ def predecir_division(
                 ]
             )
 
-            prediccion_lote = modelo.predict(
+            predicciones_lote = modelo.predict(
                 variables_lote
             )
 
@@ -621,37 +604,28 @@ def predecir_division(
             )
 
             predicciones.append(
-                prediccion_lote
+                predicciones_lote
             )
 
         del variables
         del clases
         gc.collect()
 
-    if not reales:
-        raise ValueError(
-            "La división no produjo muestras para evaluar."
-        )
-
     return (
-        np.concatenate(
-            reales
-        ),
-        np.concatenate(
-            predicciones
-        ),
+        np.concatenate(reales),
+        np.concatenate(predicciones),
     )
 
 
 def calcular_metricas(
     reales: np.ndarray,
     predicciones: np.ndarray,
-    nombre_modelo: str,
+    nombre: str,
 ) -> dict[str, Any]:
-    """Calcula las métricas principales."""
+    """Calcula las métricas globales."""
 
     return {
-        "modelo": nombre_modelo,
+        "modelo": nombre,
         "muestras": len(reales),
         "accuracy": accuracy_score(
             reales,
@@ -675,7 +649,7 @@ def crear_matriz(
     reales: np.ndarray,
     predicciones: np.ndarray,
 ) -> pd.DataFrame:
-    """Devuelve una matriz de confusión etiquetada."""
+    """Crea la matriz de confusión etiquetada."""
 
     matriz = confusion_matrix(
         reales,
@@ -700,7 +674,7 @@ def guardar_json(
     contenido: dict[str, Any],
     ruta: Path,
 ) -> None:
-    """Guarda un diccionario en JSON."""
+    """Guarda un JSON legible."""
 
     with ruta.open(
         "w",
@@ -717,41 +691,39 @@ def guardar_json(
 def guardar_resultados(
     simbolo: str,
     etiqueta: str,
+    epocas: int,
+    tamano_lote: int,
+    notas: str,
     modelo: SGDClassifier,
     escalador: StandardScaler,
     conteos: Counter,
     pesos_clases: dict[str, float],
     reales: np.ndarray,
     predicciones: np.ndarray,
-    epocas: int,
-    tamano_lote: int,
-    notas: str,
 ) -> None:
-    """Guarda el último modelo y una copia histórica del experimento."""
+    """Guarda el control sin sobrescribir los modelos V2A."""
 
-    RUTA_MODELOS_V2.mkdir(
+    RUTA_CONTROL.mkdir(
         parents=True,
         exist_ok=True,
     )
 
-    fecha_utc = datetime.now(
+    fecha = datetime.now(
         timezone.utc
     )
 
-    marca_tiempo = fecha_utc.strftime(
-        "%Y%m%dT%H%M%SZ"
-    )
-
-    etiqueta_segura = normalizar_etiqueta(
-        etiqueta
-    )
-
     identificador = (
-        f"{marca_tiempo}_{etiqueta_segura}"
+        fecha.strftime(
+            "%Y%m%dT%H%M%S%fZ"
+        )
+        + "_"
+        + normalizar_etiqueta(
+            etiqueta
+        )
     )
 
     ruta_experimento = (
-        RUTA_MODELOS_V2
+        RUTA_CONTROL
         / "experimentos"
         / simbolo
         / identificador
@@ -770,21 +742,21 @@ def guardar_resultados(
     )
 
     prediccion_mayoritaria = np.full(
-        shape=len(reales),
-        fill_value=clase_mayoritaria,
+        len(reales),
+        clase_mayoritaria,
         dtype=object,
     )
 
     metricas_modelo = calcular_metricas(
-        reales=reales,
-        predicciones=predicciones,
-        nombre_modelo="SGDClassifier V2A",
+        reales,
+        predicciones,
+        "SGDClassifier control V1 mismas filas",
     )
 
     metricas_referencia = calcular_metricas(
-        reales=reales,
-        predicciones=prediccion_mayoritaria,
-        nombre_modelo="DummyClassifier (most_frequent)",
+        reales,
+        prediccion_mayoritaria,
+        "DummyClassifier (most_frequent)",
     )
 
     informe = classification_report(
@@ -795,20 +767,13 @@ def guardar_resultados(
         zero_division=0,
     )
 
-    paquete_modelo = {
-        "version_modelo": VERSION_MODELO,
+    paquete = {
+        "version_modelo": NOMBRE_CONTROL,
         "simbolo": simbolo,
-        "horizonte": NOMBRE_HORIZONTE,
         "modelo": modelo,
         "escalador": escalador,
         "columnas_modelo": list(
-            COLUMNAS_MODELO_V2A
-        ),
-        "columnas_v1": list(
             COLUMNAS_MODELO_V1
-        ),
-        "columnas_cruzadas": list(
-            COLUMNAS_CRUZADAS
         ),
         "clases": list(
             CLASES
@@ -820,40 +785,27 @@ def guardar_resultados(
         "pesos_clases": pesos_clases,
         "periodo_entrenamiento": "2021-01-01/2025-01-01",
         "periodo_validacion": "2025-01-01/2026-01-01",
+        "usa_mismas_filas_v2a": True,
         "division_prueba_utilizada": False,
-        "fecha_entrenamiento_utc": fecha_utc.isoformat(),
+        "fecha_entrenamiento_utc": fecha.isoformat(),
         "etiqueta": etiqueta,
     }
 
+    nombres = {
+        "modelo": f"modelo_control_{simbolo}_{NOMBRE_HORIZONTE}.joblib",
+        "metricas": f"metricas_control_{simbolo}_{NOMBRE_HORIZONTE}.csv",
+        "matriz": f"matriz_confusion_control_{simbolo}_{NOMBRE_HORIZONTE}.csv",
+        "informe": f"informe_clasificacion_control_{simbolo}_{NOMBRE_HORIZONTE}.json",
+        "detalle": "detalle_entrenamiento.json",
+    }
+
     rutas_experimento = {
-        "modelo": (
-            ruta_experimento
-            / f"modelo_{simbolo}_{NOMBRE_HORIZONTE}.joblib"
-        ),
-        "metricas": (
-            ruta_experimento
-            / f"metricas_{simbolo}_{NOMBRE_HORIZONTE}.csv"
-        ),
-        "matriz": (
-            ruta_experimento
-            / f"matriz_confusion_{simbolo}_{NOMBRE_HORIZONTE}.csv"
-        ),
-        "matriz_referencia": (
-            ruta_experimento
-            / f"matriz_confusion_referencia_{simbolo}_{NOMBRE_HORIZONTE}.csv"
-        ),
-        "informe": (
-            ruta_experimento
-            / f"informe_clasificacion_{simbolo}_{NOMBRE_HORIZONTE}.json"
-        ),
-        "detalle": (
-            ruta_experimento
-            / "detalle_entrenamiento.json"
-        ),
+        clave: ruta_experimento / nombre
+        for clave, nombre in nombres.items()
     }
 
     joblib.dump(
-        paquete_modelo,
+        paquete,
         rutas_experimento["modelo"],
     )
 
@@ -869,94 +821,62 @@ def guardar_resultados(
     )
 
     crear_matriz(
-        reales=reales,
-        predicciones=predicciones,
+        reales,
+        predicciones,
     ).to_csv(
         rutas_experimento["matriz"],
         encoding="utf-8-sig",
     )
 
-    crear_matriz(
-        reales=reales,
-        predicciones=prediccion_mayoritaria,
-    ).to_csv(
-        rutas_experimento["matriz_referencia"],
-        encoding="utf-8-sig",
-    )
-
     guardar_json(
-        contenido=informe,
-        ruta=rutas_experimento["informe"],
+        informe,
+        rutas_experimento["informe"],
     )
 
     detalle = {
-        "fecha_utc": fecha_utc.isoformat(),
-        "version_modelo": VERSION_MODELO,
+        "fecha_utc": fecha.isoformat(),
         "simbolo": simbolo,
-        "horizonte": NOMBRE_HORIZONTE,
         "etiqueta": etiqueta,
         "epocas": epocas,
         "tamano_lote": tamano_lote,
-        "variables_v1": len(
+        "variables": len(
             COLUMNAS_MODELO_V1
         ),
-        "variables_cruzadas": len(
-            COLUMNAS_CRUZADAS
-        ),
-        "variables_totales": len(
-            COLUMNAS_MODELO_V2A
-        ),
-        "umbral_clase": UMBRAL_CLASE,
+        "mismas_filas_v2a": True,
         "conteos_entrenamiento": dict(
             conteos
         ),
         "pesos_clases": pesos_clases,
         "metricas_modelo": metricas_modelo,
         "metricas_referencia": metricas_referencia,
-        "notas": notas,
         "division_prueba_utilizada": False,
+        "notas": notas,
         "ruta_experimento": str(
             ruta_experimento
         ),
     }
 
     guardar_json(
-        contenido=detalle,
-        ruta=rutas_experimento["detalle"],
+        detalle,
+        rutas_experimento["detalle"],
     )
 
     rutas_ultimo = {
-        "modelo": (
-            RUTA_MODELOS_V2
-            / f"modelo_base_{simbolo}_{NOMBRE_HORIZONTE}.joblib"
-        ),
-        "metricas": (
-            RUTA_MODELOS_V2
-            / f"metricas_base_{simbolo}_{NOMBRE_HORIZONTE}.csv"
-        ),
-        "matriz": (
-            RUTA_MODELOS_V2
-            / f"matriz_confusion_base_{simbolo}_{NOMBRE_HORIZONTE}.csv"
-        ),
-        "matriz_referencia": (
-            RUTA_MODELOS_V2
-            / f"matriz_confusion_referencia_{simbolo}_{NOMBRE_HORIZONTE}.csv"
-        ),
-        "informe": (
-            RUTA_MODELOS_V2
-            / f"informe_clasificacion_base_{simbolo}_{NOMBRE_HORIZONTE}.json"
-        ),
-        "detalle": (
-            RUTA_MODELOS_V2
-            / f"ultimo_entrenamiento_{simbolo}.json"
-        ),
+        clave: (
+            RUTA_CONTROL
+            / (
+                f"ultimo_entrenamiento_control_{simbolo}.json"
+                if clave == "detalle"
+                else nombre
+            )
+        )
+        for clave, nombre in nombres.items()
     }
 
     for clave in (
         "modelo",
         "metricas",
         "matriz",
-        "matriz_referencia",
         "informe",
     ):
         shutil.copy2(
@@ -969,31 +889,23 @@ def guardar_resultados(
         )
 
     guardar_json(
-        contenido=detalle,
-        ruta=rutas_ultimo["detalle"],
+        detalle,
+        rutas_ultimo["detalle"],
     )
 
     ruta_historial = (
-        RUTA_MODELOS_V2
-        / "historial_entrenamientos.csv"
+        RUTA_CONTROL
+        / "historial_entrenamientos_control.csv"
     )
 
-    registro_historial = {
-        "fecha_utc": fecha_utc.isoformat(),
-        "version_modelo": VERSION_MODELO,
+    fila_historial = {
+        "fecha_utc": fecha.isoformat(),
         "simbolo": simbolo,
-        "horizonte": NOMBRE_HORIZONTE,
         "etiqueta": etiqueta,
         "epocas": epocas,
         "tamano_lote": tamano_lote,
-        "variables_v1": len(
+        "variables": len(
             COLUMNAS_MODELO_V1
-        ),
-        "variables_cruzadas": len(
-            COLUMNAS_CRUZADAS
-        ),
-        "variables_totales": len(
-            COLUMNAS_MODELO_V2A
         ),
         "accuracy": metricas_modelo[
             "accuracy"
@@ -1004,9 +916,7 @@ def guardar_resultados(
         "f1_macro": metricas_modelo[
             "f1_macro"
         ],
-        "accuracy_referencia": metricas_referencia[
-            "accuracy"
-        ],
+        "mismas_filas_v2a": True,
         "division_prueba_utilizada": False,
         "ruta_experimento": str(
             ruta_experimento
@@ -1016,7 +926,7 @@ def guardar_resultados(
 
     pd.DataFrame(
         [
-            registro_historial
+            fila_historial
         ]
     ).to_csv(
         ruta_historial,
@@ -1026,7 +936,9 @@ def guardar_resultados(
         encoding="utf-8-sig",
     )
 
-    print("\nRESULTADOS DE VALIDACIÓN V2A")
+    print(
+        "\nRESULTADOS DEL CONTROL V1 CON FILAS V2A"
+    )
     print("=" * 70)
 
     for metricas in (
@@ -1047,57 +959,51 @@ def guardar_resultados(
             f"F1-score macro: {metricas['f1_macro']:.4f}"
         )
 
-    print("\nArchivos del último modelo:")
+    print(
+        "\nArchivos de control:"
+    )
+
     for ruta in rutas_ultimo.values():
         print(
             f"- {ruta}"
         )
 
-    print("\nExperimento histórico:")
-    print(
-        f"- {ruta_experimento}"
-    )
 
-
-def entrenar(
+def ejecutar(
     simbolo: str,
-    tamano_lote: int,
     epocas: int,
+    tamano_lote: int,
     etiqueta: str,
     notas: str,
 ) -> None:
-    """Ejecuta el entrenamiento completo de la V2A."""
+    """Ejecuta el experimento de control completo."""
 
     manifiesto = cargar_manifiesto(
-        simbolo=simbolo
+        simbolo
     )
 
-    registros_entrenamiento = obtener_registros_division(
-        manifiesto=manifiesto,
-        division="entrenamiento",
+    entrenamiento = obtener_registros_division(
+        manifiesto,
+        "entrenamiento",
     )
 
-    registros_validacion = obtener_registros_division(
-        manifiesto=manifiesto,
-        division="validacion",
+    validacion = obtener_registros_division(
+        manifiesto,
+        "validacion",
     )
 
-    print("\nMODELO BASE DE CORTO PLAZO V2A")
+    print(
+        "\nCONTROL V1 CON LAS MISMAS FILAS DE LA V2A"
+    )
     print("=" * 70)
     print(
         f"Símbolo: {simbolo}"
     )
     print(
-        f"Variables V1: {len(COLUMNAS_MODELO_V1)}"
+        f"Variables: {len(COLUMNAS_MODELO_V1)}"
     )
     print(
-        f"Variables cruzadas: {len(COLUMNAS_CRUZADAS)}"
-    )
-    print(
-        f"Variables totales: {len(COLUMNAS_MODELO_V2A)}"
-    )
-    print(
-        f"Umbral: ±{UMBRAL_CLASE * 100:.2f} %"
+        "Filas: exactamente las mismas del manifiesto V2A"
     )
     print(
         f"Épocas: {epocas}"
@@ -1111,28 +1017,18 @@ def entrenar(
         f"Etiqueta: {etiqueta}"
     )
 
-    if notas:
-        print(
-            f"Notas: {notas}"
-        )
-
-    print("\nVariables cruzadas:")
-
-    for columna in COLUMNAS_CRUZADAS:
-        print(
-            f"- {columna}"
-        )
-
     escalador, conteos = ajustar_escalador(
-        registros=registros_entrenamiento,
-        tamano_lote=tamano_lote,
+        entrenamiento,
+        tamano_lote,
     )
 
-    pesos_clases = calcular_pesos_clases(
-        conteos=conteos
+    pesos = calcular_pesos_clases(
+        conteos
     )
 
-    print("\nDistribución de entrenamiento:")
+    print(
+        "\nDistribución de entrenamiento:"
+    )
 
     for clase in CLASES:
         print(
@@ -1141,61 +1037,61 @@ def entrenar(
             .replace(",", ".")
         )
 
-    print("\nPesos de clases:")
+    print(
+        "\nPesos de clases:"
+    )
 
-    for clase, peso in pesos_clases.items():
+    for clase, peso in pesos.items():
         print(
             f"{clase}: {peso:.6f}"
         )
 
     modelo = entrenar_modelo(
-        registros=registros_entrenamiento,
-        escalador=escalador,
-        pesos_clases=pesos_clases,
-        tamano_lote=tamano_lote,
-        epocas=epocas,
+        entrenamiento,
+        escalador,
+        pesos,
+        tamano_lote,
+        epocas,
     )
 
-    print("\nVALIDACIÓN TEMPORAL V2A")
+    print(
+        "\nVALIDACIÓN TEMPORAL DEL CONTROL"
+    )
     print("=" * 70)
 
     reales, predicciones = predecir_division(
-        registros=registros_validacion,
-        modelo=modelo,
-        escalador=escalador,
-        tamano_lote=tamano_lote,
+        validacion,
+        modelo,
+        escalador,
+        tamano_lote,
     )
 
     guardar_resultados(
         simbolo=simbolo,
         etiqueta=etiqueta,
-        modelo=modelo,
-        escalador=escalador,
-        conteos=conteos,
-        pesos_clases=pesos_clases,
-        reales=reales,
-        predicciones=predicciones,
         epocas=epocas,
         tamano_lote=tamano_lote,
         notas=notas,
+        modelo=modelo,
+        escalador=escalador,
+        conteos=conteos,
+        pesos_clases=pesos,
+        reales=reales,
+        predicciones=predicciones,
     )
 
     print(
-        "\nLa V2A utilizó entrenamiento 2021-2024 "
-        "y validación 2025."
-    )
-    print(
-        "Enero-mayo de 2026 no fue cargado ni evaluado."
+        "\nEl control no utilizó enero-mayo de 2026."
     )
 
 
 def obtener_argumentos() -> argparse.Namespace:
-    """Obtiene los argumentos del comando."""
+    """Obtiene argumentos de consola."""
 
     parser = argparse.ArgumentParser(
         description=(
-            "Entrena la V2A con las 36 variables originales "
-            "y las 27 variables cruzadas BTC-ETH."
+            "Entrena un control con las 36 variables V1 "
+            "y exactamente las mismas filas de la V2A."
         )
     )
 
@@ -1219,7 +1115,7 @@ def obtener_argumentos() -> argparse.Namespace:
 
     parser.add_argument(
         "--etiqueta",
-        default="v2a_variables_cruzadas",
+        default="control_v1_mismas_filas",
     )
 
     parser.add_argument(
@@ -1253,10 +1149,10 @@ def main() -> None:
     argumentos = obtener_argumentos()
 
     try:
-        entrenar(
+        ejecutar(
             simbolo=argumentos.simbolo,
-            tamano_lote=argumentos.tamano_lote,
             epocas=argumentos.epocas,
+            tamano_lote=argumentos.tamano_lote,
             etiqueta=argumentos.etiqueta.strip(),
             notas=argumentos.notas.strip(),
         )
@@ -1268,7 +1164,7 @@ def main() -> None:
         ValueError,
     ) as error:
         print(
-            "\nNo se pudo entrenar el modelo V2A."
+            "\nNo se pudo ejecutar el control."
         )
         print(
             f"Detalle: {error}"

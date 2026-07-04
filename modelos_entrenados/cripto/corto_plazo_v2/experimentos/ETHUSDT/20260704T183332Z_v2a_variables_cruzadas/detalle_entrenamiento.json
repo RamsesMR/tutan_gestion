@@ -1,0 +1,40 @@
+{
+    "fecha_utc": "2026-07-04T18:33:32.088979+00:00",
+    "version_modelo": "v2a_variables_cruzadas",
+    "simbolo": "ETHUSDT",
+    "horizonte": "4h",
+    "etiqueta": "v2a_variables_cruzadas",
+    "epocas": 3,
+    "tamano_lote": 100000,
+    "variables_v1": 36,
+    "variables_cruzadas": 27,
+    "variables_totales": 63,
+    "umbral_clase": 0.005,
+    "conteos_entrenamiento": {
+        "SUBE": 624973,
+        "NEUTRAL": 878423,
+        "BAJA": 584011
+    },
+    "pesos_clases": {
+        "BAJA": 1.191419910469723,
+        "NEUTRAL": 0.7921039559908305,
+        "SUBE": 1.1133318292683578
+    },
+    "metricas_modelo": {
+        "modelo": "SGDClassifier V2A",
+        "muestras": 525360,
+        "accuracy": 0.4335141617176793,
+        "balanced_accuracy": 0.4059012951221588,
+        "f1_macro": 0.3872873213353794
+    },
+    "metricas_referencia": {
+        "modelo": "DummyClassifier (most_frequent)",
+        "muestras": 525360,
+        "accuracy": 0.3917123496269225,
+        "balanced_accuracy": 0.3333333333333333,
+        "f1_macro": 0.1876404750507192
+    },
+    "notas": "",
+    "division_prueba_utilizada": false,
+    "ruta_experimento": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v2\\experimentos\\ETHUSDT\\20260704T183332Z_v2a_variables_cruzadas"
+}
