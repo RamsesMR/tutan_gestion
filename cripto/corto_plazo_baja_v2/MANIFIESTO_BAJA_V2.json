@@ -23,5 +23,14 @@
   "errores_compilacion": [],
   "promocion_automatica": false,
   "usa_2025_seleccion": false,
-  "usa_2026_seleccion": false
+  "usa_2026_seleccion": false,
+  "version_paquete": "baja_v2_eventos_macro_final_1",
+  "correcciones_integradas": [
+    "Normalización de claves temporales a datetime64[ns, UTC] antes de merge_asof.",
+    "Mapeo de etiquetas reales BAJA V1: GANADORA, PERDEDORA y SIN_RESULTADO.",
+    "Tratamiento de NaN como fila sin horizonte completo para filtrado posterior."
+  ],
+  "auditoria_eventos_usuario": "APROBADA",
+  "archivos_generados_eventos": 16,
+  "listo_para_subir_dev2": true
 }
