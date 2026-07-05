@@ -1,0 +1,21 @@
+V4.5 — archivos incluidos
+
+__init__.py
+configuracion.py
+utilidades_datos.py
+auditar_fuentes.py
+generar_variables_flujo_spot.py
+descargar_futuros_binance.py
+descargar_funding_binance.py
+integrar_variables_futuros.py
+validar_integracion.py
+utilidades_modelo.py
+generar_predicciones_desarrollo.py
+evaluar_desarrollo.py
+seleccionar_candidata.py
+comparar_v4_1.py
+README_V4_5.md
+
+Extraer directamente dentro de:
+
+cripto/corto_plazo_v4_5
