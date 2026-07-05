@@ -856,11 +856,39 @@ def crear_variables_futuros(
             "fecha_apertura",
             "funding_rate",
         ]
-    ].sort_values("fecha_apertura")
+    ].copy()
+
+    # Los Parquet Spot pueden conservar microsegundos y el funding
+    # milisegundos. merge_asof exige exactamente la misma precisión.
+    combinado["fecha_apertura"] = pd.Series(
+        pd.DatetimeIndex(
+            pd.to_datetime(
+                combinado["fecha_apertura"],
+                utc=True,
+                errors="raise",
+            )
+        ).as_unit("ns"),
+        index=combinado.index,
+    )
+
+    funding["fecha_apertura"] = pd.Series(
+        pd.DatetimeIndex(
+            pd.to_datetime(
+                funding["fecha_apertura"],
+                utc=True,
+                errors="raise",
+            )
+        ).as_unit("ns"),
+        index=funding.index,
+    )
 
     combinado = pd.merge_asof(
-        combinado.sort_values("fecha_apertura"),
-        funding,
+        combinado.sort_values(
+            "fecha_apertura"
+        ).reset_index(drop=True),
+        funding.sort_values(
+            "fecha_apertura"
+        ).reset_index(drop=True),
         on="fecha_apertura",
         direction="backward",
         allow_exact_matches=True,

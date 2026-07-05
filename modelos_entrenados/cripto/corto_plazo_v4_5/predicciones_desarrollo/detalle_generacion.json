@@ -1,5 +1,5 @@
 {
-    "fecha_utc": "2026-07-05T11:15:37.704521+00:00",
+    "fecha_utc": "2026-07-05T11:41:59.823551+00:00",
     "version": "v4_5_microestructura_historica",
     "simbolo": "BTCUSDT",
     "epocas": 3,
@@ -7,55 +7,55 @@
     "uso_2025_para_seleccion": false,
     "uso_2026_para_seleccion": false,
     "variantes": {
-        "control_63": {
-            "columnas": 63,
-            "etapa": "spot",
+        "flujo_spot_misma_muestra": {
+            "columnas": 90,
+            "etapa": "completo",
             "pliegues": {
                 "validacion_2023": {
-                    "filas": 523360,
+                    "filas": 520482,
                     "conteos_entrenamiento": {
-                        "1": 303912,
-                        "0": 732855
+                        "1": 299374,
+                        "0": 725881
                     },
-                    "precision_bruta_umbral_0_44": 0.4457274826789838,
-                    "porcentaje_acierto_bruto": 44.57274826789838,
-                    "archivo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_5\\predicciones_desarrollo\\control_63\\BTCUSDT_validacion_2023.parquet"
+                    "precision_bruta_umbral_0_44": 0.46166807076663857,
+                    "porcentaje_acierto_bruto": 46.16680707666386,
+                    "archivo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_5\\predicciones_desarrollo\\flujo_spot_misma_muestra\\BTCUSDT_validacion_2023.parquet"
                 },
                 "validacion_2024": {
-                    "filas": 526800,
+                    "filas": 525361,
                     "conteos_entrenamiento": {
-                        "1": 397761,
-                        "0": 1162606
+                        "1": 392694,
+                        "0": 1153283
                     },
-                    "precision_bruta_umbral_0_44": 0.4994694558132484,
-                    "porcentaje_acierto_bruto": 49.94694558132484,
-                    "archivo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_5\\predicciones_desarrollo\\control_63\\BTCUSDT_validacion_2024.parquet"
+                    "precision_bruta_umbral_0_44": 0.5209560096986491,
+                    "porcentaje_acierto_bruto": 52.09560096986491,
+                    "archivo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_5\\predicciones_desarrollo\\flujo_spot_misma_muestra\\BTCUSDT_validacion_2024.parquet"
                 }
             }
         },
-        "flujo_spot": {
-            "columnas": 90,
-            "etapa": "spot",
+        "flujo_spot_futuros": {
+            "columnas": 133,
+            "etapa": "completo",
             "pliegues": {
                 "validacion_2023": {
-                    "filas": 523360,
+                    "filas": 520482,
                     "conteos_entrenamiento": {
-                        "1": 303912,
-                        "0": 732855
+                        "1": 299374,
+                        "0": 725881
                     },
-                    "precision_bruta_umbral_0_44": 0.46019247594050744,
-                    "porcentaje_acierto_bruto": 46.019247594050746,
-                    "archivo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_5\\predicciones_desarrollo\\flujo_spot\\BTCUSDT_validacion_2023.parquet"
+                    "precision_bruta_umbral_0_44": 0.4125722543352601,
+                    "porcentaje_acierto_bruto": 41.25722543352601,
+                    "archivo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_5\\predicciones_desarrollo\\flujo_spot_futuros\\BTCUSDT_validacion_2023.parquet"
                 },
                 "validacion_2024": {
-                    "filas": 526800,
+                    "filas": 525361,
                     "conteos_entrenamiento": {
-                        "1": 397761,
-                        "0": 1162606
+                        "1": 392694,
+                        "0": 1153283
                     },
-                    "precision_bruta_umbral_0_44": 0.5121485595279417,
-                    "porcentaje_acierto_bruto": 51.21485595279417,
-                    "archivo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_5\\predicciones_desarrollo\\flujo_spot\\BTCUSDT_validacion_2024.parquet"
+                    "precision_bruta_umbral_0_44": 0.5271122320302648,
+                    "porcentaje_acierto_bruto": 52.71122320302648,
+                    "archivo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_5\\predicciones_desarrollo\\flujo_spot_futuros\\BTCUSDT_validacion_2024.parquet"
                 }
             }
         }

@@ -141,6 +141,14 @@ VARIANTES = {
         "etapa_datos": "spot",
         "descripcion": "63 variables y flujo agresor Spot.",
     },
+    "flujo_spot_misma_muestra": {
+        "columnas": COLUMNAS_SPOT,
+        "etapa_datos": "completo",
+        "descripcion": (
+            "Las 90 variables Spot, usando exactamente las mismas fechas "
+            "válidas que la variante con futuros."
+        ),
+    },
     "flujo_spot_futuros": {
         "columnas": COLUMNAS_COMPLETAS,
         "etapa_datos": "completo",
