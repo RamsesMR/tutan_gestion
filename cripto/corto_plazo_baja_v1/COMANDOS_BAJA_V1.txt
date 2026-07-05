@@ -1,0 +1,33 @@
+# ============================================================
+# DETECTOR BAJA DE CORTO PLAZO — V1
+# ============================================================
+
+# Limpiar caché
+Remove-Item -Recurse -Force .\cripto\corto_plazo_baja_v1\__pycache__ -ErrorAction SilentlyContinue
+
+# Generar datos
+python -m cripto.corto_plazo_baja_v1.generar_datos_baja
+
+# Auditar
+python -m cripto.corto_plazo_baja_v1.auditar_datos_baja
+
+# Primera fase: control, SGD y HistGB con 63 variables
+python -m cripto.corto_plazo_baja_v1.entrenar_modelos --objetivos baja_cierre_4h,corto_tp070_sl035_240m --variantes control_v4_63_moderado,sgd_63_sin_pesos,histgb_63_moderado --epocas 3 --tamano-lote 100000
+
+# Segunda fase: estructura técnica de velas
+python -m cripto.corto_plazo_baja_v1.entrenar_modelos --objetivos baja_cierre_4h,corto_tp070_sl035_240m --variantes sgd_101_moderado,histgb_101_moderado --epocas 3 --tamano-lote 100000
+
+# Tercera fase: objetivos alternativos
+python -m cripto.corto_plazo_baja_v1.entrenar_modelos --objetivos corto_tp050_sl030_120m,corto_tp100_sl050_480m --variantes control_v4_63_moderado,sgd_63_sin_pesos,histgb_63_moderado,sgd_101_moderado,histgb_101_moderado --epocas 3 --tamano-lote 100000
+
+# Selección
+python -m cripto.corto_plazo_baja_v1.seleccionar_modelo
+
+# Ejecución completa opcional
+python -m cripto.corto_plazo_baja_v1.entrenar_modelos --objetivos todos --variantes todos --epocas 3 --tamano-lote 100000
+
+# Regenerar datos
+python -m cripto.corto_plazo_baja_v1.generar_datos_baja --sobrescribir
+
+# Regenerar un experimento
+python -m cripto.corto_plazo_baja_v1.entrenar_modelos --objetivos corto_tp070_sl035_240m --variantes control_v4_63_moderado --epocas 3 --tamano-lote 100000 --sobrescribir
