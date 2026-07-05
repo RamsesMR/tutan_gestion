@@ -1,0 +1,634 @@
+{
+    "ejecuciones": {
+        "11": {
+            "v41_control_macro": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_11\\v41_control_macro\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_11\\v41_control_macro\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_control_macro\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_11\\v41_control_macro\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_11\\v41_control_macro\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_control_macro\\validacion_2024\\escalador.joblib"
+                }
+            },
+            "v41_reservas_fed": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_11\\v41_reservas_fed\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_11\\v41_reservas_fed\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_reservas_fed\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_11\\v41_reservas_fed\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_11\\v41_reservas_fed\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_reservas_fed\\validacion_2024\\escalador.joblib"
+                }
+            },
+            "v41_vix": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_11\\v41_vix\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_11\\v41_vix\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_vix\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_11\\v41_vix\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_11\\v41_vix\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_vix\\validacion_2024\\escalador.joblib"
+                }
+            },
+            "v45_control_macro": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_11\\v45_control_macro\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_11\\v45_control_macro\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v45_control_macro\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_11\\v45_control_macro\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_11\\v45_control_macro\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v45_control_macro\\validacion_2024\\escalador.joblib"
+                }
+            },
+            "v45_reservas_fed": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_11\\v45_reservas_fed\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_11\\v45_reservas_fed\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v45_reservas_fed\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_11\\v45_reservas_fed\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_11\\v45_reservas_fed\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v45_reservas_fed\\validacion_2024\\escalador.joblib"
+                }
+            }
+        },
+        "23": {
+            "v41_control_macro": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_23\\v41_control_macro\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_23\\v41_control_macro\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_control_macro\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_23\\v41_control_macro\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_23\\v41_control_macro\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_control_macro\\validacion_2024\\escalador.joblib"
+                }
+            },
+            "v41_reservas_fed": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_23\\v41_reservas_fed\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_23\\v41_reservas_fed\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_reservas_fed\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_23\\v41_reservas_fed\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_23\\v41_reservas_fed\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_reservas_fed\\validacion_2024\\escalador.joblib"
+                }
+            },
+            "v41_vix": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_23\\v41_vix\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_23\\v41_vix\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_vix\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_23\\v41_vix\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_23\\v41_vix\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_vix\\validacion_2024\\escalador.joblib"
+                }
+            },
+            "v45_control_macro": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_23\\v45_control_macro\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_23\\v45_control_macro\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v45_control_macro\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_23\\v45_control_macro\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_23\\v45_control_macro\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v45_control_macro\\validacion_2024\\escalador.joblib"
+                }
+            },
+            "v45_reservas_fed": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_23\\v45_reservas_fed\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_23\\v45_reservas_fed\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v45_reservas_fed\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_23\\v45_reservas_fed\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_23\\v45_reservas_fed\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v45_reservas_fed\\validacion_2024\\escalador.joblib"
+                }
+            }
+        },
+        "42": {
+            "v41_control_macro": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_42\\v41_control_macro\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_42\\v41_control_macro\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_control_macro\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_42\\v41_control_macro\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_42\\v41_control_macro\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_control_macro\\validacion_2024\\escalador.joblib"
+                }
+            },
+            "v41_reservas_fed": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_42\\v41_reservas_fed\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_42\\v41_reservas_fed\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_reservas_fed\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_42\\v41_reservas_fed\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_42\\v41_reservas_fed\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_reservas_fed\\validacion_2024\\escalador.joblib"
+                }
+            },
+            "v41_vix": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_42\\v41_vix\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_42\\v41_vix\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_vix\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_42\\v41_vix\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_42\\v41_vix\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_vix\\validacion_2024\\escalador.joblib"
+                }
+            },
+            "v45_control_macro": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_42\\v45_control_macro\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_42\\v45_control_macro\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v45_control_macro\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_42\\v45_control_macro\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_42\\v45_control_macro\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v45_control_macro\\validacion_2024\\escalador.joblib"
+                }
+            },
+            "v45_reservas_fed": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_42\\v45_reservas_fed\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_42\\v45_reservas_fed\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v45_reservas_fed\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_42\\v45_reservas_fed\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_42\\v45_reservas_fed\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v45_reservas_fed\\validacion_2024\\escalador.joblib"
+                }
+            }
+        },
+        "77": {
+            "v41_control_macro": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_77\\v41_control_macro\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_77\\v41_control_macro\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_control_macro\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_77\\v41_control_macro\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_77\\v41_control_macro\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_control_macro\\validacion_2024\\escalador.joblib"
+                }
+            },
+            "v41_reservas_fed": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_77\\v41_reservas_fed\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_77\\v41_reservas_fed\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_reservas_fed\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_77\\v41_reservas_fed\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_77\\v41_reservas_fed\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_reservas_fed\\validacion_2024\\escalador.joblib"
+                }
+            },
+            "v41_vix": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_77\\v41_vix\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_77\\v41_vix\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_vix\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_77\\v41_vix\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_77\\v41_vix\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_vix\\validacion_2024\\escalador.joblib"
+                }
+            },
+            "v45_control_macro": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_77\\v45_control_macro\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_77\\v45_control_macro\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v45_control_macro\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_77\\v45_control_macro\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_77\\v45_control_macro\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v45_control_macro\\validacion_2024\\escalador.joblib"
+                }
+            },
+            "v45_reservas_fed": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_77\\v45_reservas_fed\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_77\\v45_reservas_fed\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v45_reservas_fed\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_77\\v45_reservas_fed\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_77\\v45_reservas_fed\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v45_reservas_fed\\validacion_2024\\escalador.joblib"
+                }
+            }
+        },
+        "101": {
+            "v41_control_macro": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_101\\v41_control_macro\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_101\\v41_control_macro\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_control_macro\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_101\\v41_control_macro\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_101\\v41_control_macro\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_control_macro\\validacion_2024\\escalador.joblib"
+                }
+            },
+            "v41_reservas_fed": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_101\\v41_reservas_fed\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_101\\v41_reservas_fed\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_reservas_fed\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_101\\v41_reservas_fed\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_101\\v41_reservas_fed\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_reservas_fed\\validacion_2024\\escalador.joblib"
+                }
+            },
+            "v41_vix": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_101\\v41_vix\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_101\\v41_vix\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_vix\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_101\\v41_vix\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_101\\v41_vix\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v41_vix\\validacion_2024\\escalador.joblib"
+                }
+            },
+            "v45_control_macro": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_101\\v45_control_macro\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_101\\v45_control_macro\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v45_control_macro\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_101\\v45_control_macro\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_101\\v45_control_macro\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v45_control_macro\\validacion_2024\\escalador.joblib"
+                }
+            },
+            "v45_reservas_fed": {
+                "validacion_2023": {
+                    "estado": "generado",
+                    "filas": 523360,
+                    "conteos_entrenamiento": {
+                        "1": 303912,
+                        "0": 732855
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_101\\v45_reservas_fed\\BTCUSDT_validacion_2023.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_101\\v45_reservas_fed\\validacion_2023\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v45_reservas_fed\\validacion_2023\\escalador.joblib"
+                },
+                "validacion_2024": {
+                    "estado": "generado",
+                    "filas": 526800,
+                    "conteos_entrenamiento": {
+                        "1": 397761,
+                        "0": 1162606
+                    },
+                    "predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\predicciones\\semilla_101\\v45_reservas_fed\\BTCUSDT_validacion_2024.parquet",
+                    "modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\modelos\\semilla_101\\v45_reservas_fed\\validacion_2024\\modelo.joblib",
+                    "escalador_comun": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_6_macro\\robustez_semillas\\escaladores_comunes\\v45_reservas_fed\\validacion_2024\\escalador.joblib"
+                }
+            }
+        }
+    },
+    "version": "v4_6_macro_regimen",
+    "fecha_utc_ultima_ejecucion": "2026-07-05T16:55:13.805722+00:00",
+    "semillas_configuradas": [
+        11,
+        23,
+        42,
+        77,
+        101
+    ],
+    "variantes": [
+        "v41_control_macro",
+        "v41_reservas_fed",
+        "v41_vix",
+        "v45_control_macro",
+        "v45_reservas_fed"
+    ],
+    "epocas": 3,
+    "tamano_lote": 100000,
+    "uso_2025_para_seleccion": false,
+    "uso_2026_para_seleccion": false
+}

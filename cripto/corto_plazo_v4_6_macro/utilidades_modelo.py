@@ -217,6 +217,7 @@ def entrenar_modelo(
     escalador: StandardScaler,
     epocas: int,
     tamano_lote: int,
+    semilla: int = 42,
 ) -> SGDClassifier:
     modelo = SGDClassifier(
         loss="log_loss",
@@ -228,7 +229,7 @@ def entrenar_modelo(
             1: 1.0,
         },
         average=True,
-        random_state=42,
+        random_state=semilla,
     )
 
     desde = pd.Timestamp(
@@ -282,7 +283,7 @@ def entrenar_modelo(
             )
 
             generador = np.random.default_rng(
-                42
+                semilla
                 + epoca * 100
                 + indice_archivo
             )
