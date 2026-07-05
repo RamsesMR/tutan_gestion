@@ -1,0 +1,318 @@
+{
+    "coeficientes": [
+        {
+            "variante": "v41_dolar",
+            "base": "v41",
+            "variable_macro": "impulso_dolar_amplio_20s",
+            "coeficiente_validacion_2023": 0.051739760609779396,
+            "coeficiente_validacion_2024": 0.003617617659962523,
+            "signo_estable": true
+        },
+        {
+            "variante": "v41_tipo_real",
+            "base": "v41",
+            "variable_macro": "impulso_rendimiento_real_10y_20s",
+            "coeficiente_validacion_2023": 0.017571834087932378,
+            "coeficiente_validacion_2024": -0.027898069275592362,
+            "signo_estable": false
+        },
+        {
+            "variante": "v41_credito",
+            "base": "v41",
+            "variable_macro": "impulso_spread_baa_20s",
+            "coeficiente_validacion_2023": 0.062035788812995554,
+            "coeficiente_validacion_2024": 0.056862662732563345,
+            "signo_estable": true
+        },
+        {
+            "variante": "v41_vix",
+            "base": "v41",
+            "variable_macro": "impulso_vix_20s",
+            "coeficiente_validacion_2023": 0.06525746309608838,
+            "coeficiente_validacion_2024": 0.023156507358788637,
+            "signo_estable": true
+        },
+        {
+            "variante": "v41_nasdaq",
+            "base": "v41",
+            "variable_macro": "retorno_nasdaq100_20s",
+            "coeficiente_validacion_2023": -0.05632699296002563,
+            "coeficiente_validacion_2024": -0.017184741698640538,
+            "signo_estable": true
+        },
+        {
+            "variante": "v41_reservas_fed",
+            "base": "v41",
+            "variable_macro": "impulso_reservas_fed_4s",
+            "coeficiente_validacion_2023": 0.0413181893071168,
+            "coeficiente_validacion_2024": 0.05580138140141365,
+            "signo_estable": true
+        },
+        {
+            "variante": "v45_dolar",
+            "base": "v45",
+            "variable_macro": "impulso_dolar_amplio_20s",
+            "coeficiente_validacion_2023": 0.038805494694825554,
+            "coeficiente_validacion_2024": 0.003638685353011863,
+            "signo_estable": true
+        },
+        {
+            "variante": "v45_tipo_real",
+            "base": "v45",
+            "variable_macro": "impulso_rendimiento_real_10y_20s",
+            "coeficiente_validacion_2023": 0.037847136682235966,
+            "coeficiente_validacion_2024": -0.02423660219696259,
+            "signo_estable": false
+        },
+        {
+            "variante": "v45_credito",
+            "base": "v45",
+            "variable_macro": "impulso_spread_baa_20s",
+            "coeficiente_validacion_2023": 0.08087310535077533,
+            "coeficiente_validacion_2024": 0.0625098825655043,
+            "signo_estable": true
+        },
+        {
+            "variante": "v45_vix",
+            "base": "v45",
+            "variable_macro": "impulso_vix_20s",
+            "coeficiente_validacion_2023": 0.06394810659516989,
+            "coeficiente_validacion_2024": 0.02185656313061778,
+            "signo_estable": true
+        },
+        {
+            "variante": "v45_nasdaq",
+            "base": "v45",
+            "variable_macro": "retorno_nasdaq100_20s",
+            "coeficiente_validacion_2023": -0.09039660538735907,
+            "coeficiente_validacion_2024": -0.020298567852041285,
+            "signo_estable": true
+        },
+        {
+            "variante": "v45_reservas_fed",
+            "base": "v45",
+            "variable_macro": "impulso_reservas_fed_4s",
+            "coeficiente_validacion_2023": 0.05017407827196387,
+            "coeficiente_validacion_2024": 0.05785637178139745,
+            "signo_estable": true
+        }
+    ],
+    "concentracion": [
+        {
+            "variante": "v41_dolar",
+            "variable_macro": "impulso_dolar_amplio_20s",
+            "pliegue": "validacion_2023",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 9,
+            "porcentaje_meses_positivos": 75.0,
+            "peso_maximo_mes_retorno_absoluto": 0.21020188143562624
+        },
+        {
+            "variante": "v41_dolar",
+            "variable_macro": "impulso_dolar_amplio_20s",
+            "pliegue": "validacion_2024",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 6,
+            "porcentaje_meses_positivos": 50.0,
+            "peso_maximo_mes_retorno_absoluto": 0.21273534527319599
+        },
+        {
+            "variante": "v41_tipo_real",
+            "variable_macro": "impulso_rendimiento_real_10y_20s",
+            "pliegue": "validacion_2023",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 9,
+            "porcentaje_meses_positivos": 75.0,
+            "peso_maximo_mes_retorno_absoluto": 0.15983615127224488
+        },
+        {
+            "variante": "v41_tipo_real",
+            "variable_macro": "impulso_rendimiento_real_10y_20s",
+            "pliegue": "validacion_2024",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 9,
+            "porcentaje_meses_positivos": 75.0,
+            "peso_maximo_mes_retorno_absoluto": 0.2471574531872621
+        },
+        {
+            "variante": "v41_credito",
+            "variable_macro": "impulso_spread_baa_20s",
+            "pliegue": "validacion_2023",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 8,
+            "porcentaje_meses_positivos": 66.66666666666666,
+            "peso_maximo_mes_retorno_absoluto": 0.22894715166235582
+        },
+        {
+            "variante": "v41_credito",
+            "variable_macro": "impulso_spread_baa_20s",
+            "pliegue": "validacion_2024",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 9,
+            "porcentaje_meses_positivos": 75.0,
+            "peso_maximo_mes_retorno_absoluto": 0.25805039647752226
+        },
+        {
+            "variante": "v41_vix",
+            "variable_macro": "impulso_vix_20s",
+            "pliegue": "validacion_2023",
+            "meses_con_operaciones": 11,
+            "meses_positivos": 9,
+            "porcentaje_meses_positivos": 81.81818181818183,
+            "peso_maximo_mes_retorno_absoluto": 0.19213688812368793
+        },
+        {
+            "variante": "v41_vix",
+            "variable_macro": "impulso_vix_20s",
+            "pliegue": "validacion_2024",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 8,
+            "porcentaje_meses_positivos": 66.66666666666666,
+            "peso_maximo_mes_retorno_absoluto": 0.2246524652257308
+        },
+        {
+            "variante": "v41_nasdaq",
+            "variable_macro": "retorno_nasdaq100_20s",
+            "pliegue": "validacion_2023",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 10,
+            "porcentaje_meses_positivos": 83.33333333333334,
+            "peso_maximo_mes_retorno_absoluto": 0.18933330287582129
+        },
+        {
+            "variante": "v41_nasdaq",
+            "variable_macro": "retorno_nasdaq100_20s",
+            "pliegue": "validacion_2024",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 8,
+            "porcentaje_meses_positivos": 66.66666666666666,
+            "peso_maximo_mes_retorno_absoluto": 0.20244664929306988
+        },
+        {
+            "variante": "v41_reservas_fed",
+            "variable_macro": "impulso_reservas_fed_4s",
+            "pliegue": "validacion_2023",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 11,
+            "porcentaje_meses_positivos": 91.66666666666666,
+            "peso_maximo_mes_retorno_absoluto": 0.19950321107228075
+        },
+        {
+            "variante": "v41_reservas_fed",
+            "variable_macro": "impulso_reservas_fed_4s",
+            "pliegue": "validacion_2024",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 9,
+            "porcentaje_meses_positivos": 75.0,
+            "peso_maximo_mes_retorno_absoluto": 0.2234964747006378
+        },
+        {
+            "variante": "v45_dolar",
+            "variable_macro": "impulso_dolar_amplio_20s",
+            "pliegue": "validacion_2023",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 10,
+            "porcentaje_meses_positivos": 83.33333333333334,
+            "peso_maximo_mes_retorno_absoluto": 0.22381763464102877
+        },
+        {
+            "variante": "v45_dolar",
+            "variable_macro": "impulso_dolar_amplio_20s",
+            "pliegue": "validacion_2024",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 10,
+            "porcentaje_meses_positivos": 83.33333333333334,
+            "peso_maximo_mes_retorno_absoluto": 0.2417106457396276
+        },
+        {
+            "variante": "v45_tipo_real",
+            "variable_macro": "impulso_rendimiento_real_10y_20s",
+            "pliegue": "validacion_2023",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 8,
+            "porcentaje_meses_positivos": 66.66666666666666,
+            "peso_maximo_mes_retorno_absoluto": 0.26542859862526996
+        },
+        {
+            "variante": "v45_tipo_real",
+            "variable_macro": "impulso_rendimiento_real_10y_20s",
+            "pliegue": "validacion_2024",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 9,
+            "porcentaje_meses_positivos": 75.0,
+            "peso_maximo_mes_retorno_absoluto": 0.201053965234703
+        },
+        {
+            "variante": "v45_credito",
+            "variable_macro": "impulso_spread_baa_20s",
+            "pliegue": "validacion_2023",
+            "meses_con_operaciones": 11,
+            "meses_positivos": 7,
+            "porcentaje_meses_positivos": 63.63636363636363,
+            "peso_maximo_mes_retorno_absoluto": 0.30936332649116766
+        },
+        {
+            "variante": "v45_credito",
+            "variable_macro": "impulso_spread_baa_20s",
+            "pliegue": "validacion_2024",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 9,
+            "porcentaje_meses_positivos": 75.0,
+            "peso_maximo_mes_retorno_absoluto": 0.2034672103695097
+        },
+        {
+            "variante": "v45_vix",
+            "variable_macro": "impulso_vix_20s",
+            "pliegue": "validacion_2023",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 11,
+            "porcentaje_meses_positivos": 91.66666666666666,
+            "peso_maximo_mes_retorno_absoluto": 0.1983898355432439
+        },
+        {
+            "variante": "v45_vix",
+            "variable_macro": "impulso_vix_20s",
+            "pliegue": "validacion_2024",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 9,
+            "porcentaje_meses_positivos": 75.0,
+            "peso_maximo_mes_retorno_absoluto": 0.18236022360286255
+        },
+        {
+            "variante": "v45_nasdaq",
+            "variable_macro": "retorno_nasdaq100_20s",
+            "pliegue": "validacion_2023",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 10,
+            "porcentaje_meses_positivos": 83.33333333333334,
+            "peso_maximo_mes_retorno_absoluto": 0.2754736423328853
+        },
+        {
+            "variante": "v45_nasdaq",
+            "variable_macro": "retorno_nasdaq100_20s",
+            "pliegue": "validacion_2024",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 9,
+            "porcentaje_meses_positivos": 75.0,
+            "peso_maximo_mes_retorno_absoluto": 0.16517654362737832
+        },
+        {
+            "variante": "v45_reservas_fed",
+            "variable_macro": "impulso_reservas_fed_4s",
+            "pliegue": "validacion_2023",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 11,
+            "porcentaje_meses_positivos": 91.66666666666666,
+            "peso_maximo_mes_retorno_absoluto": 0.29269566779562206
+        },
+        {
+            "variante": "v45_reservas_fed",
+            "variable_macro": "impulso_reservas_fed_4s",
+            "pliegue": "validacion_2024",
+            "meses_con_operaciones": 12,
+            "meses_positivos": 8,
+            "porcentaje_meses_positivos": 66.66666666666666,
+            "peso_maximo_mes_retorno_absoluto": 0.25679781680580227
+        }
+    ]
+}

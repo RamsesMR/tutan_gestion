@@ -1,0 +1,17 @@
+Archivos incluidos en corto_plazo_v4_6_macro.zip
+
+__init__.py
+configuracion.py
+utilidades_macro.py
+descargar_datos_macro.py
+construir_variables_macro.py
+auditar_datos_macro.py
+integrar_variables_macro.py
+validar_integracion.py
+utilidades_modelo.py
+generar_predicciones_desarrollo.py
+evaluar_desarrollo.py
+analizar_estabilidad.py
+seleccionar_variables_macro.py
+README_V4_6_MACRO.md
+CONTENIDO_ZIP.txt
