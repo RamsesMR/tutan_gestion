@@ -58,6 +58,113 @@
                     "archivo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_5\\predicciones_desarrollo\\flujo_spot_futuros\\BTCUSDT_validacion_2024.parquet"
                 }
             }
+        },
+        "spot_flujo_futuros": {
+            "columnas": 110,
+            "etapa": "completo",
+            "pliegues": {
+                "validacion_2023": {
+                    "filas": 520482,
+                    "conteos_entrenamiento": {
+                        "1": 299374,
+                        "0": 725881
+                    },
+                    "precision_bruta_umbral_0_44": 0.44970906068162925,
+                    "porcentaje_acierto_bruto": 44.970906068162925,
+                    "archivo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_5\\predicciones_desarrollo\\spot_flujo_futuros\\BTCUSDT_validacion_2023.parquet"
+                },
+                "validacion_2024": {
+                    "filas": 525361,
+                    "conteos_entrenamiento": {
+                        "1": 392694,
+                        "0": 1153283
+                    },
+                    "precision_bruta_umbral_0_44": 0.5275605569330536,
+                    "porcentaje_acierto_bruto": 52.756055693305356,
+                    "archivo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_5\\predicciones_desarrollo\\spot_flujo_futuros\\BTCUSDT_validacion_2024.parquet"
+                }
+            }
+        },
+        "spot_rendimiento_basis": {
+            "columnas": 109,
+            "etapa": "completo",
+            "pliegues": {
+                "validacion_2023": {
+                    "filas": 520482,
+                    "conteos_entrenamiento": {
+                        "1": 299374,
+                        "0": 725881
+                    },
+                    "precision_bruta_umbral_0_44": 0.4322845417236662,
+                    "porcentaje_acierto_bruto": 43.22845417236662,
+                    "archivo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_5\\predicciones_desarrollo\\spot_rendimiento_basis\\BTCUSDT_validacion_2023.parquet"
+                },
+                "validacion_2024": {
+                    "filas": 525361,
+                    "conteos_entrenamiento": {
+                        "1": 392694,
+                        "0": 1153283
+                    },
+                    "precision_bruta_umbral_0_44": 0.5406235238545111,
+                    "porcentaje_acierto_bruto": 54.062352385451106,
+                    "archivo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_5\\predicciones_desarrollo\\spot_rendimiento_basis\\BTCUSDT_validacion_2024.parquet"
+                }
+            }
+        },
+        "spot_funding": {
+            "columnas": 94,
+            "etapa": "completo",
+            "pliegues": {
+                "validacion_2023": {
+                    "filas": 520482,
+                    "conteos_entrenamiento": {
+                        "1": 299374,
+                        "0": 725881
+                    },
+                    "precision_bruta_umbral_0_44": 0.4732472324723247,
+                    "porcentaje_acierto_bruto": 47.32472324723247,
+                    "archivo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_5\\predicciones_desarrollo\\spot_funding\\BTCUSDT_validacion_2023.parquet"
+                },
+                "validacion_2024": {
+                    "filas": 525361,
+                    "conteos_entrenamiento": {
+                        "1": 392694,
+                        "0": 1153283
+                    },
+                    "precision_bruta_umbral_0_44": 0.5360652310265523,
+                    "porcentaje_acierto_bruto": 53.60652310265523,
+                    "archivo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_5\\predicciones_desarrollo\\spot_funding\\BTCUSDT_validacion_2024.parquet"
+                }
+            }
+        },
+        "spot_flujo_basis_sin_funding": {
+            "columnas": 129,
+            "etapa": "completo",
+            "pliegues": {
+                "validacion_2023": {
+                    "filas": 520482,
+                    "conteos_entrenamiento": {
+                        "1": 299374,
+                        "0": 725881
+                    },
+                    "precision_bruta_umbral_0_44": 0.44697720515361744,
+                    "porcentaje_acierto_bruto": 44.697720515361745,
+                    "archivo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_5\\predicciones_desarrollo\\spot_flujo_basis_sin_funding\\BTCUSDT_validacion_2023.parquet"
+                },
+                "validacion_2024": {
+                    "filas": 525361,
+                    "conteos_entrenamiento": {
+                        "1": 392694,
+                        "0": 1153283
+                    },
+                    "precision_bruta_umbral_0_44": 0.5456105934281511,
+                    "porcentaje_acierto_bruto": 54.56105934281511,
+                    "archivo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_5\\predicciones_desarrollo\\spot_flujo_basis_sin_funding\\BTCUSDT_validacion_2024.parquet"
+                }
+            }
         }
-    }
+    },
+    "fecha_utc_ultima_ejecucion": "2026-07-05T14:35:28.362535+00:00",
+    "epocas_ultima_ejecucion": 3,
+    "tamano_lote_ultima_ejecucion": 100000
 }

@@ -87,18 +87,45 @@ def main() -> None:
         exist_ok=True,
     )
 
-    detalle = {
-        "fecha_utc": datetime.now(
-            timezone.utc
-        ).isoformat(),
-        "version": VERSION_MODELO,
-        "simbolo": SIMBOLO_OPERATIVO,
-        "epocas": argumentos.epocas,
-        "tamano_lote": argumentos.tamano_lote,
-        "uso_2025_para_seleccion": False,
-        "uso_2026_para_seleccion": False,
-        "variantes": {},
-    }
+    ruta_detalle = (
+        RUTA_PREDICCIONES
+        / "detalle_generacion.json"
+    )
+
+    if ruta_detalle.exists():
+        try:
+            detalle = json.loads(
+                ruta_detalle.read_text(
+                    encoding="utf-8"
+                )
+            )
+        except json.JSONDecodeError as error:
+            raise ValueError(
+                f"El manifiesto existente no es JSON válido: {ruta_detalle}"
+            ) from error
+    else:
+        detalle = {
+            "variantes": {},
+        }
+
+    detalle.update(
+        {
+            "fecha_utc_ultima_ejecucion": datetime.now(
+                timezone.utc
+            ).isoformat(),
+            "version": VERSION_MODELO,
+            "simbolo": SIMBOLO_OPERATIVO,
+            "epocas_ultima_ejecucion": argumentos.epocas,
+            "tamano_lote_ultima_ejecucion": argumentos.tamano_lote,
+            "uso_2025_para_seleccion": False,
+            "uso_2026_para_seleccion": False,
+        }
+    )
+
+    detalle.setdefault(
+        "variantes",
+        {},
+    )
 
     print("\nGENERACIÓN DE PREDICCIONES V4.5")
     print("=" * 72)
@@ -278,10 +305,7 @@ def main() -> None:
             del escalador
             gc.collect()
 
-    (
-        RUTA_PREDICCIONES
-        / "detalle_generacion.json"
-    ).write_text(
+    ruta_detalle.write_text(
         json.dumps(
             detalle,
             ensure_ascii=False,

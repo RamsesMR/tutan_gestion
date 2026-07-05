@@ -125,10 +125,96 @@ for ventana in VENTANAS_FLUJO_FUTUROS:
     )
 
 COLUMNAS_FLUJO_SPOT = tuple(COLUMNAS_FLUJO_SPOT)
-COLUMNAS_FUTUROS = tuple(COLUMNAS_FUTUROS)
+
+COLUMNAS_FUNDING = (
+    "funding_ultimo",
+    "funding_absoluto",
+    "cambio_funding_8h",
+    "funding_media_24h",
+)
+
+COLUMNAS_RENDIMIENTOS_FUTUROS: list[str] = []
+
+for ventana in VENTANAS_FUTUROS_RENDIMIENTO:
+    COLUMNAS_RENDIMIENTOS_FUTUROS.extend(
+        [
+            f"rendimiento_futuros_{ventana}m",
+            f"diferencia_rendimiento_futuros_spot_{ventana}m",
+            f"cambio_basis_{ventana}m",
+        ]
+    )
+
+COLUMNAS_FLUJO_AGRESOR_FUTUROS: list[str] = []
+
+for ventana in VENTANAS_FLUJO_FUTUROS:
+    COLUMNAS_FLUJO_AGRESOR_FUTUROS.extend(
+        [
+            f"desequilibrio_futuros_base_{ventana}m",
+            f"desequilibrio_futuros_cotizacion_{ventana}m",
+            f"divergencia_flujo_spot_futuros_{ventana}m",
+            f"confirmacion_precio_flujo_futuros_{ventana}m",
+        ]
+    )
+
+COLUMNAS_RENDIMIENTOS_FUTUROS = tuple(
+    COLUMNAS_RENDIMIENTOS_FUTUROS
+)
+
+COLUMNAS_FLUJO_AGRESOR_FUTUROS = tuple(
+    COLUMNAS_FLUJO_AGRESOR_FUTUROS
+)
+
+COLUMNAS_RENDIMIENTO_BASIS = (
+    "basis_futuros_spot",
+    *COLUMNAS_RENDIMIENTOS_FUTUROS,
+)
+
+# Conserva exactamente el orden histórico de las 43 variables completas.
+COLUMNAS_FUTUROS = (
+    "basis_futuros_spot",
+    *COLUMNAS_FUNDING,
+    *COLUMNAS_RENDIMIENTOS_FUTUROS,
+    *COLUMNAS_FLUJO_AGRESOR_FUTUROS,
+)
+
 COLUMNAS_CONTROL = tuple(COLUMNAS_V4_63)
 COLUMNAS_SPOT = (*COLUMNAS_CONTROL, *COLUMNAS_FLUJO_SPOT)
-COLUMNAS_COMPLETAS = (*COLUMNAS_SPOT, *COLUMNAS_FUTUROS)
+
+COLUMNAS_SPOT_FLUJO_FUTUROS = (
+    *COLUMNAS_SPOT,
+    *COLUMNAS_FLUJO_AGRESOR_FUTUROS,
+)
+
+COLUMNAS_SPOT_RENDIMIENTO_BASIS = (
+    *COLUMNAS_SPOT,
+    *COLUMNAS_RENDIMIENTO_BASIS,
+)
+
+COLUMNAS_SPOT_FUNDING = (
+    *COLUMNAS_SPOT,
+    *COLUMNAS_FUNDING,
+)
+
+COLUMNAS_SPOT_FLUJO_BASIS_SIN_FUNDING = (
+    *COLUMNAS_SPOT,
+    *COLUMNAS_RENDIMIENTO_BASIS,
+    *COLUMNAS_FLUJO_AGRESOR_FUTUROS,
+)
+
+COLUMNAS_COMPLETAS = (
+    *COLUMNAS_SPOT,
+    *COLUMNAS_FUTUROS,
+)
+
+VARIANTE_CONTROL_FUTUROS = "flujo_spot_misma_muestra"
+
+VARIANTES_ABLACION_FUTUROS = (
+    "spot_flujo_futuros",
+    "spot_rendimiento_basis",
+    "spot_funding",
+    "spot_flujo_basis_sin_funding",
+    "flujo_spot_futuros",
+)
 
 VARIANTES = {
     "control_63": {
@@ -146,14 +232,43 @@ VARIANTES = {
         "etapa_datos": "completo",
         "descripcion": (
             "Las 90 variables Spot, usando exactamente las mismas fechas "
-            "válidas que la variante con futuros."
+            "válidas que las variantes con futuros."
+        ),
+    },
+    "spot_flujo_futuros": {
+        "columnas": COLUMNAS_SPOT_FLUJO_FUTUROS,
+        "etapa_datos": "completo",
+        "descripcion": (
+            "90 variables Spot y 20 variables de flujo agresor de futuros."
+        ),
+    },
+    "spot_rendimiento_basis": {
+        "columnas": COLUMNAS_SPOT_RENDIMIENTO_BASIS,
+        "etapa_datos": "completo",
+        "descripcion": (
+            "90 variables Spot y 19 variables de rendimiento y basis."
+        ),
+    },
+    "spot_funding": {
+        "columnas": COLUMNAS_SPOT_FUNDING,
+        "etapa_datos": "completo",
+        "descripcion": (
+            "90 variables Spot y 4 variables de funding."
+        ),
+    },
+    "spot_flujo_basis_sin_funding": {
+        "columnas": COLUMNAS_SPOT_FLUJO_BASIS_SIN_FUNDING,
+        "etapa_datos": "completo",
+        "descripcion": (
+            "90 variables Spot, flujo agresor de futuros y basis, "
+            "sin variables de funding."
         ),
     },
     "flujo_spot_futuros": {
         "columnas": COLUMNAS_COMPLETAS,
         "etapa_datos": "completo",
         "descripcion": (
-            "63 variables, flujo Spot, flujo de futuros, basis y funding."
+            "90 variables Spot y las 43 variables completas de futuros."
         ),
     },
 }
@@ -202,6 +317,8 @@ RUTA_PREDICCIONES = RUTA_MODELOS_V4_5 / "predicciones_desarrollo"
 RUTA_RESULTADOS = RUTA_MODELOS_V4_5 / "resultados_desarrollo"
 RUTA_SELECCION = RUTA_MODELOS_V4_5 / "seleccion"
 RUTA_COMPARACION = RUTA_MODELOS_V4_5 / "comparacion"
+RUTA_SELECCION_FUTUROS = RUTA_MODELOS_V4_5 / "seleccion_futuros"
+RUTA_COMPARACION_FUTUROS = RUTA_MODELOS_V4_5 / "comparacion_futuros"
 
 UMBRAL_SUBE_CONGELADO = 0.44
 UMBRALES_LABORATORIO = (
@@ -237,3 +354,28 @@ if set(COLUMNAS_CONTROL).intersection(COLUMNAS_FLUJO_SPOT):
 
 if set(COLUMNAS_SPOT).intersection(COLUMNAS_FUTUROS):
     raise RuntimeError("Hay variables de futuros repetidas.")
+
+
+if len(COLUMNAS_FUNDING) != 4:
+    raise RuntimeError("La familia funding debe contener exactamente 4 variables.")
+
+if len(COLUMNAS_RENDIMIENTO_BASIS) != 19:
+    raise RuntimeError(
+        "La familia rendimiento y basis debe contener exactamente 19 variables."
+    )
+
+if len(COLUMNAS_FLUJO_AGRESOR_FUTUROS) != 20:
+    raise RuntimeError(
+        "La familia de flujo agresor de futuros debe contener 20 variables."
+    )
+
+if len(COLUMNAS_FUTUROS) != 43:
+    raise RuntimeError(
+        "La integración completa debe conservar exactamente 43 variables de futuros."
+    )
+
+if len(COLUMNAS_SPOT) != 90:
+    raise RuntimeError("La variante Spot debe conservar exactamente 90 variables.")
+
+if len(COLUMNAS_COMPLETAS) != 133:
+    raise RuntimeError("La variante completa debe contener exactamente 133 variables.")
