@@ -1,0 +1,18 @@
+V4.3 - misma V4.1 con historico ampliado desde 2017
+
+Archivos incluidos:
+- README_V4_3.md
+- __init__.py
+- comparar_v4_1.py
+- configuracion.py
+- entrenamiento.py
+- evaluacion.py
+- evaluar_2025.py
+- evaluar_2026.py
+- evaluar_desarrollo.py
+- generar_predicciones_desarrollo.py
+- integrar_historico.py
+- periodos_conocidos.py
+
+Carpeta de destino:
+cripto/corto_plazo_v4_3

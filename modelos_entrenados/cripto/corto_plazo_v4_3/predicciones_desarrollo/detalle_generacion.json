@@ -1,0 +1,114 @@
+{
+    "fecha_utc": "2026-07-05T09:38:53.367133+00:00",
+    "version": "v4_3_historico_ampliado",
+    "simbolo": "BTCUSDT",
+    "variante_sube": "v4_63_sin_pesos",
+    "epocas": 3,
+    "tamano_lote": 100000,
+    "historico_ampliado_desde": "2017-08-17",
+    "estrategia_modificada": false,
+    "uso_2025_para_seleccion": false,
+    "uso_2026_para_seleccion": false,
+    "pliegues": {
+        "validacion_2023": {
+            "configuracion_periodo": {
+                "entrenamiento_desde": "2017-08-17",
+                "entrenamiento_hasta": "2023-01-01",
+                "archivos_entrenamiento": [
+                    [
+                        "2017-08-17",
+                        "2018-01-01"
+                    ],
+                    [
+                        "2018-01-01",
+                        "2019-01-01"
+                    ],
+                    [
+                        "2019-01-01",
+                        "2020-01-01"
+                    ],
+                    [
+                        "2020-01-01",
+                        "2021-01-01"
+                    ],
+                    [
+                        "2021-01-01",
+                        "2022-01-01"
+                    ],
+                    [
+                        "2022-01-01",
+                        "2023-01-01"
+                    ]
+                ],
+                "validacion_desde": "2023-01-01",
+                "validacion_hasta": "2024-01-01",
+                "archivo_validacion": [
+                    "2023-01-01",
+                    "2024-01-01"
+                ]
+            },
+            "filas": 523360,
+            "precision_bruta_umbral": 0.3876208897485493,
+            "conteos_entrenamiento": {
+                "1": 788015,
+                "0": 1966366
+            },
+            "pesos": {
+                "0": 1.0,
+                "1": 1.0
+            }
+        },
+        "validacion_2024": {
+            "configuracion_periodo": {
+                "entrenamiento_desde": "2017-08-17",
+                "entrenamiento_hasta": "2024-01-01",
+                "archivos_entrenamiento": [
+                    [
+                        "2017-08-17",
+                        "2018-01-01"
+                    ],
+                    [
+                        "2018-01-01",
+                        "2019-01-01"
+                    ],
+                    [
+                        "2019-01-01",
+                        "2020-01-01"
+                    ],
+                    [
+                        "2020-01-01",
+                        "2021-01-01"
+                    ],
+                    [
+                        "2021-01-01",
+                        "2022-01-01"
+                    ],
+                    [
+                        "2022-01-01",
+                        "2023-01-01"
+                    ],
+                    [
+                        "2023-01-01",
+                        "2024-01-01"
+                    ]
+                ],
+                "validacion_desde": "2024-01-01",
+                "validacion_hasta": "2025-01-01",
+                "archivo_validacion": [
+                    "2024-01-01",
+                    "2025-01-01"
+                ]
+            },
+            "filas": 526800,
+            "precision_bruta_umbral": 0.40763707571801566,
+            "conteos_entrenamiento": {
+                "1": 881864,
+                "0": 2396117
+            },
+            "pesos": {
+                "0": 1.0,
+                "1": 1.0
+            }
+        }
+    }
+}
