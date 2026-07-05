@@ -1077,9 +1077,9 @@ def simular_short(
         "mes"
     ] = tabla[
         "fecha_entrada"
-    ].dt.to_period(
-        "M"
-    ).astype(str)
+    ].dt.strftime(
+        "%Y-%m"
+    )
 
     mensual = (
         tabla.groupby(
