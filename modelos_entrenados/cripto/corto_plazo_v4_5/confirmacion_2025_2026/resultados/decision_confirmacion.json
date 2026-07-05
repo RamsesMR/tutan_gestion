@@ -1,0 +1,130 @@
+{
+    "fecha_utc": "2026-07-05T17:36:26.922968+00:00",
+    "version": "v4_5_spot_confirmacion_2025_2026",
+    "decision": "v4_5_spot_es_rentable_pero_no_justifica_sustituir_v4_1",
+    "campeona_antes_de_confirmacion": "V4.1",
+    "candidata_evaluada": "V4.5-Spot",
+    "parametros_congelados": {
+        "v41_control": {
+            "variables": 63,
+            "umbral": 0.44
+        },
+        "v45_spot": {
+            "variables": 90,
+            "umbral": 0.42
+        },
+        "modo_entrada": "cruce",
+        "horizonte_salida_minutos": 480,
+        "coste": 0.001,
+        "epocas": 3,
+        "tamano_lote": 100000,
+        "semilla": 42,
+        "sin_pesos": true,
+        "sin_veto_baja": true
+    },
+    "comparacion_misma_muestra": true,
+    "periodos_conocidos_en_el_proyecto": true,
+    "periodos_usados_para_seleccionar_v4_5": false,
+    "resultados": {
+        "confirmacion_2025": {
+            "v41_control_63": {
+                "operaciones": 82,
+                "precision_clasificacion": 0.43902439024390244,
+                "porcentaje_acierto_clasificacion": 43.90243902439025,
+                "porcentaje_operaciones_positivas": 53.65853658536586,
+                "retorno_bruto_medio": 0.0038656904771809685,
+                "retorno_neto_medio": 0.0028656904771809676,
+                "retorno_neto_mediano": 0.0018109203706505603,
+                "factor_beneficio": 1.332242489180756,
+                "maximo_drawdown": -0.12618382528836203
+            },
+            "v45_spot_90": {
+                "operaciones": 88,
+                "precision_clasificacion": 0.4318181818181818,
+                "porcentaje_acierto_clasificacion": 43.18181818181818,
+                "porcentaje_operaciones_positivas": 51.13636363636363,
+                "retorno_bruto_medio": 0.0014877216763664691,
+                "retorno_neto_medio": 0.0004877216763664682,
+                "retorno_neto_mediano": 0.000658439560242475,
+                "factor_beneficio": 1.0515268686356154,
+                "maximo_drawdown": -0.15145644321027485
+            }
+        },
+        "confirmacion_2026": {
+            "v41_control_63": {
+                "operaciones": 42,
+                "precision_clasificacion": 0.4523809523809524,
+                "porcentaje_acierto_clasificacion": 45.23809523809524,
+                "porcentaje_operaciones_positivas": 52.38095238095239,
+                "retorno_bruto_medio": 0.0025197612261266345,
+                "retorno_neto_medio": 0.0015197612261266338,
+                "retorno_neto_mediano": 0.002540611820189943,
+                "factor_beneficio": 1.2675434617278045,
+                "maximo_drawdown": -0.09694199470703257
+            },
+            "v45_spot_90": {
+                "operaciones": 67,
+                "precision_clasificacion": 0.47761194029850745,
+                "porcentaje_acierto_clasificacion": 47.76119402985074,
+                "porcentaje_operaciones_positivas": 64.17910447761194,
+                "retorno_bruto_medio": 0.004547482777291705,
+                "retorno_neto_medio": 0.0035474827772917043,
+                "retorno_neto_mediano": 0.003519331598122678,
+                "factor_beneficio": 1.721444954843481,
+                "maximo_drawdown": -0.09602867181618135
+            }
+        }
+    },
+    "comparaciones": [
+        {
+            "periodo": "confirmacion_2025",
+            "operaciones_minimas_exigidas": 50,
+            "operaciones_control": 82,
+            "operaciones_v45": 88,
+            "precision_control": 0.43902439024390244,
+            "precision_v45": 0.4318181818181818,
+            "porcentaje_acierto_control": 43.90243902439025,
+            "porcentaje_acierto_v45": 43.18181818181818,
+            "positivas_control": 53.65853658536586,
+            "positivas_v45": 51.13636363636363,
+            "retorno_neto_medio_control": 0.0028656904771809676,
+            "retorno_neto_medio_v45": 0.0004877216763664682,
+            "mejora_relativa_retorno": -0.8298065753262198,
+            "factor_beneficio_control": 1.332242489180756,
+            "factor_beneficio_v45": 1.0515268686356154,
+            "mejora_relativa_factor": -0.21070910350394456,
+            "drawdown_control": -0.12618382528836203,
+            "drawdown_v45": -0.15145644321027485,
+            "mejora_drawdown_absoluta": -0.02527261792191282,
+            "candidata_sana": true,
+            "supera_control_estricto": false,
+            "no_degrada_grave": false
+        },
+        {
+            "periodo": "confirmacion_2026",
+            "operaciones_minimas_exigidas": 30,
+            "operaciones_control": 42,
+            "operaciones_v45": 67,
+            "precision_control": 0.4523809523809524,
+            "precision_v45": 0.47761194029850745,
+            "porcentaje_acierto_control": 45.23809523809524,
+            "porcentaje_acierto_v45": 47.76119402985074,
+            "positivas_control": 52.38095238095239,
+            "positivas_v45": 64.17910447761194,
+            "retorno_neto_medio_control": 0.0015197612261266338,
+            "retorno_neto_medio_v45": 0.0035474827772917043,
+            "mejora_relativa_retorno": 1.334236929003024,
+            "factor_beneficio_control": 1.2675434617278045,
+            "factor_beneficio_v45": 1.721444954843481,
+            "mejora_relativa_factor": 0.3580954080240828,
+            "drawdown_control": -0.09694199470703257,
+            "drawdown_v45": -0.09602867181618135,
+            "mejora_drawdown_absoluta": 0.0009133228908512203,
+            "candidata_sana": true,
+            "supera_control_estricto": true,
+            "no_degrada_grave": true
+        }
+    ],
+    "promocion_automatica": false,
+    "requiere_revision_humana": true
+}

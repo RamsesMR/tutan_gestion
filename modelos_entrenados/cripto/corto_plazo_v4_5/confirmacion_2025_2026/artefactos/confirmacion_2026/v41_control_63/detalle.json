@@ -1,0 +1,47 @@
+{
+    "fecha_utc": "2026-07-05T17:35:47.084626+00:00",
+    "version": "v4_5_spot_confirmacion_2025_2026",
+    "periodo": "confirmacion_2026",
+    "periodo_entrenamiento": {
+        "desde": "2021-01-01",
+        "hasta": "2026-01-01"
+    },
+    "periodo_evaluacion": {
+        "desde": "2026-01-01",
+        "hasta": "2026-06-01"
+    },
+    "periodo_conocido_en_el_proyecto": true,
+    "usado_para_seleccionar_v4_5": false,
+    "variante": "v41_control_63",
+    "variables": 63,
+    "umbral": 0.44,
+    "estrategia_congelada": {
+        "modo_entrada": "cruce",
+        "horizonte_salida_minutos": 480,
+        "coste": 0.001,
+        "epocas": 3,
+        "tamano_lote": 100000,
+        "semilla": 42,
+        "sin_pesos": true,
+        "sin_veto_baja": true
+    },
+    "conteos_entrenamiento": {
+        "1": 645022,
+        "0": 1967985
+    },
+    "filas_evaluadas": 217200,
+    "metricas": {
+        "operaciones": 42,
+        "precision_clasificacion": 0.4523809523809524,
+        "porcentaje_acierto_clasificacion": 45.23809523809524,
+        "porcentaje_operaciones_positivas": 52.38095238095239,
+        "retorno_bruto_medio": 0.0025197612261266345,
+        "retorno_neto_medio": 0.0015197612261266338,
+        "retorno_neto_mediano": 0.002540611820189943,
+        "factor_beneficio": 1.2675434617278045,
+        "maximo_drawdown": -0.09694199470703257
+    },
+    "ruta_modelo": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_5\\confirmacion_2025_2026\\artefactos\\confirmacion_2026\\v41_control_63\\modelo.joblib",
+    "ruta_escalador": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_5\\confirmacion_2025_2026\\artefactos\\confirmacion_2026\\v41_control_63\\escalador.joblib",
+    "ruta_predicciones": "C:\\xampp\\htdocs\\tutan_gestion\\modelos_entrenados\\cripto\\corto_plazo_v4_5\\confirmacion_2025_2026\\artefactos\\confirmacion_2026\\v41_control_63\\predicciones.parquet"
+}

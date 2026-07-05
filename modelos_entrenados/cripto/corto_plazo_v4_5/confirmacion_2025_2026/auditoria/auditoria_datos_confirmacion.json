@@ -1,0 +1,86 @@
+{
+    "fecha_utc": "2026-07-05T17:34:09.376651+00:00",
+    "aprobado": true,
+    "registros": [
+        {
+            "simbolo": "BTCUSDT",
+            "desde": "2021-01-01",
+            "hasta": "2022-01-01",
+            "filas_base": 511407,
+            "filas_spot": 511407,
+            "filas_descartadas": 0,
+            "variables_control": 63,
+            "variables_spot": 90,
+            "primera_fecha": "2021-01-02 04:00:00+00:00",
+            "ultima_fecha": "2021-12-31 23:59:00+00:00",
+            "aprobado": true
+        },
+        {
+            "simbolo": "BTCUSDT",
+            "desde": "2022-01-01",
+            "hasta": "2023-01-01",
+            "filas_base": 525600,
+            "filas_spot": 525600,
+            "filas_descartadas": 0,
+            "variables_control": 63,
+            "variables_spot": 90,
+            "primera_fecha": "2022-01-01 00:00:00+00:00",
+            "ultima_fecha": "2022-12-31 23:59:00+00:00",
+            "aprobado": true
+        },
+        {
+            "simbolo": "BTCUSDT",
+            "desde": "2023-01-01",
+            "hasta": "2024-01-01",
+            "filas_base": 523600,
+            "filas_spot": 523600,
+            "filas_descartadas": 0,
+            "variables_control": 63,
+            "variables_spot": 90,
+            "primera_fecha": "2023-01-01 00:00:00+00:00",
+            "ultima_fecha": "2023-12-31 23:59:00+00:00",
+            "aprobado": true
+        },
+        {
+            "simbolo": "BTCUSDT",
+            "desde": "2024-01-01",
+            "hasta": "2025-01-01",
+            "filas_base": 527040,
+            "filas_spot": 527040,
+            "filas_descartadas": 0,
+            "variables_control": 63,
+            "variables_spot": 90,
+            "primera_fecha": "2024-01-01 00:00:00+00:00",
+            "ultima_fecha": "2024-12-31 23:59:00+00:00",
+            "aprobado": true
+        },
+        {
+            "simbolo": "BTCUSDT",
+            "desde": "2025-01-01",
+            "hasta": "2026-01-01",
+            "filas_base": 525600,
+            "filas_spot": 525600,
+            "filas_descartadas": 0,
+            "variables_control": 63,
+            "variables_spot": 90,
+            "primera_fecha": "2025-01-01 00:00:00+00:00",
+            "ultima_fecha": "2025-12-31 23:59:00+00:00",
+            "aprobado": true
+        },
+        {
+            "simbolo": "BTCUSDT",
+            "desde": "2026-01-01",
+            "hasta": "2026-06-01",
+            "filas_base": 217200,
+            "filas_spot": 217200,
+            "filas_descartadas": 0,
+            "variables_control": 63,
+            "variables_spot": 90,
+            "primera_fecha": "2026-01-01 00:00:00+00:00",
+            "ultima_fecha": "2026-05-31 19:59:00+00:00",
+            "aprobado": true
+        }
+    ],
+    "comparacion_misma_muestra": true,
+    "control_63_lee_archivos_spot": true
+}
