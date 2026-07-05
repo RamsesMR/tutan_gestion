@@ -1,0 +1,310 @@
+{
+  "aprobada": true,
+  "errores": [],
+  "archivos": [
+    {
+      "archivo": "BTCUSDT_eventos_baja_v2_5m_2021-01-01_2022-01-01.parquet",
+      "filas": 100180,
+      "desde": "2021-01-03 04:00:00+00:00",
+      "hasta": "2021-12-31 23:55:00+00:00",
+      "clases": {
+        "0": 65185,
+        "1": 33953,
+        "2": 1042
+      },
+      "cobertura_macro": {
+        "impulso_dolar_amplio_20s": 1.0,
+        "impulso_rendimiento_real_10y_20s": 1.0,
+        "impulso_spread_baa_20s": 1.0,
+        "impulso_vix_20s": 1.0,
+        "retorno_nasdaq100_20s": 1.0,
+        "impulso_reservas_fed_4s": 1.0
+      }
+    },
+    {
+      "archivo": "BTCUSDT_eventos_baja_v2_10m_2021-01-01_2022-01-01.parquet",
+      "filas": 50091,
+      "desde": "2021-01-03 04:00:00+00:00",
+      "hasta": "2021-12-31 23:50:00+00:00",
+      "clases": {
+        "0": 32646,
+        "1": 16925,
+        "2": 520
+      },
+      "cobertura_macro": {
+        "impulso_dolar_amplio_20s": 1.0,
+        "impulso_rendimiento_real_10y_20s": 1.0,
+        "impulso_spread_baa_20s": 1.0,
+        "impulso_vix_20s": 1.0,
+        "retorno_nasdaq100_20s": 1.0,
+        "impulso_reservas_fed_4s": 1.0
+      }
+    },
+    {
+      "archivo": "BTCUSDT_eventos_baja_v2_15m_2021-01-01_2022-01-01.parquet",
+      "filas": 33395,
+      "desde": "2021-01-03 04:00:00+00:00",
+      "hasta": "2021-12-31 23:45:00+00:00",
+      "clases": {
+        "0": 21638,
+        "1": 11413,
+        "2": 344
+      },
+      "cobertura_macro": {
+        "impulso_dolar_amplio_20s": 1.0,
+        "impulso_rendimiento_real_10y_20s": 1.0,
+        "impulso_spread_baa_20s": 1.0,
+        "impulso_vix_20s": 1.0,
+        "retorno_nasdaq100_20s": 1.0,
+        "impulso_reservas_fed_4s": 1.0
+      }
+    },
+    {
+      "archivo": "BTCUSDT_eventos_baja_v2_30m_2021-01-01_2022-01-01.parquet",
+      "filas": 16698,
+      "desde": "2021-01-03 04:00:00+00:00",
+      "hasta": "2021-12-31 23:30:00+00:00",
+      "clases": {
+        "0": 10813,
+        "1": 5716,
+        "2": 169
+      },
+      "cobertura_macro": {
+        "impulso_dolar_amplio_20s": 1.0,
+        "impulso_rendimiento_real_10y_20s": 1.0,
+        "impulso_spread_baa_20s": 1.0,
+        "impulso_vix_20s": 1.0,
+        "retorno_nasdaq100_20s": 1.0,
+        "impulso_reservas_fed_4s": 1.0
+      }
+    },
+    {
+      "archivo": "BTCUSDT_eventos_baja_v2_5m_2022-01-01_2023-01-01.parquet",
+      "filas": 105120,
+      "desde": "2022-01-01 00:00:00+00:00",
+      "hasta": "2022-12-31 23:55:00+00:00",
+      "clases": {
+        "0": 62242,
+        "1": 30703,
+        "2": 12175
+      },
+      "cobertura_macro": {
+        "impulso_dolar_amplio_20s": 1.0,
+        "impulso_rendimiento_real_10y_20s": 1.0,
+        "impulso_spread_baa_20s": 1.0,
+        "impulso_vix_20s": 1.0,
+        "retorno_nasdaq100_20s": 1.0,
+        "impulso_reservas_fed_4s": 1.0
+      }
+    },
+    {
+      "archivo": "BTCUSDT_eventos_baja_v2_10m_2022-01-01_2023-01-01.parquet",
+      "filas": 52560,
+      "desde": "2022-01-01 00:00:00+00:00",
+      "hasta": "2022-12-31 23:50:00+00:00",
+      "clases": {
+        "0": 31070,
+        "1": 15384,
+        "2": 6106
+      },
+      "cobertura_macro": {
+        "impulso_dolar_amplio_20s": 1.0,
+        "impulso_rendimiento_real_10y_20s": 1.0,
+        "impulso_spread_baa_20s": 1.0,
+        "impulso_vix_20s": 1.0,
+        "retorno_nasdaq100_20s": 1.0,
+        "impulso_reservas_fed_4s": 1.0
+      }
+    },
+    {
+      "archivo": "BTCUSDT_eventos_baja_v2_15m_2022-01-01_2023-01-01.parquet",
+      "filas": 35040,
+      "desde": "2022-01-01 00:00:00+00:00",
+      "hasta": "2022-12-31 23:45:00+00:00",
+      "clases": {
+        "0": 20733,
+        "1": 10237,
+        "2": 4070
+      },
+      "cobertura_macro": {
+        "impulso_dolar_amplio_20s": 1.0,
+        "impulso_rendimiento_real_10y_20s": 1.0,
+        "impulso_spread_baa_20s": 1.0,
+        "impulso_vix_20s": 1.0,
+        "retorno_nasdaq100_20s": 1.0,
+        "impulso_reservas_fed_4s": 1.0
+      }
+    },
+    {
+      "archivo": "BTCUSDT_eventos_baja_v2_30m_2022-01-01_2023-01-01.parquet",
+      "filas": 17520,
+      "desde": "2022-01-01 00:00:00+00:00",
+      "hasta": "2022-12-31 23:30:00+00:00",
+      "clases": {
+        "0": 10354,
+        "1": 5120,
+        "2": 2046
+      },
+      "cobertura_macro": {
+        "impulso_dolar_amplio_20s": 1.0,
+        "impulso_rendimiento_real_10y_20s": 1.0,
+        "impulso_spread_baa_20s": 1.0,
+        "impulso_vix_20s": 1.0,
+        "retorno_nasdaq100_20s": 1.0,
+        "impulso_reservas_fed_4s": 1.0
+      }
+    },
+    {
+      "archivo": "BTCUSDT_eventos_baja_v2_5m_2023-01-01_2024-01-01.parquet",
+      "filas": 104386,
+      "desde": "2023-01-01 00:00:00+00:00",
+      "hasta": "2023-12-31 23:55:00+00:00",
+      "clases": {
+        "0": 53462,
+        "1": 21863,
+        "2": 29061
+      },
+      "cobertura_macro": {
+        "impulso_dolar_amplio_20s": 1.0,
+        "impulso_rendimiento_real_10y_20s": 1.0,
+        "impulso_spread_baa_20s": 1.0,
+        "impulso_vix_20s": 1.0,
+        "retorno_nasdaq100_20s": 1.0,
+        "impulso_reservas_fed_4s": 1.0
+      }
+    },
+    {
+      "archivo": "BTCUSDT_eventos_baja_v2_10m_2023-01-01_2024-01-01.parquet",
+      "filas": 52194,
+      "desde": "2023-01-01 00:00:00+00:00",
+      "hasta": "2023-12-31 23:50:00+00:00",
+      "clases": {
+        "0": 26743,
+        "1": 10926,
+        "2": 14525
+      },
+      "cobertura_macro": {
+        "impulso_dolar_amplio_20s": 1.0,
+        "impulso_rendimiento_real_10y_20s": 1.0,
+        "impulso_spread_baa_20s": 1.0,
+        "impulso_vix_20s": 1.0,
+        "retorno_nasdaq100_20s": 1.0,
+        "impulso_reservas_fed_4s": 1.0
+      }
+    },
+    {
+      "archivo": "BTCUSDT_eventos_baja_v2_15m_2023-01-01_2024-01-01.parquet",
+      "filas": 34797,
+      "desde": "2023-01-01 00:00:00+00:00",
+      "hasta": "2023-12-31 23:45:00+00:00",
+      "clases": {
+        "0": 17792,
+        "1": 7280,
+        "2": 9725
+      },
+      "cobertura_macro": {
+        "impulso_dolar_amplio_20s": 1.0,
+        "impulso_rendimiento_real_10y_20s": 1.0,
+        "impulso_spread_baa_20s": 1.0,
+        "impulso_vix_20s": 1.0,
+        "retorno_nasdaq100_20s": 1.0,
+        "impulso_reservas_fed_4s": 1.0
+      }
+    },
+    {
+      "archivo": "BTCUSDT_eventos_baja_v2_30m_2023-01-01_2024-01-01.parquet",
+      "filas": 17399,
+      "desde": "2023-01-01 00:00:00+00:00",
+      "hasta": "2023-12-31 23:30:00+00:00",
+      "clases": {
+        "0": 8906,
+        "1": 3644,
+        "2": 4849
+      },
+      "cobertura_macro": {
+        "impulso_dolar_amplio_20s": 1.0,
+        "impulso_rendimiento_real_10y_20s": 1.0,
+        "impulso_spread_baa_20s": 1.0,
+        "impulso_vix_20s": 1.0,
+        "retorno_nasdaq100_20s": 1.0,
+        "impulso_reservas_fed_4s": 1.0
+      }
+    },
+    {
+      "archivo": "BTCUSDT_eventos_baja_v2_5m_2024-01-01_2025-01-01.parquet",
+      "filas": 105408,
+      "desde": "2024-01-01 00:00:00+00:00",
+      "hasta": "2024-12-31 23:55:00+00:00",
+      "clases": {
+        "0": 63819,
+        "1": 27994,
+        "2": 13595
+      },
+      "cobertura_macro": {
+        "impulso_dolar_amplio_20s": 1.0,
+        "impulso_rendimiento_real_10y_20s": 1.0,
+        "impulso_spread_baa_20s": 1.0,
+        "impulso_vix_20s": 1.0,
+        "retorno_nasdaq100_20s": 1.0,
+        "impulso_reservas_fed_4s": 1.0
+      }
+    },
+    {
+      "archivo": "BTCUSDT_eventos_baja_v2_10m_2024-01-01_2025-01-01.parquet",
+      "filas": 52704,
+      "desde": "2024-01-01 00:00:00+00:00",
+      "hasta": "2024-12-31 23:50:00+00:00",
+      "clases": {
+        "0": 31910,
+        "1": 13985,
+        "2": 6809
+      },
+      "cobertura_macro": {
+        "impulso_dolar_amplio_20s": 1.0,
+        "impulso_rendimiento_real_10y_20s": 1.0,
+        "impulso_spread_baa_20s": 1.0,
+        "impulso_vix_20s": 1.0,
+        "retorno_nasdaq100_20s": 1.0,
+        "impulso_reservas_fed_4s": 1.0
+      }
+    },
+    {
+      "archivo": "BTCUSDT_eventos_baja_v2_15m_2024-01-01_2025-01-01.parquet",
+      "filas": 35136,
+      "desde": "2024-01-01 00:00:00+00:00",
+      "hasta": "2024-12-31 23:45:00+00:00",
+      "clases": {
+        "0": 21242,
+        "1": 9346,
+        "2": 4548
+      },
+      "cobertura_macro": {
+        "impulso_dolar_amplio_20s": 1.0,
+        "impulso_rendimiento_real_10y_20s": 1.0,
+        "impulso_spread_baa_20s": 1.0,
+        "impulso_vix_20s": 1.0,
+        "retorno_nasdaq100_20s": 1.0,
+        "impulso_reservas_fed_4s": 1.0
+      }
+    },
+    {
+      "archivo": "BTCUSDT_eventos_baja_v2_30m_2024-01-01_2025-01-01.parquet",
+      "filas": 17568,
+      "desde": "2024-01-01 00:00:00+00:00",
+      "hasta": "2024-12-31 23:30:00+00:00",
+      "clases": {
+        "0": 10619,
+        "1": 4668,
+        "2": 2281
+      },
+      "cobertura_macro": {
+        "impulso_dolar_amplio_20s": 1.0,
+        "impulso_rendimiento_real_10y_20s": 1.0,
+        "impulso_spread_baa_20s": 1.0,
+        "impulso_vix_20s": 1.0,
+        "retorno_nasdaq100_20s": 1.0,
+        "impulso_reservas_fed_4s": 1.0
+      }
+    }
+  ]
+}

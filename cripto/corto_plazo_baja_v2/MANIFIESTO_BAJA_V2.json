@@ -1,0 +1,27 @@
+{
+  "carpeta_destino": "cripto/corto_plazo_baja_v2",
+  "archivos_nuevos": [
+    "COMANDOS_BAJA_V2.txt",
+    "README_BAJA_V2.md",
+    "__init__.py",
+    "auditar_eventos.py",
+    "configuracion.py",
+    "entrenar_modelos.py",
+    "generar_eventos.py",
+    "requirements_baja_v2.txt",
+    "seleccionar_modelo.py",
+    "utilidades.py"
+  ],
+  "archivos_a_reemplazar": [],
+  "archivos_que_no_deben_tocarse": [
+    "cripto/corto_plazo_v4_1",
+    "cripto/corto_plazo_v4_5",
+    "cripto/corto_plazo_v4_6_macro",
+    "cripto/corto_plazo_baja_v1"
+  ],
+  "sintaxis_python_aprobada": true,
+  "errores_compilacion": [],
+  "promocion_automatica": false,
+  "usa_2025_seleccion": false,
+  "usa_2026_seleccion": false
+}
