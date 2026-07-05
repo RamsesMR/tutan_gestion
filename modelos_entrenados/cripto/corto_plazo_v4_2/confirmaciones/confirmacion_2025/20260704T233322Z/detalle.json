@@ -1,0 +1,39 @@
+{
+    "fecha_utc": "2026-07-04T23:33:22.026029+00:00",
+    "periodo_entrenamiento_detector": {
+        "desde": "2021-01-01",
+        "hasta": "2025-01-01"
+    },
+    "periodo_entrenamiento_meta": [
+        "2023",
+        "2024"
+    ],
+    "periodo_confirmacion": {
+        "desde": "2025-01-01",
+        "hasta": "2026-01-01"
+    },
+    "politica_congelada": {
+        "horizonte": 720,
+        "umbral_rearme": 0.4,
+        "enfriamiento": 60,
+        "distancia_minima": 0.01,
+        "diferencia_minima": null,
+        "exige_pendiente_positiva_5m": false
+    },
+    "umbral_meta_congelado": 0.48,
+    "variante_sube": "v4_63_sin_pesos",
+    "variante_baja": "v4_63_moderado",
+    "filas_evaluadas": 525350,
+    "senales_politica": 308,
+    "senales_aceptadas_meta": 165,
+    "metricas_2025": {
+        "operaciones": 42,
+        "precision": 0.38095238095238093,
+        "porcentaje_acierto": 38.095238095238095,
+        "porcentaje_positivas": 52.38095238095239,
+        "retorno_neto_medio": 0.0028167316899784032,
+        "retorno_neto_mediano": 0.0008419020813060793,
+        "factor_beneficio": 1.2575269657475758,
+        "maximo_drawdown": -0.1735079752975901
+    }
+}
