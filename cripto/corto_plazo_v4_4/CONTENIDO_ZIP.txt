@@ -1,0 +1,15 @@
+V4.4 — archivos incluidos
+
+__init__.py
+configuracion.py
+utilidades.py
+verificar_entorno.py
+diagnosticar_baja.py
+laboratorio_salidas_baja.py
+seleccionar_estrategia.py
+comparar_v4_1.py
+README_V4_4.md
+
+Extraer directamente dentro de:
+
+cripto/corto_plazo_v4_4
