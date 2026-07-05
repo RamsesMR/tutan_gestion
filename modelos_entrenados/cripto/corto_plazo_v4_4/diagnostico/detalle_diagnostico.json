@@ -1,0 +1,56 @@
+{
+    "version": "v4_4_gestion_riesgo_baja",
+    "uso_2025": false,
+    "uso_2026": false,
+    "operaciones_analizadas": 197,
+    "resumen": [
+        {
+            "pliegue": "validacion_2023",
+            "umbral_baja": 0.32,
+            "operaciones": 70,
+            "operaciones_con_cruce": 68,
+            "porcentaje_operaciones_con_cruce": 97.14285714285714,
+            "porcentaje_perdedoras_con_cruce": 96.29629629629629,
+            "porcentaje_ganadoras_con_cruce": 97.67441860465115,
+            "precision_alerta_perdida": 38.23529411764706,
+            "retorno_neto_medio_fijo_cruzadas": 0.004744335429573065,
+            "retorno_neto_medio_en_cruce": 0.0002494855724696424
+        },
+        {
+            "pliegue": "validacion_2023",
+            "umbral_baja": 0.47,
+            "operaciones": 70,
+            "operaciones_con_cruce": 50,
+            "porcentaje_operaciones_con_cruce": 71.42857142857143,
+            "porcentaje_perdedoras_con_cruce": 70.37037037037037,
+            "porcentaje_ganadoras_con_cruce": 72.09302325581395,
+            "precision_alerta_perdida": 38.0,
+            "retorno_neto_medio_fijo_cruzadas": 0.006886911273681831,
+            "retorno_neto_medio_en_cruce": 0.0005879094112718142
+        },
+        {
+            "pliegue": "validacion_2024",
+            "umbral_baja": 0.32,
+            "operaciones": 127,
+            "operaciones_con_cruce": 98,
+            "porcentaje_operaciones_con_cruce": 77.16535433070865,
+            "porcentaje_perdedoras_con_cruce": 85.71428571428571,
+            "porcentaje_ganadoras_con_cruce": 71.7948717948718,
+            "precision_alerta_perdida": 42.857142857142854,
+            "retorno_neto_medio_fijo_cruzadas": 0.0017822032079017971,
+            "retorno_neto_medio_en_cruce": 0.000197184063679395
+        },
+        {
+            "pliegue": "validacion_2024",
+            "umbral_baja": 0.47,
+            "operaciones": 127,
+            "operaciones_con_cruce": 119,
+            "porcentaje_operaciones_con_cruce": 93.7007874015748,
+            "porcentaje_perdedoras_con_cruce": 97.95918367346938,
+            "porcentaje_ganadoras_con_cruce": 91.02564102564102,
+            "precision_alerta_perdida": 40.33613445378151,
+            "retorno_neto_medio_fijo_cruzadas": 0.002830475302513298,
+            "retorno_neto_medio_en_cruce": -0.0021954038940725663
+        }
+    ]
+}

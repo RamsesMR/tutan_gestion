@@ -1,0 +1,10 @@
+{
+    "decision": "candidata_v4_5_seleccionada",
+    "variante": "flujo_spot",
+    "umbral": 0.42,
+    "retorno_neto_medio_minimo": 0.0041275344914634,
+    "factor_beneficio_minimo": 1.570160359699161,
+    "drawdown_peor": -0.1186122187985071,
+    "uso_2025_para_seleccion": false,
+    "uso_2026_para_seleccion": false
+}

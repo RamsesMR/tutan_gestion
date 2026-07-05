@@ -1,0 +1,13 @@
+{
+    "decision": "mantener_v4_5_spot",
+    "motivo": "Ninguna familia de futuros mejoró de forma material el control Spot sobre exactamente la misma muestra sin degradar demasiado retorno, factor o drawdown.",
+    "control": {
+        "variante": "flujo_spot_misma_muestra",
+        "umbral": 0.44,
+        "retorno_neto_medio_minimo": 0.00465201388746,
+        "factor_beneficio_minimo": 1.6411048896813252,
+        "drawdown_peor": -0.1206114764460829
+    },
+    "uso_2025_para_seleccion": false,
+    "uso_2026_para_seleccion": false
+}

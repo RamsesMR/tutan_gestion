@@ -1,0 +1,55 @@
+{
+    "fecha_utc": "2026-07-05T09:39:53.236890+00:00",
+    "version": "v4_3_historico_ampliado",
+    "estrategia_congelada": {
+        "umbral_sube": 0.44,
+        "modo_entrada": "cruce",
+        "usa_veto_baja": false,
+        "tipo_salida": "fija",
+        "nombre_salida": "fija_480m",
+        "horizonte_salida": 480,
+        "coste": 0.001
+    },
+    "historico_ampliado_desde": "2017-08-17",
+    "estrategia_modificada": false,
+    "resultados": [
+        {
+            "pliegue": "validacion_2023",
+            "umbral_sube": 0.44,
+            "modo_entrada": "cruce",
+            "usa_veto_baja": false,
+            "tipo_salida": "fija",
+            "nombre_salida": "fija_480m",
+            "horizonte_salida": 480,
+            "coste": 0.001,
+            "operaciones": 171,
+            "precision_clasificacion": 0.4093567251461988,
+            "porcentaje_acierto_clasificacion": 40.93567251461988,
+            "porcentaje_operaciones_positivas": 56.72514619883041,
+            "retorno_bruto_medio": 0.0027120993525247728,
+            "retorno_neto_medio": 0.0017120993525247719,
+            "retorno_neto_mediano": 0.002599680940285621,
+            "factor_beneficio": 1.3567709040165783,
+            "maximo_drawdown": -0.14253799103204656
+        },
+        {
+            "pliegue": "validacion_2024",
+            "umbral_sube": 0.44,
+            "modo_entrada": "cruce",
+            "usa_veto_baja": false,
+            "tipo_salida": "fija",
+            "nombre_salida": "fija_480m",
+            "horizonte_salida": 480,
+            "coste": 0.001,
+            "operaciones": 298,
+            "precision_clasificacion": 0.38926174496644295,
+            "porcentaje_acierto_clasificacion": 38.92617449664429,
+            "porcentaje_operaciones_positivas": 53.355704697986575,
+            "retorno_bruto_medio": 0.0013340686968172169,
+            "retorno_neto_medio": 0.000334068696817216,
+            "retorno_neto_mediano": 0.0007836664937134205,
+            "factor_beneficio": 1.0451689285979833,
+            "maximo_drawdown": -0.4309924140314958
+        }
+    ]
+}

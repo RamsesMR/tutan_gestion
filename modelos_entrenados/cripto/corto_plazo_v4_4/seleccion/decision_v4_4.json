@@ -1,0 +1,7 @@
+{
+    "version": "v4_4_gestion_riesgo_baja",
+    "decision": "mantener_v4_1",
+    "motivo": "Ninguna salida BAJA mejoró el drawdown en desarrollo manteniendo al menos el 90 % del retorno y el 95 % del factor de beneficio de V4.1 en ambos pliegues.",
+    "uso_2025": false,
+    "uso_2026": false
+}
