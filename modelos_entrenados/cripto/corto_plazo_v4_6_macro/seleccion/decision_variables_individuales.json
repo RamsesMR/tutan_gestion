@@ -1,0 +1,28 @@
+{
+    "decision": "fase_individual_completada",
+    "uso_2025_para_seleccion": false,
+    "uso_2026_para_seleccion": false,
+    "bases": {
+        "v41": {
+            "base": "v41",
+            "variante_control": "v41_control_macro",
+            "umbral_congelado": 0.44,
+            "variables_aprobadas_preliminares": [
+                {
+                    "clave_macro": "reservas_fed",
+                    "variable_macro": "impulso_reservas_fed_4s",
+                    "variante": "v41_reservas_fed"
+                }
+            ],
+            "requiere_revision_manual_antes_de_combinar": true
+        },
+        "v45": {
+            "base": "v45",
+            "variante_control": "v45_control_macro",
+            "umbral_congelado": 0.42,
+            "variables_aprobadas_preliminares": [],
+            "requiere_revision_manual_antes_de_combinar": true
+        }
+    },
+    "nota": "No se construye una combinación automáticamente. Las candidatas deben revisarse antes de la fase 2 y confirmarse con datos vintage de ALFRED antes de cualquier promoción."
+}

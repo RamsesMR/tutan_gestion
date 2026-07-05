@@ -1,5 +1,5 @@
 TUTAN_GESTION - COMANDOS DEL PROYECTO
-=====================================
+======================================
 
 Ejecutar los comandos desde la raíz del proyecto:
 
@@ -18,6 +18,9 @@ python -m pip install pandas numpy requests SQLAlchemy "psycopg[binary]" python-
 
 # Instalar soporte para archivos Parquet
 python -m pip install pyarrow
+
+# Dependencias usadas por los modelos
+python -m pip install joblib scikit-learn
 
 # Actualizar requirements.txt
 python -m pip freeze > requirements.txt
@@ -104,7 +107,7 @@ python -m cripto.recoleccion.procesar_rango_historico --simbolo ETHUSDT --interv
 
 
 ============================================================
-6. HISTÓRICO DE UN MINUTO
+6. HISTÓRICO DE UN MINUTO - 2021 A 2026
 ============================================================
 
 # BTCUSDT: enero de 2021 a marzo de 2026
@@ -115,7 +118,24 @@ python -m cripto.recoleccion.procesar_rango_historico --simbolo ETHUSDT --interv
 
 
 ============================================================
-7. CONSULTAS DE COMPROBACIÓN EN POSTGRESQL
+7. HISTÓRICO DE UN MINUTO - AMPLIACIÓN 2017 A 2020
+============================================================
+
+# Primer mes disponible de BTCUSDT
+python -m cripto.recoleccion.procesar_rango_historico --simbolo BTCUSDT --intervalo 1m --desde 2017-08 --hasta 2017-08
+
+# Primer mes disponible de ETHUSDT
+python -m cripto.recoleccion.procesar_rango_historico --simbolo ETHUSDT --intervalo 1m --desde 2017-08 --hasta 2017-08
+
+# BTCUSDT: septiembre de 2017 a diciembre de 2020
+python -m cripto.recoleccion.procesar_rango_historico --simbolo BTCUSDT --intervalo 1m --desde 2017-09 --hasta 2020-12
+
+# ETHUSDT: septiembre de 2017 a diciembre de 2020
+python -m cripto.recoleccion.procesar_rango_historico --simbolo ETHUSDT --intervalo 1m --desde 2017-09 --hasta 2020-12
+
+
+============================================================
+8. CONSULTAS DE COMPROBACIÓN EN POSTGRESQL
 ============================================================
 
 IMPORTANTE:
@@ -135,6 +155,7 @@ INNER JOIN mercados
 WHERE velas.intervalo = '1h'
 GROUP BY mercados.simbolo_proveedor
 ORDER BY mercados.simbolo_proveedor;
+
 
 # Comprobar cobertura histórica completa
 
@@ -157,7 +178,7 @@ ORDER BY
 
 
 ============================================================
-8. CONFIGURACIÓN DEL MODELO DE CORTO PLAZO
+9. CONFIGURACIÓN DEL MODELO BASE DE CORTO PLAZO
 ============================================================
 
 # Comprobar la configuración
@@ -165,7 +186,7 @@ python -c "from cripto.corto_plazo.configuracion import SIMBOLOS, INTERVALO, HOR
 
 
 ============================================================
-9. PRUEBA MENSUAL DE BTCUSDT
+10. PRUEBA MENSUAL DE BTCUSDT
 ============================================================
 
 # Preparar enero de 2026
@@ -182,28 +203,28 @@ python -c "import numpy as np; import pandas as pd; ruta=r'datos/cripto/preparad
 
 
 ============================================================
-10. BTCUSDT - BLOQUES DEL MODELO DE CORTO PLAZO
+11. BTCUSDT - BLOQUES DEL MODELO DE CORTO PLAZO
 ============================================================
 
-# BTCUSDT 2025
-python -m cripto.corto_plazo.preparar_datos --simbolo BTCUSDT --desde 2025-01-01 --hasta 2026-01-01
-python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/BTCUSDT_1m_4h_2025-01-01_2026-01-01.parquet
-
-# BTCUSDT 2024
-python -m cripto.corto_plazo.preparar_datos --simbolo BTCUSDT --desde 2024-01-01 --hasta 2025-01-01
-python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/BTCUSDT_1m_4h_2024-01-01_2025-01-01.parquet
-
-# BTCUSDT 2023
-python -m cripto.corto_plazo.preparar_datos --simbolo BTCUSDT --desde 2023-01-01 --hasta 2024-01-01
-python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/BTCUSDT_1m_4h_2023-01-01_2024-01-01.parquet
+# BTCUSDT 2021
+python -m cripto.corto_plazo.preparar_datos --simbolo BTCUSDT --desde 2021-01-01 --hasta 2022-01-01
+python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/BTCUSDT_1m_4h_2021-01-01_2022-01-01.parquet
 
 # BTCUSDT 2022
 python -m cripto.corto_plazo.preparar_datos --simbolo BTCUSDT --desde 2022-01-01 --hasta 2023-01-01
 python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/BTCUSDT_1m_4h_2022-01-01_2023-01-01.parquet
 
-# BTCUSDT 2021
-python -m cripto.corto_plazo.preparar_datos --simbolo BTCUSDT --desde 2021-01-01 --hasta 2022-01-01
-python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/BTCUSDT_1m_4h_2021-01-01_2022-01-01.parquet
+# BTCUSDT 2023
+python -m cripto.corto_plazo.preparar_datos --simbolo BTCUSDT --desde 2023-01-01 --hasta 2024-01-01
+python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/BTCUSDT_1m_4h_2023-01-01_2024-01-01.parquet
+
+# BTCUSDT 2024
+python -m cripto.corto_plazo.preparar_datos --simbolo BTCUSDT --desde 2024-01-01 --hasta 2025-01-01
+python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/BTCUSDT_1m_4h_2024-01-01_2025-01-01.parquet
+
+# BTCUSDT 2025
+python -m cripto.corto_plazo.preparar_datos --simbolo BTCUSDT --desde 2025-01-01 --hasta 2026-01-01
+python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/BTCUSDT_1m_4h_2025-01-01_2026-01-01.parquet
 
 # BTCUSDT enero-mayo de 2026
 python -m cripto.corto_plazo.preparar_datos --simbolo BTCUSDT --desde 2026-01-01 --hasta 2026-06-01
@@ -211,28 +232,28 @@ python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_p
 
 
 ============================================================
-11. ETHUSDT - BLOQUES DEL MODELO DE CORTO PLAZO
+12. ETHUSDT - BLOQUES DEL MODELO DE CORTO PLAZO
 ============================================================
 
-# ETHUSDT 2025
-python -m cripto.corto_plazo.preparar_datos --simbolo ETHUSDT --desde 2025-01-01 --hasta 2026-01-01
-python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/ETHUSDT_1m_4h_2025-01-01_2026-01-01.parquet
-
-# ETHUSDT 2024
-python -m cripto.corto_plazo.preparar_datos --simbolo ETHUSDT --desde 2024-01-01 --hasta 2025-01-01
-python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/ETHUSDT_1m_4h_2024-01-01_2025-01-01.parquet
-
-# ETHUSDT 2023
-python -m cripto.corto_plazo.preparar_datos --simbolo ETHUSDT --desde 2023-01-01 --hasta 2024-01-01
-python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/ETHUSDT_1m_4h_2023-01-01_2024-01-01.parquet
+# ETHUSDT 2021
+python -m cripto.corto_plazo.preparar_datos --simbolo ETHUSDT --desde 2021-01-01 --hasta 2022-01-01
+python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/ETHUSDT_1m_4h_2021-01-01_2022-01-01.parquet
 
 # ETHUSDT 2022
 python -m cripto.corto_plazo.preparar_datos --simbolo ETHUSDT --desde 2022-01-01 --hasta 2023-01-01
 python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/ETHUSDT_1m_4h_2022-01-01_2023-01-01.parquet
 
-# ETHUSDT 2021
-python -m cripto.corto_plazo.preparar_datos --simbolo ETHUSDT --desde 2021-01-01 --hasta 2022-01-01
-python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/ETHUSDT_1m_4h_2021-01-01_2022-01-01.parquet
+# ETHUSDT 2023
+python -m cripto.corto_plazo.preparar_datos --simbolo ETHUSDT --desde 2023-01-01 --hasta 2024-01-01
+python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/ETHUSDT_1m_4h_2023-01-01_2024-01-01.parquet
+
+# ETHUSDT 2024
+python -m cripto.corto_plazo.preparar_datos --simbolo ETHUSDT --desde 2024-01-01 --hasta 2025-01-01
+python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/ETHUSDT_1m_4h_2024-01-01_2025-01-01.parquet
+
+# ETHUSDT 2025
+python -m cripto.corto_plazo.preparar_datos --simbolo ETHUSDT --desde 2025-01-01 --hasta 2026-01-01
+python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_plazo/ETHUSDT_1m_4h_2025-01-01_2026-01-01.parquet
 
 # ETHUSDT enero-mayo de 2026
 python -m cripto.corto_plazo.preparar_datos --simbolo ETHUSDT --desde 2026-01-01 --hasta 2026-06-01
@@ -240,7 +261,7 @@ python -m cripto.corto_plazo.variables --archivo datos/cripto/preparados/corto_p
 
 
 ============================================================
-12. EJECUTAR EL SCRIPT DE ETHUSDT PENDIENTE
+13. SCRIPT DE ETHUSDT PENDIENTE
 ============================================================
 
 # Ejecutar normalmente
@@ -251,31 +272,20 @@ powershell -ExecutionPolicy Bypass -File .\procesar_eth_pendiente.ps1
 
 
 ============================================================
-14. VALIDACIÓN GLOBAL DE LOS CONJUNTOS DE CORTO PLAZO
+14. VALIDACIÓN Y ANÁLISIS DEL MODELO BASE
 ============================================================
 
+# Validación global de los conjuntos
 python -m cripto.corto_plazo.validar_conjuntos
 
-
-============================================================
-15. ANÁLISIS DEL OBJETIVO DE CORTO PLAZO
-============================================================
-
+# Analizar el objetivo
 python -m cripto.corto_plazo.analizar_objetivo
 
-============================================================
-16. ANÁLISIS DE CLASES Y MOVIMIENTOS EXTREMOS
-============================================================
-
+# Analizar clases y movimientos extremos
 python -m cripto.corto_plazo.analizar_clases
 
-============================================================
-17. PREPARAR DIVISIONES TEMPORALES PARA EL MODELO
-============================================================
-
-============================================================
-19. AJUSTAR LA REGLA DE DECISIÓN DE LOS MODELOS BASE
-============================================================
+# Preparar divisiones temporales
+python -m cripto.corto_plazo.preparar_divisiones
 
 # Ajustar BTCUSDT usando validación de 2025
 python -m cripto.corto_plazo.ajustar_decision --simbolo BTCUSDT
@@ -283,4 +293,222 @@ python -m cripto.corto_plazo.ajustar_decision --simbolo BTCUSDT
 # Ajustar ETHUSDT usando validación de 2025
 python -m cripto.corto_plazo.ajustar_decision --simbolo ETHUSDT
 
-python -m cripto.corto_plazo.preparar_divisiones
+
+============================================================
+15. V4.1 - LABORATORIO DE EJECUCIÓN
+============================================================
+
+# Generar probabilidades fuera de muestra de 2023 y 2024
+python -m cripto.corto_plazo_v4_1.generar_predicciones_desarrollo --epocas 3 --tamano-lote 100000
+
+# Laboratorio rápido
+python -m cripto.corto_plazo_v4_1.laboratorio_ejecucion --modo-rapido
+
+# Laboratorio completo
+python -m cripto.corto_plazo_v4_1.laboratorio_ejecucion
+
+# Seleccionar estrategia
+python -m cripto.corto_plazo_v4_1.seleccionar_estrategia
+
+# Confirmación retrospectiva de 2025
+python -m cripto.corto_plazo_v4_1.confirmar_2025 --epocas 3 --tamano-lote 100000
+
+# Confirmación retrospectiva de enero-mayo de 2026
+python -m cripto.corto_plazo_v4_1.confirmar_2026 --epocas 3 --tamano-lote 100000
+
+# Inspeccionar resultados de 2026
+python -m cripto.corto_plazo_v4_1.inspeccionar_2026
+
+
+============================================================
+16. V4.2 - MEJORA DE LA POLÍTICA DE EJECUCIÓN
+============================================================
+
+# Construir bases de 2023 y 2024
+python -m cripto.corto_plazo_v4_2.construir_bases
+
+# Probar duraciones de salida
+python -m cripto.corto_plazo_v4_2.laboratorio_salidas
+
+# Probar filtros y calidad del cruce
+python -m cripto.corto_plazo_v4_2.laboratorio_filtros
+
+# Seleccionar política
+python -m cripto.corto_plazo_v4_2.seleccionar_politica
+
+# Entrenar meta-modelo
+python -m cripto.corto_plazo_v4_2.entrenar_meta_modelo
+
+# Confirmación de 2025 con meta-modelo
+python -m cripto.corto_plazo_v4_2.confirmar_2025
+
+# Confirmación de 2025 sin meta-modelo
+python -m cripto.corto_plazo_v4_2.confirmar_2025_sin_meta
+
+
+============================================================
+17. V4.3 - V4.1 CON HISTÓRICO AMPLIADO
+============================================================
+
+# Integrar histórico 2017-2020
+python -m cripto.corto_plazo_v4_3.integrar_historico --fase todo
+
+# Repetir la integración después de corregir un error
+python -m cripto.corto_plazo_v4_3.integrar_historico --fase todo --sobrescribir
+
+# Generar predicciones de desarrollo
+python -m cripto.corto_plazo_v4_3.generar_predicciones_desarrollo --epocas 3 --tamano-lote 100000
+
+# Evaluar 2023 y 2024 con la estrategia congelada de V4.1
+python -m cripto.corto_plazo_v4_3.evaluar_desarrollo
+
+# Evaluar 2025 conocido
+python -m cripto.corto_plazo_v4_3.evaluar_2025 --epocas 3 --tamano-lote 100000
+
+# Evaluar enero-mayo de 2026 conocido
+python -m cripto.corto_plazo_v4_3.evaluar_2026 --epocas 3 --tamano-lote 100000
+
+# Comparar V4.3 contra V4.1
+python -m cripto.corto_plazo_v4_3.comparar_v4_1
+
+
+============================================================
+18. V4.4 - SALIDA DINÁMICA CON DETECTOR BAJA
+============================================================
+
+# Verificar artefactos y entorno
+python -m cripto.corto_plazo_v4_4.verificar_entorno
+
+# Diagnosticar el detector BAJA
+python -m cripto.corto_plazo_v4_4.diagnosticar_baja
+
+# Ejecutar laboratorio de salidas anticipadas
+python -m cripto.corto_plazo_v4_4.laboratorio_salidas_baja
+
+# Seleccionar estrategia
+python -m cripto.corto_plazo_v4_4.seleccionar_estrategia
+
+# Comparar V4.4 contra V4.1
+python -m cripto.corto_plazo_v4_4.comparar_v4_1
+
+
+============================================================
+19. V4.5 - AUDITORÍA Y VARIABLES DE FLUJO SPOT
+============================================================
+
+# Auditar fuentes disponibles
+python -m cripto.corto_plazo_v4_5.auditar_fuentes
+
+# Generar las 27 variables de flujo Spot
+python -m cripto.corto_plazo_v4_5.generar_variables_flujo_spot
+
+# Regenerar las variables de flujo Spot
+python -m cripto.corto_plazo_v4_5.generar_variables_flujo_spot --sobrescribir
+
+# Validar integración
+python -m cripto.corto_plazo_v4_5.validar_integracion
+
+# Entrenar control de 63 variables y variante Spot de 90 variables
+python -m cripto.corto_plazo_v4_5.generar_predicciones_desarrollo --variantes control_63,flujo_spot --epocas 3 --tamano-lote 100000
+
+# Evaluar desarrollo
+python -m cripto.corto_plazo_v4_5.evaluar_desarrollo
+
+# Seleccionar candidata Spot
+python -m cripto.corto_plazo_v4_5.seleccionar_candidata
+
+# Comparar la candidata con V4.1 original
+python -m cripto.corto_plazo_v4_5.comparar_v4_1
+
+
+============================================================
+20. V4.5 - FUTUROS USD-M, BASIS Y FUNDING
+============================================================
+
+# Descargar klines de futuros para BTCUSDT y ETHUSDT
+python -m cripto.corto_plazo_v4_5.descargar_futuros_binance --desde 2020-12 --hasta 2024-12
+
+# Descargar funding
+python -m cripto.corto_plazo_v4_5.descargar_funding_binance --desde 2020-12-01 --hasta 2025-01-01
+
+# Integrar futuros, basis y funding
+python -m cripto.corto_plazo_v4_5.integrar_variables_futuros
+
+# Validar archivos Spot y completos
+python -m cripto.corto_plazo_v4_5.validar_integracion
+
+# Entrenar Spot y futuros usando exactamente la misma muestra
+python -m cripto.corto_plazo_v4_5.generar_predicciones_desarrollo --variantes flujo_spot_misma_muestra,flujo_spot_futuros --epocas 3 --tamano-lote 100000
+
+# Evaluar todas las variantes disponibles
+python -m cripto.corto_plazo_v4_5.evaluar_desarrollo
+
+
+============================================================
+21. V4.5 - ABLACIÓN DE VARIABLES DE FUTUROS
+============================================================
+
+# Entrenar las cuatro familias de ablación
+python -m cripto.corto_plazo_v4_5.generar_predicciones_desarrollo --variantes spot_flujo_futuros,spot_rendimiento_basis,spot_funding,spot_flujo_basis_sin_funding --epocas 3 --tamano-lote 100000
+
+# Evaluar todas las variantes
+python -m cripto.corto_plazo_v4_5.evaluar_desarrollo
+
+# Seleccionar entre las familias de futuros sin alterar la selección Spot
+python -m cripto.corto_plazo_v4_5.seleccionar_ablacion_futuros
+
+# Generar comparación final de la ablación
+python -m cripto.corto_plazo_v4_5.comparar_ablacion_futuros
+
+
+============================================================
+22. LIMPIAR CACHÉ DE PYTHON
+============================================================
+
+# Limpiar la caché de V4.5 después de reemplazar archivos
+Remove-Item -Recurse -Force .\cripto\corto_plazo_v4_5\__pycache__ -ErrorAction SilentlyContinue
+
+
+============================================================
+23. ESTADO ACTUAL DE LAS VERSIONES
+============================================================
+
+V4.1
+----
+Campeona oficial mientras no termine la confirmación posterior de V4.5.
+
+V4.2
+----
+No sustituyó a V4.1.
+
+V4.3
+----
+Reentrenamiento con histórico ampliado 2017-2020.
+Fue descartada por degradación de robustez y aumento del drawdown.
+
+V4.4
+----
+Salida dinámica con detector BAJA.
+Fue descartada porque reducía demasiado la rentabilidad.
+
+V4.5-SPOT
+---------
+Candidata principal congelada:
+- variante: flujo_spot
+- variables: 90
+- umbral: 0,42
+- entrada: cruce desde abajo
+- salida: 480 minutos
+- coste: 0,001
+- épocas: 3
+- lote: 100000
+
+V4.5-FUTUROS
+------------
+La integración completa y las familias de ablación no sustituyen por ahora
+a V4.5-Spot.
+
+La familia spot_rendimiento_basis mostró mayor retorno y factor de beneficio,
+pero no fue promovida porque empeoró demasiado el drawdown.
+
+2025 y 2026 no se utilizaron para seleccionar las variantes de V4.5.
