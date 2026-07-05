@@ -1,0 +1,15 @@
+{
+    "decision": "ninguna_candidata_macro_supera_la_prueba_de_semillas",
+    "candidatas_robustas": [],
+    "siguiente_paso": "Mantener V4.1 y V4.5-Spot sin macro.",
+    "semillas": [
+        11,
+        23,
+        42,
+        77,
+        101
+    ],
+    "uso_2025_para_seleccion": false,
+    "uso_2026_para_seleccion": false,
+    "promocion_automatica": false
+}

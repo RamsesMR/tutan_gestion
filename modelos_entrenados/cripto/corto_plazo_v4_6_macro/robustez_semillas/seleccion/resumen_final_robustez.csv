@@ -1,0 +1,4 @@
+﻿comparacion,control,candidata,umbral,variable_macro,semillas_totales,semillas_aprobadas,signos_estables,mejora_retorno_mediana,mejora_factor_mediana,mejora_drawdown_mediana,retencion_retorno_mediana_peor_ano,retencion_factor_mediana_peor_ano,operaciones_minimas_mediana,concentracion_mensual_mediana,robusta
+v41_reservas_044,v41_control_macro,v41_reservas_fed,0.44,impulso_reservas_fed_4s,5,2,5,0.0853741594094407,0.0358147160359367,-0.0320790785526253,0.9531793246623922,0.9791449191305376,67.0,0.2234964747006378,False
+v41_vix_042,v41_control_macro,v41_vix,0.42,impulso_vix_20s,5,2,5,0.1386971348986643,-0.053178292133735,-0.0083104694243872,0.6965774347530546,0.8143910718682501,76.0,0.2487953249286452,False
+v45_reservas_044,v45_control_macro,v45_reservas_fed,0.44,impulso_reservas_fed_4s,5,1,5,-0.0678123356542664,-0.0398057102146161,-0.0478140824966429,0.8574424209337622,0.9026600157696734,56.0,0.2361077282705828,False
