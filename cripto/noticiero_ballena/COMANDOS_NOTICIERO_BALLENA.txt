@@ -1,0 +1,85 @@
+NOTICIERO BALLENA V1 — POWERSHELL
+================================
+
+EJECUTAR DESDE LA RAÍZ DE tutan_gestion EN LA RAMA dev2.
+
+0) INSTALAR Y PROBAR
+--------------------
+python -m pip install -r cripto/noticiero_ballena/requirements_noticiero_ballena.txt
+python -m pytest cripto/noticiero_ballena/tests -q
+
+1) RECOLECCIÓN GRATUITA EN TIEMPO REAL
+--------------------------------------
+# No requiere cuenta, token ni archivo .env.
+python -m cripto.noticiero_ballena.recolectar_tiempo_real `
+  --proveedor blockchain_com `
+  --min-usd 1000000 `
+  --min-btc 10
+
+# Salida:
+# datos/cripto/crudos/noticiero_ballena/blockchain_com_tiempo_real.jsonl
+
+2) CONSTRUIR LA BIBLIOTECA HISTÓRICA GRATUITA
+---------------------------------------------
+# BigQuery Sandbox no requiere tarjeta ni facturación.
+# Se necesita un proyecto de Google Cloud y credenciales locales ADC.
+# La primera ejecución SOLO ESTIMA el volumen; no descarga ni consume la consulta real.
+
+$env:GOOGLE_CLOUD_PROJECT="ID_DE_TU_PROYECTO"
+gcloud auth application-default login
+
+python -m cripto.noticiero_ballena.construir_historico `
+  --desde 2021-01-01 `
+  --hasta 2025-01-01 `
+  --precios datos/cripto/preparados/corto_plazo_baja_v1 `
+  --min-usd 1000000
+
+# Si la estimación queda dentro del límite gratuito configurado, ejecutar:
+python -m cripto.noticiero_ballena.construir_historico `
+  --desde 2021-01-01 `
+  --hasta 2025-01-01 `
+  --precios datos/cripto/preparados/corto_plazo_baja_v1 `
+  --min-usd 1000000 `
+  --ejecutar
+
+# El proceso es reanudable por meses. No vuelve a descargar partes ya existentes.
+# Salida consolidada:
+# datos/cripto/crudos/noticiero_ballena/historico_bigquery/blockchain_bigquery_historico.parquet
+
+3) NORMALIZAR EL HISTÓRICO
+--------------------------
+python -m cripto.noticiero_ballena.normalizar_eventos `
+  --entrada datos/cripto/crudos/noticiero_ballena/historico_bigquery/blockchain_bigquery_historico.parquet `
+  --fuente bigquery_public_bitcoin_outputs `
+  --registro-entidades cripto/noticiero_ballena/config/entidades_verificadas.example.json
+
+4) AUDITAR EVENTOS
+------------------
+python -m cripto.noticiero_ballena.auditar_eventos
+
+DETENERSE SI LA AUDITORÍA ES RECHAZADA.
+
+5) GENERAR VARIABLES POR MINUTO
+-------------------------------
+python -m cripto.noticiero_ballena.generar_variables `
+  --desde 2021-01-01 `
+  --hasta 2025-01-01
+
+6) ETIQUETAR CONTRA BTC 1M
+--------------------------
+python -m cripto.noticiero_ballena.etiquetar_impacto `
+  --precios datos/cripto/preparados/corto_plazo_baja_v1
+
+7) ENTRENAR Y GENERAR PREDICCIONES OOF
+--------------------------------------
+python -m cripto.noticiero_ballena.entrenar_modelo
+
+8) EXPORTAR PARA MODELOS CONSUMIDORES
+-------------------------------------
+python -m cripto.noticiero_ballena.exportar_para_modelos --modo historico
+python -m cripto.noticiero_ballena.auditar_exportacion
+
+9) INFERENCIA OPERATIVA
+-----------------------
+python -m cripto.noticiero_ballena.inferir
+python -m cripto.noticiero_ballena.exportar_para_modelos --modo tiempo_real

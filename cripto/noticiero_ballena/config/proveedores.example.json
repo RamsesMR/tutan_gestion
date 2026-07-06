@@ -1,0 +1,34 @@
+{
+  "blockchain_com_public": {
+    "activo": true,
+    "requiere_api_key": false,
+    "min_value_usd": 5000000,
+    "min_btc_respaldo": 50
+  },
+  "whale_alert": {
+    "activo": false,
+    "requiere_api_key": true,
+    "min_value_usd": 5000000,
+    "blockchains": ["bitcoin"],
+    "symbols": ["btc"]
+  },
+  "arkham": {
+    "activo": false,
+    "solo_enriquecimiento": true
+  },
+  "cryptoquant": {
+    "activo": false,
+    "metricas": [
+      "btc/flow-indicator/exchange-whale-ratio"
+    ],
+    "ventana": "hour",
+    "exchange": "binance",
+    "retraso_publicacion_minutos": 0
+  },
+  "glassnode": {
+    "activo": false,
+    "metricas": [],
+    "intervalo": "10m",
+    "retraso_publicacion_minutos": 0
+  }
+}

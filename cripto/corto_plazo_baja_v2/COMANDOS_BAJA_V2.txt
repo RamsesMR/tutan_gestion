@@ -1,0 +1,38 @@
+# Ejecutar siempre desde la raíz:
+# C:\xampp\htdocs\tutan_gestion
+#
+# Activar primero el entorno:
+.\venv\Scripts\Activate.ps1
+
+# PASO 1 — Generar eventos de 5, 10, 15 y 30 minutos.
+python -m cripto.corto_plazo_baja_v2.generar_eventos
+
+# PASO 2 — Auditar. Debe terminar con:
+# AUDITORÍA BAJA V2 APROBADA
+python -m cripto.corto_plazo_baja_v2.auditar_eventos
+
+# PASO 3 — PRIMERA EJECUCIÓN. Solo control, semilla 42.
+# Produce 8 modelos: 4 rejillas × 2 pliegues.
+python -m cripto.corto_plazo_baja_v2.entrenar_modelos --rejillas 5,10,15,30 --variantes control_63_eventos --semillas 42
+
+# PASO 4 — Seleccionar el control.
+python -m cripto.corto_plazo_baja_v2.seleccionar_modelo
+
+# NO EJECUTAR LOS PASOS SIGUIENTES HASTA REVISAR EL CONTROL.
+
+# PASO 5 — Ablaciones macro individuales y bloque completo, semilla 42.
+python -m cripto.corto_plazo_baja_v2.entrenar_modelos --rejillas 5,10,15,30 --variantes macro_dolar,macro_rendimiento_real,macro_spread_baa,macro_vix,macro_nasdaq100,macro_reservas_fed,macro_completo --semillas 42
+
+# PASO 6 — Seleccionar tras las ablaciones.
+python -m cripto.corto_plazo_baja_v2.seleccionar_modelo
+
+# PASO 7 — Interacciones cripto-macro, solo si el bloque macro aporta.
+python -m cripto.corto_plazo_baja_v2.entrenar_modelos --rejillas 5,10,15,30 --variantes macro_completo_interacciones --semillas 42
+
+# PASO 8 — Robustez de semillas SOLO sobre variantes/rejillas candidatas.
+# Sustituir <REJILLA> y <VARIANTE> después de revisar decision_baja_v2.json.
+python -m cripto.corto_plazo_baja_v2.entrenar_modelos --rejillas <REJILLA> --variantes <VARIANTE> --semillas todas
+
+# Reanudar:
+# El entrenador conserva modelos ya completos y no los repite.
+# --sobrescribir se usa únicamente cuando se necesita invalidar un artefacto.
