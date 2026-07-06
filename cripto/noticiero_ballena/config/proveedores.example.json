@@ -1,6 +1,13 @@
 {
-  "whale_alert": {
+  "blockchain_com_public": {
     "activo": true,
+    "requiere_api_key": false,
+    "min_value_usd": 5000000,
+    "min_btc_respaldo": 50
+  },
+  "whale_alert": {
+    "activo": false,
+    "requiere_api_key": true,
     "min_value_usd": 5000000,
     "blockchains": ["bitcoin"],
     "symbols": ["btc"]

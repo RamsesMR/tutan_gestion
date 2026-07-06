@@ -2,48 +2,75 @@
 
 Modelo auxiliar independiente y reutilizable del proyecto `tutan_gestion`.
 
-## Separación de responsabilidades
+## Objetivo
 
-### Noticiero Ballena
+`noticiero_ballena` detecta movimientos grandes de BTC, construye variables
+causales y estima su impacto a 15, 60 y 240 minutos.
 
-Procesa movimientos grandes de BTC, identifica su contexto y estima su impacto:
+No abre operaciones. BAJA V3 será quien combine estas señales con BTC, ETH,
+Nasdaq, VIX, Spot, derivados y otras variables para decidir `SHORT` o
+`NO OPERAR`.
 
-- probabilidad de impacto bajista;
-- probabilidad de impacto alcista;
-- probabilidad de ausencia de impacto;
-- retorno estimado a 15, 60 y 240 minutos;
-- confianza de la señal;
-- variables crudas de inflow, outflow, netflow, identidad y concentración.
+## Fuente gratuita predeterminada
 
-### BAJA V3
+La V1 arranca con el WebSocket público de Blockchain.com:
 
-BAJA V3 será el modelo decisor. Combinará las salidas del Noticiero Ballena con
-BTC, ETH, Nasdaq, VIX, flujo Spot, derivados y otras variables. Solo BAJA V3
-decidirá `SHORT` o `NO OPERAR`.
+```text
+wss://ws.blockchain.info/inv
+```
 
-## Principios de V1
+No requiere:
 
-1. No inventar identidades ni wallets.
-2. Registrar `fecha_disponible`, no solo la fecha de blockchain.
-3. No interpolar hacia el futuro ni rellenar hacia atrás.
-4. Las predicciones históricas entregadas a otros modelos deben ser fuera de
-   muestra (`OOF`).
-5. Mantener también las variables crudas para comprobar si el modelo auxiliar
-   aporta más que las reglas deterministas.
-6. Ser reutilizable por futuros modelos de ALZA, BAJA, volatilidad o régimen.
+- cuenta;
+- tarjeta bancaria;
+- API key;
+- archivo `.env`.
 
-## Fuentes previstas
+El recolector se suscribe a transacciones Bitcoin sin confirmar y conserva las
+salidas cuyo valor supera el umbral configurado.
 
-- **Whale Alert:** descubrimiento de movimientos grandes e información en tiempo
-  real. Es la fuente operativa inicial recomendada.
-- **Arkham:** enriquecimiento opcional de direcciones, entidades y etiquetas.
-- **CryptoQuant:** métricas agregadas como Exchange Whale Ratio.
-- **Glassnode:** contexto histórico y on-chain agregado cuando el plan contratado
-  permita acceso API.
-- **Archivo:** CSV, JSON, JSONL o Parquet para históricos y pruebas.
+Para calcular su valor aproximado en dólares usa el precio Spot público de
+Coinbase. Si temporalmente no puede obtener el precio, aplica el umbral de BTC
+configurado como respaldo.
 
-El núcleo no depende de una sola API. Las claves se leen desde variables de
-entorno y nunca se guardan en el repositorio.
+## Limitación importante de la fuente gratuita
+
+La blockchain muestra direcciones y cantidades, pero no revela automáticamente
+quién controla cada dirección ni cuál era la intención económica.
+
+Por eso una salida grande puede ser:
+
+- pago real;
+- dirección de cambio;
+- batching;
+- reorganización de custodia;
+- transferencia interna;
+- movimiento hacia o desde un exchange.
+
+La V1 no inventa identidades. Las direcciones de personas, fondos, ETF,
+gobiernos, empresas o exchanges solo se etiquetan cuando se incorporan a un
+registro verificable.
+
+El archivo para ese registro es:
+
+```text
+cripto/noticiero_ballena/config/entidades_verificadas.example.json
+```
+
+## Proveedores opcionales
+
+Se mantienen conectores opcionales para Whale Alert, Arkham, CryptoQuant y
+Glassnode, pero el funcionamiento básico de V1 no depende de ellos. No deben
+activarse sin revisar antes condiciones y posibles costos.
+
+## Principios temporales
+
+1. Usar `fecha_disponible`, no solo la hora de blockchain.
+2. No usar información futura para construir variables.
+3. No interpolar ni rellenar hacia atrás.
+4. Publicar predicciones históricas fuera de muestra (`OOF`).
+5. Mantener variables crudas junto con las salidas del modelo.
+6. Bloquear 2025 y 2026 para desarrollo hasta autorización expresa.
 
 ## Estructura
 
@@ -53,19 +80,17 @@ cripto/noticiero_ballena/
 │   ├── entidades_verificadas.example.json
 │   └── proveedores.example.json
 ├── proveedores/
+│   ├── blockchain_com.py
 │   ├── archivo.py
 │   ├── arkham.py
 │   ├── cryptoquant.py
 │   ├── glassnode.py
 │   ├── http.py
 │   └── whale_alert.py
+├── recolectar_tiempo_real.py
 ├── normalizar_eventos.py
-├── importar_whale_alert.py
-├── enriquecer_arkham.py
 ├── auditar_eventos.py
 ├── generar_variables.py
-├── descargar_contexto_onchain.py
-├── integrar_contexto.py
 ├── etiquetar_impacto.py
 ├── entrenar_modelo.py
 ├── inferir.py
@@ -78,75 +103,60 @@ cripto/noticiero_ballena/
 └── tests/
 ```
 
-## Rutas generadas
-
-```text
-datos/cripto/crudos/noticiero_ballena/
-datos/cripto/preparados/noticiero_ballena/
-modelos_entrenados/cripto/noticiero_ballena/
-```
-
-No crea carpetas `noticiero_ballena_v1` ni `noticiero_ballena_v1_1` dentro de
-`cripto`. La única carpeta de código es:
+La única carpeta oficial es:
 
 ```text
 cripto/noticiero_ballena/
 ```
 
-## Esquema de evento normalizado
+## Primer arranque
 
-Campos principales:
+Desde la raíz del proyecto:
 
-```text
-evento_id
-tx_hash
-fecha_blockchain
-fecha_detectada
-fecha_disponible
-activo
-cantidad_activo
-valor_usd
-direccion_origen
-direccion_destino
-entidad_origen
-entidad_destino
-tipo_origen
-tipo_destino
-direccion_flujo
-confianza_etiquetado
-identidad_verificada
-es_movimiento_interno_probable
-fuente
-metadata_json
+```powershell
+python -m pip install -r cripto/noticiero_ballena/requirements_noticiero_ballena.txt
+python -m pytest cripto/noticiero_ballena/tests -q
 ```
 
-`fecha_disponible` representa el momento real en el que el sistema pudo conocer
-el dato. Es la única clave temporal válida para construir variables.
+Después:
 
-## Identidades verificadas
-
-El archivo `config/entidades_verificadas.example.json` está vacío a propósito.
-Para una figura pública, fondo, ETF, gobierno o empresa solo debe añadirse una
-dirección cuando exista una fuente pública y verificable.
-
-Una atribución debe conservar:
-
-```text
-dirección
-entidad
-tipo de entidad
-fuente de verificación
-confianza
+```powershell
+python -m cripto.noticiero_ballena.recolectar_tiempo_real `
+  --proveedor blockchain_com `
+  --min-usd 5000000 `
+  --min-btc 50
 ```
 
-Una etiqueta del proveedor puede cambiar; por eso la confianza y la fuente
-forman parte del dato.
+El proceso queda escuchando. Se detiene con `Ctrl + C`.
+
+Los eventos se guardan en:
+
+```text
+datos/cripto/crudos/noticiero_ballena/blockchain_com_tiempo_real.jsonl
+```
+
+## Normalización
+
+Después de recopilar eventos:
+
+```powershell
+python -m cripto.noticiero_ballena.normalizar_eventos `
+  --entrada datos/cripto/crudos/noticiero_ballena/blockchain_com_tiempo_real.jsonl `
+  --fuente blockchain_com_public `
+  --registro-entidades cripto/noticiero_ballena/config/entidades_verificadas.example.json
+```
+
+Luego:
+
+```powershell
+python -m cripto.noticiero_ballena.auditar_eventos
+```
 
 ## Variables generadas
 
 Ventanas: 5, 15, 60 y 240 minutos.
 
-Familias:
+Familias principales:
 
 ```text
 nb_raw_inflow_btc_*
@@ -165,99 +175,64 @@ nb_raw_calidad_datos
 nb_raw_minutos_desde_evento
 ```
 
-Los movimientos entre exchanges y los movimientos internos probables se
-mantienen separados para que el modelo pueda aprender que no equivalen a venta.
+Cuando las entidades sean desconocidas, las variables de dirección de flujo no
+se fuerzan artificialmente. El modelo conserva la incertidumbre.
 
-La tabla de variables es temporalmente dispersa: solo conserva los minutos que
-pertenecen a una ventana activa de 240 minutos y añade un minuto de reinicio al
-terminar cada ventana. Así se evita generar millones de filas vacías y también
-se evita que un `merge_asof` mantenga una señal antigua indefinidamente.
+## Salidas del especialista
 
-## Etiquetas del especialista
-
-Para cada horizonte de 15, 60 y 240 minutos:
+Para 15, 60 y 240 minutos:
 
 ```text
-BAJISTA
-ALCISTA
-SIN_IMPACTO
-AMBIGUO
+nb_p_bajista_*
+nb_p_alcista_*
+nb_p_sin_impacto_*
+nb_retorno_estimado_*
+nb_confianza_*
 ```
 
-`AMBIGUO` se conserva para auditoría, pero se excluye del entrenamiento. Las
-barreras se calculan desde el primer minuto negociable después de que la
-información estaba disponible.
+Además publica variables crudas para poder comparar:
 
-## Entrenamiento temporal
+```text
+V3 sin ballenas
+V3 con variables crudas
+V3 con salidas del modelo
+V3 con variables crudas + salidas del modelo
+```
 
-- Desarrollo: 2021–2024.
-- 2025 y 2026: bloqueados.
-- Predicciones históricas: pliegues expansivos de 90 días después de un mínimo
-  inicial de 180 días.
-- Modelo final: se entrena únicamente después de generar las predicciones OOF.
+## Entrenamiento
 
-El archivo histórico para BAJA V3 será:
+La recolección gratuita comienza desde el momento en que se inicia el programa.
+No incluye automáticamente años anteriores.
+
+Por tanto, no debe ejecutarse `entrenar_modelo` hasta disponer de suficiente
+histórico real y una auditoría aprobada. Para construir varios años gratis, la
+ruta robusta será un nodo Bitcoin Core propio y un indexador histórico; eso no
+requiere suscripción, pero sí almacenamiento, ancho de banda y tiempo de
+sincronización.
+
+## Contrato con BAJA V3
+
+Salida histórica:
 
 ```text
 datos/cripto/preparados/noticiero_ballena/exportaciones/
 noticiero_ballena_oof_1m.parquet
 ```
 
-BAJA V3 nunca debe entrenarse con predicciones in-sample del modelo final.
-
-La salida operativa será:
+Salida operativa:
 
 ```text
 datos/cripto/preparados/noticiero_ballena/exportaciones/
 noticiero_ballena_tiempo_real_1m.parquet
 ```
 
-## Contrato para modelos consumidores
+BAJA V3 hará un `merge_asof` hacia atrás usando la hora real de disponibilidad.
+`noticiero_ballena` informa; BAJA V3 decide.
 
-Salidas principales:
+## Comandos
+
+El orden completo está en:
 
 ```text
-fecha_apertura
-nb_p_bajista_15m
-nb_p_alcista_15m
-nb_p_sin_impacto_15m
-nb_retorno_estimado_15m
-nb_confianza_15m
+cripto/noticiero_ballena/COMANDOS_NOTICIERO_BALLENA.txt
 ```
-
-También se publican equivalentes a 60 y 240 minutos y una selección de variables
-crudas. Los consumidores deben hacer un `merge_asof` hacia atrás y respetar
-`nb_raw_minutos_desde_evento` para no mantener señales antiguas indefinidamente.
-
-## Proceso completo
-
-Consulta `COMANDOS_NOTICIERO_BALLENA.txt`. El orden obligatorio es:
-
-1. instalar requisitos;
-2. incorporar histórico real;
-3. normalizar o importar;
-4. enriquecer opcionalmente con Arkham;
-5. auditar eventos;
-6. generar variables;
-7. integrar contexto opcional con su retraso real;
-8. etiquetar usando BTC 1m;
-9. entrenar y producir OOF;
-10. exportar y auditar;
-11. revisar resultados antes de conectar BAJA V3.
-
-## Tiempo real
-
-Whale Alert se recolecta en JSONL. Después se ejecuta el mismo normalizador,
-generador de variables e inferencia. No existe un pipeline alternativo oculto:
-histórico y tiempo real comparten el mismo contrato.
-
-## Límites conocidos
-
-- Una transferencia grande no implica venta.
-- Las etiquetas de exchanges y entidades pueden revisarse.
-- Los históricos de distintos proveedores no deben mezclarse sin una auditoría
-  de metodología y cobertura.
-- Las métricas agregadas deben alinearse por su hora real de disponibilidad,
-  incluyendo el retraso del proveedor.
-- El modelo puede no aportar más que las variables crudas; por eso ambas salidas
-  se conservan para ablación.

@@ -3,95 +3,83 @@ NOTICIERO BALLENA V1 — POWERSHELL
 
 EJECUTAR DESDE LA RAÍZ DE tutan_gestion EN LA RAMA dev2.
 
-0) INSTALAR REQUISITOS
-----------------------
+0) INSTALAR Y PROBAR
+--------------------
 python -m pip install -r cripto/noticiero_ballena/requirements_noticiero_ballena.txt
+python -m pytest cripto/noticiero_ballena/tests -q
 
-1A) HISTÓRICO OFICIAL DE WHALE ALERT
-------------------------------------
-# Descarga manualmente el archivo histórico desde la fuente oficial.
-# Si contiene fecha de publicación, se usará. Si no, se aplica una latencia
-# conservadora de 5 minutos.
+1) RECOLECCIÓN GRATUITA EN TIEMPO REAL
+--------------------------------------
+# No requiere cuenta, token ni archivo .env.
+python -m cripto.noticiero_ballena.recolectar_tiempo_real `
+  --proveedor blockchain_com `
+  --min-usd 1000000 `
+  --min-btc 10
 
-python -m cripto.noticiero_ballena.importar_whale_alert `
-  --entrada "RUTA\AL\ARCHIVO_HISTORICO.jsonl" `
-  --latencia-minutos 5
+# Salida:
+# datos/cripto/crudos/noticiero_ballena/blockchain_com_tiempo_real.jsonl
 
-1B) HISTÓRICO DE OTRO PROVEEDOR O ARCHIVO PROPIO
-------------------------------------------------
+2) CONSTRUIR LA BIBLIOTECA HISTÓRICA GRATUITA
+---------------------------------------------
+# BigQuery Sandbox no requiere tarjeta ni facturación.
+# Se necesita un proyecto de Google Cloud y credenciales locales ADC.
+# La primera ejecución SOLO ESTIMA el volumen; no descarga ni consume la consulta real.
+
+$env:GOOGLE_CLOUD_PROJECT="ID_DE_TU_PROYECTO"
+gcloud auth application-default login
+
+python -m cripto.noticiero_ballena.construir_historico `
+  --desde 2021-01-01 `
+  --hasta 2025-01-01 `
+  --precios datos/cripto/preparados/corto_plazo_baja_v1 `
+  --min-usd 1000000
+
+# Si la estimación queda dentro del límite gratuito configurado, ejecutar:
+python -m cripto.noticiero_ballena.construir_historico `
+  --desde 2021-01-01 `
+  --hasta 2025-01-01 `
+  --precios datos/cripto/preparados/corto_plazo_baja_v1 `
+  --min-usd 1000000 `
+  --ejecutar
+
+# El proceso es reanudable por meses. No vuelve a descargar partes ya existentes.
+# Salida consolidada:
+# datos/cripto/crudos/noticiero_ballena/historico_bigquery/blockchain_bigquery_historico.parquet
+
+3) NORMALIZAR EL HISTÓRICO
+--------------------------
 python -m cripto.noticiero_ballena.normalizar_eventos `
-  --entrada "RUTA\AL\ARCHIVO.csv" `
-  --fuente "NOMBRE_PROVEEDOR" `
+  --entrada datos/cripto/crudos/noticiero_ballena/historico_bigquery/blockchain_bigquery_historico.parquet `
+  --fuente bigquery_public_bitcoin_outputs `
   --registro-entidades cripto/noticiero_ballena/config/entidades_verificadas.example.json
 
-
-1C) ENRIQUECIMIENTO OPCIONAL CON ARKHAM
----------------------------------------
-$env:ARKHAM_API_KEY="TU_CLAVE"
-
-python -m cripto.noticiero_ballena.enriquecer_arkham `
-  --entrada datos/cripto/preparados/noticiero_ballena/normalizados/eventos_ballena.parquet `
-  --salida datos/cripto/preparados/noticiero_ballena/normalizados/eventos_ballena.parquet
-
-2) AUDITAR EVENTOS
+4) AUDITAR EVENTOS
 ------------------
 python -m cripto.noticiero_ballena.auditar_eventos
 
 DETENERSE SI LA AUDITORÍA ES RECHAZADA.
 
-3) GENERAR VARIABLES POR MINUTO
+5) GENERAR VARIABLES POR MINUTO
 -------------------------------
 python -m cripto.noticiero_ballena.generar_variables `
   --desde 2021-01-01 `
   --hasta 2025-01-01
 
-4) CONTEXTO ON-CHAIN OPCIONAL
------------------------------
-# CryptoQuant. Requiere CRYPTOQUANT_API_KEY.
-$env:CRYPTOQUANT_API_KEY="TU_CLAVE"
-
-python -m cripto.noticiero_ballena.descargar_contexto_onchain `
-  --proveedor cryptoquant `
-  --desde 2021-01-01T00:00:00Z `
-  --hasta 2025-01-01T00:00:00Z `
-  --ventana hour `
-  --exchange binance
-
-# Integrar solo con el retraso real de publicación del proveedor.
-python -m cripto.noticiero_ballena.integrar_contexto `
-  --contexto datos/cripto/crudos/noticiero_ballena/cryptoquant_contexto.parquet `
-  --retraso-minutos 0
-
-5) ETIQUETAR CONTRA BTC 1M
+6) ETIQUETAR CONTRA BTC 1M
 --------------------------
-# Puede recibir un archivo o una carpeta con varios Parquet.
 python -m cripto.noticiero_ballena.etiquetar_impacto `
   --precios datos/cripto/preparados/corto_plazo_baja_v1
 
-6) ENTRENAR Y GENERAR PREDICCIONES OOF
+7) ENTRENAR Y GENERAR PREDICCIONES OOF
 --------------------------------------
 python -m cripto.noticiero_ballena.entrenar_modelo
 
-7) EXPORTAR HISTÓRICO PARA FUTUROS MODELOS
-------------------------------------------
+8) EXPORTAR PARA MODELOS CONSUMIDORES
+-------------------------------------
 python -m cripto.noticiero_ballena.exportar_para_modelos --modo historico
 python -m cripto.noticiero_ballena.auditar_exportacion
 
-DETENERSE AQUÍ Y REVISAR MÉTRICAS ANTES DE CONECTAR BAJA V3.
-
-8) RECOLECCIÓN EN TIEMPO REAL
------------------------------
-$env:WHALE_ALERT_API_KEY="TU_CLAVE"
-
-python -m cripto.noticiero_ballena.recolectar_tiempo_real `
-  --min-usd 5000000
-
 9) INFERENCIA OPERATIVA
 -----------------------
-# Tras normalizar el JSONL y regenerar las variables más recientes:
 python -m cripto.noticiero_ballena.inferir
 python -m cripto.noticiero_ballena.exportar_para_modelos --modo tiempo_real
-
-10) PRUEBAS
------------
-python -m pytest cripto/noticiero_ballena/tests -q

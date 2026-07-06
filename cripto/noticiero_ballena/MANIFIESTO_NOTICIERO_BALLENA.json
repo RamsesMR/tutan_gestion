@@ -13,11 +13,29 @@
     "modelos de volatilidad",
     "modelos de régimen"
   ],
-  "horizontes_minutos": [15, 60, 240],
-  "ventanas_variables_minutos": [5, 15, 60, 240],
-  "desarrollo": [2021, 2022, 2023, 2024],
-  "bloqueados": [2025, 2026],
+  "horizontes_minutos": [
+    15,
+    60,
+    240
+  ],
+  "ventanas_variables_minutos": [
+    5,
+    15,
+    60,
+    240
+  ],
+  "desarrollo": [
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "bloqueados": [
+    2025,
+    2026
+  ],
   "proveedores_opcionales": [
+    "Blockchain.com público",
     "Whale Alert",
     "Arkham",
     "CryptoQuant",
@@ -34,5 +52,9 @@
     "modifica_baja_v3": false
   },
   "salida_historica": "datos/cripto/preparados/noticiero_ballena/exportaciones/noticiero_ballena_oof_1m.parquet",
-  "salida_tiempo_real": "datos/cripto/preparados/noticiero_ballena/exportaciones/noticiero_ballena_tiempo_real_1m.parquet"
+  "salida_tiempo_real": "datos/cripto/preparados/noticiero_ballena/exportaciones/noticiero_ballena_tiempo_real_1m.parquet",
+  "fuente_gratuita_predeterminada": "Blockchain.com WebSocket público",
+  "requiere_cuenta_para_arrancar": false,
+  "requiere_api_key_para_arrancar": false,
+  "advertencia_costos": "Los proveedores comerciales son opcionales y no deben activarse sin aprobación previa."
 }

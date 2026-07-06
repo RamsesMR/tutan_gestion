@@ -1,0 +1,28 @@
+{
+  "paquete": "noticiero_ballena_v1",
+  "fecha_validacion": "2026-07-06",
+  "resultados": {
+    "compilacion_python": "APROBADA",
+    "pruebas_unitarias": "6/6 APROBADAS",
+    "smoke_entrenamiento_temporal": "APROBADO",
+    "normalizacion_eventos": "APROBADA",
+    "variables_causales": "APROBADAS",
+    "etiquetado_barreras": "APROBADO",
+    "contrato_exportacion": "APROBADO",
+    "recolector_gratuito_conversion": "APROBADO",
+    "conexion_externa_en_entorno_de_construccion": "NO VERIFICABLE POR DNS DEL ENTORNO; endpoint y protocolo basados en documentación oficial"
+  },
+  "protecciones": {
+    "una_sola_carpeta_codigo": "cripto/noticiero_ballena",
+    "sin_version_1_1": true,
+    "no_decide_operaciones": true,
+    "salida_historica_oof": true,
+    "fecha_disponible_causal": true,
+    "anios_bloqueados": [
+      2025,
+      2026
+    ],
+    "fuente_gratuita_sin_api_key": true,
+    "proveedores_pago_desactivados_por_defecto": true
+  }
+}
