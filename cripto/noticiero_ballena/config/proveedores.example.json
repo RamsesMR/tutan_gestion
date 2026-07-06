@@ -1,0 +1,27 @@
+{
+  "whale_alert": {
+    "activo": true,
+    "min_value_usd": 5000000,
+    "blockchains": ["bitcoin"],
+    "symbols": ["btc"]
+  },
+  "arkham": {
+    "activo": false,
+    "solo_enriquecimiento": true
+  },
+  "cryptoquant": {
+    "activo": false,
+    "metricas": [
+      "btc/flow-indicator/exchange-whale-ratio"
+    ],
+    "ventana": "hour",
+    "exchange": "binance",
+    "retraso_publicacion_minutos": 0
+  },
+  "glassnode": {
+    "activo": false,
+    "metricas": [],
+    "intervalo": "10m",
+    "retraso_publicacion_minutos": 0
+  }
+}

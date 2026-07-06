@@ -1,0 +1,24 @@
+{
+  "entidades": [],
+  "esquema_ejemplo_no_activo": {
+    "direccion": "REEMPLAZAR_POR_DIRECCION_PUBLICA_Y_VERIFICADA",
+    "entidad": "NOMBRE_OFICIAL",
+    "tipo_entidad": "ETF",
+    "identificador_entidad": "ID_INTERNO_OPCIONAL",
+    "fuente_verificacion": "URL_O_REFERENCIA_OFICIAL",
+    "confianza": 0.95
+  },
+  "tipos_permitidos": [
+    "EXCHANGE",
+    "ETF",
+    "FONDO",
+    "GOBIERNO",
+    "PERSONA_PUBLICA",
+    "EMPRESA",
+    "MINERO",
+    "CUSTODIO",
+    "PROTOCOLO",
+    "WALLET",
+    "DESCONOCIDO"
+  ]
+}
