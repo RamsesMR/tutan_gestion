@@ -11,6 +11,7 @@ __pycache__/
 
 # Editor
 .vscode/
+datos/
 
 # Datos generados
 datos/**/*.csv
@@ -22,6 +23,6 @@ modelos_entrenados/**/*.pkl
 modelos_entrenados/**/*.joblib
 modelos_entrenados/**/*.keras
 modelos_entrenados/**/*.h5
-
+.parquet
 # Registros
 registros/*.log
